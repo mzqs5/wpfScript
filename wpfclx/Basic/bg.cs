@@ -20,16 +20,44 @@ namespace wpfclx
         {
             r.X += new Random().Next(-2, 2);
             r.Y += new Random().Next(-2, 2);
-            //先移动鼠标到指定位置
+            //移动鼠标到指定位置
+            MouseMove(handle,r);
 
-            WinApi.PostMessage(handle, (uint)MsgType.WM_NCHITTEST, 0, r.X + (r.Y << 16));
-
-            Thread.Sleep(new Random().Next(10, 20));
             //按下鼠标左键
-            WinApi.PostMessage(handle, (uint)MsgType.WM_LBUTTONDOWN, 0, r.X + (r.Y << 16));
+            LeftMouseDown(handle, r);
 
-            Thread.Sleep(new Random().Next(10, 20));
             //松开鼠标左键
+            LeftMouseUp(handle, r);
+
+        }
+        /// <summary>
+        /// 移动鼠标到指定位置
+        /// </summary>
+        /// <param name="handle"></param>
+        /// <param name="r"></param>
+        internal static void MouseMove(IntPtr handle, Point r)
+        {
+            WinApi.PostMessage(handle, (uint)MsgType.WM_NCHITTEST, 0, r.X + (r.Y << 16));
+            Thread.Sleep(new Random().Next(10, 20));
+        }
+
+        /// <summary>
+        /// 按下鼠标左键
+        /// </summary>
+        /// <param name="handle"></param>
+        /// <param name="r"></param>
+        internal static void LeftMouseDown(IntPtr handle, Point r) {
+            WinApi.PostMessage(handle, (uint)MsgType.WM_LBUTTONDOWN, 0, r.X + (r.Y << 16));
+            Thread.Sleep(new Random().Next(10, 20));
+        }
+
+        /// <summary>
+        /// 松开鼠标左键
+        /// </summary>
+        /// <param name="handle"></param>
+        /// <param name="r"></param>
+        internal static void LeftMouseUp(IntPtr handle, Point r)
+        {
             WinApi.PostMessage(handle, (uint)MsgType.WM_LBUTTONUP, 0, r.X + (r.Y << 16));
             Thread.Sleep(new Random().Next(10, 20));
         }

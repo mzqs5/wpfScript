@@ -11,6 +11,11 @@ namespace wpfclx.Abstract
     /// </summary>
     internal interface ILife
     {
+        void LifeCollect();
+
+        void LifeWorldLookUp();
+
+        void LifeAroundLookUp();
 
 
 
