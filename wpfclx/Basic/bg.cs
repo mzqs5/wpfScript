@@ -6,6 +6,9 @@ using System.Windows.Forms;
 
 namespace wpfclx
 {
+    /// <summary>
+    /// 调用windows api 封装基本后台操作方法
+    /// </summary>
     internal class bg
     {
         internal static void LeftMouseClick(IntPtr handle, Point r)

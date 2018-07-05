@@ -3,9 +3,10 @@ using System.Runtime.InteropServices;
 using System.Windows;
 
 namespace wpfclx
-
 {
-
+    /// <summary>
+    /// 引入user32.dll windows api
+    /// </summary>
     public class WinApi
     {
 
