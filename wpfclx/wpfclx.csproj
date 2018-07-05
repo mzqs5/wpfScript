@@ -106,7 +106,7 @@
     <Compile Include="Abstract\IPlot.cs" />
     <Compile Include="Basic\aforge.cs" />
     <Compile Include="Basic\bg.cs" />
-    <Compile Include="Monitor.cs" />
+    <Compile Include="Concrete\Monitor.cs" />
     <Compile Include="Models\Windows\MsgType.cs" />
     <Compile Include="Resource1.Designer.cs">
       <AutoGen>True</AutoGen>

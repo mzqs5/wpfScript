@@ -12,5 +12,7 @@ namespace wpfclx.Abstract
     internal interface ILife
     {
 
+
+
     }
 }

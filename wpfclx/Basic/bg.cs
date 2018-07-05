@@ -11,6 +11,11 @@ namespace wpfclx
     /// </summary>
     internal class bg
     {
+        /// <summary>
+        /// 鼠标左键单击
+        /// </summary>
+        /// <param name="handle"></param>
+        /// <param name="r"></param>
         internal static void LeftMouseClick(IntPtr handle, Point r)
         {
             r.X += new Random().Next(-2, 2);
@@ -29,32 +34,57 @@ namespace wpfclx
             Thread.Sleep(new Random().Next(10, 20));
         }
 
+        /// <summary>
+        /// 设置窗口标题
+        /// </summary>
+        /// <param name="handle"></param>
+        /// <param name="text"></param>
+        /// <returns></returns>
         internal static int SetWindowText(IntPtr handle, string text)
         {
             return WinApi.SetWindowText(handle, text);
         }
 
-        internal static void Orc(IntPtr handle, XRECT r)
+        /// <summary>
+        /// 图像识别
+        /// </summary>
+        /// <param name="handle"></param>
+        /// <param name="r"></param>
+        internal static void Ocr(IntPtr handle, XRECT r)
         {
-            var soure = GetBitmap(handle, r);
+            var soure = Capture(handle, r);
         }
 
+        /// <summary>
+        /// 找图
+        /// </summary>
+        /// <param name="handle"></param>
+        /// <param name="temp"></param>
+        /// <param name="r"></param>
+        /// <param name="debug"></param>
+        /// <returns></returns>
         internal static Point FindPic(IntPtr handle, Bitmap temp, XRECT r, bool debug = false)
         {
-            var soure = GetBitmap(handle, r);
+            var soure = Capture(handle, r);
             //soure.Save($"C:\\clx\\click{new Random().Next(100, 200)}.bmp");
             var tempnew = aforge.ConvertToFormat(temp, PixelFormat.Format24bppRgb);
             var rect = aforge.ProcessImage(soure, tempnew, debug);
             Point p = new Point();
             if (!rect.IsEmpty)
             {
-                p.X = r.Left + rect.Left;//+ tempnew.Width / 2
-                p.Y = r.Top + rect.Top;//+ tempnew.Height / 2
+                p.X = r.Left + rect.Left;
+                p.Y = r.Top + rect.Top;
             }
             return p;
         }
 
-        public static Bitmap GetBitmap(IntPtr hWnd, XRECT r)
+        /// <summary>
+        /// 捕获当前窗体坐标区域图像
+        /// </summary>
+        /// <param name="hWnd"></param>
+        /// <param name="r"></param>
+        /// <returns></returns>
+        public static Bitmap Capture(IntPtr hWnd, XRECT r)
         {
             IntPtr hscrdc = WinApi.GetWindowDC(hWnd);
             WinApi.RECT eCT = new WinApi.RECT();

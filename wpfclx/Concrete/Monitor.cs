@@ -13,7 +13,7 @@ namespace wpfclx
         /// </summary>
         public static void CJMonitor(IntPtr handle)
         {
-            var r = bg.FindPic(handle, Resource1.手帕, new XRECT() { Left = 1010, Top = 458, Right = 1080, Bottom = 500 }, true);
+            var r = bg.FindPic(handle, Resource1.学习, new XRECT() { Left = 1028, Top = 394, Right = 1091, Bottom = 419 }, true);
             if (!r.IsEmpty)
             {
 
