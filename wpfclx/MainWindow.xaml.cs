@@ -18,7 +18,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using wpfclx.Concrete;
 
 namespace wpfclx
 {
@@ -27,12 +27,12 @@ namespace wpfclx
     /// </summary>
     public partial class MainWindow : Window
     {
-        private IntPtr handle;
-        private bool isE = false;//释放存在正在执行的线程
+        private ActiveAction active;
+        private PassiveAction passive;
+        private Timer timer;
         public MainWindow()
         {
             InitializeComponent();
-            handle = WinApi.FindWindow("Messiah_Game", null);
         }
 
         private void btntest_Click(object sender, RoutedEventArgs e)
@@ -40,51 +40,38 @@ namespace wpfclx
             ThreadExecute(() =>
             {
                 btntest.Content = "正在采集...";
-                ThreadPool.QueueUserWorkItem(new WaitCallback(挖矿), cjCount.Text);
+                timer = new Timer(new TimerCallback(active.FixedPointCollect), cjCount.Text, 1000, 2000);
             }, () =>
             {
                 btntest.Content = "定点采集";
-                bg.SetWindowText(handle, "本次挖矿结束");
             });
         }
 
         public void ThreadExecute(Action start, Action end)
         {
-            if (isE)
+            if (timer!=null)
             {
+                timer.Change(-1,0);
+                timer.Dispose();
+                timer = null;
                 end();
-                isE = false;
             }
             else
             {
                 start();
-                isE = true;
             }
         }
 
-        private void 挖矿(object cjCount)
+        private void btnBind_Click(object sender, RoutedEventArgs e)
         {
-            int i = 0;
-            int Count = Convert.ToInt32(cjCount);
-            while (i < Count)
+            if (active == null)
             {
-                if (!isE)
-                    Thread.CurrentThread.Abort();
-                bg.SetWindowText(handle, "开始查找矿物...");
-                var r = bg.FindPic(handle, Resource1.挖矿, new XRECT() { Left = 1010, Top = 458, Right = 1080, Bottom = 500 }, true);
-                if (!r.IsEmpty)
-                {
-                    bg.SetWindowText(handle, "找到矿物，开始挖矿...");
-                    bg.LeftMouseClick(handle, r);
-                    Thread.Sleep(500);
-                    bg.LeftMouseClick(handle, new System.Drawing.Point() { X = 828, Y = 380 });
-                    Thread.Sleep(8000);
-                    Monitor.CJMonitor(handle);
-                }
-                i++;
-                Thread.Sleep(500);
+                var handle = WinApi.FindWindow("Messiah_Game", null);
+                active = new ActiveAction(handle);
+                passive = new PassiveAction(handle);
+                btnBind.Content = "已绑定";
+                btnBind.IsEnabled = false;
             }
-            bg.SetWindowText(handle, $"本次挖矿结束，总共挖矿{Count}次");
         }
     }
 }

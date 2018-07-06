@@ -9,7 +9,14 @@ namespace wpfclx.Abstract
     /// <summary>
     /// 监控类接口
     /// </summary>
-    internal interface IMonitor
+    public interface IMonitor
     {
+        IntPtr handle { get; set; }
+        void StudyMonitor();
+
+        void DrinkingMonitor();
+
+        void UseMonitor();
+
     }
 }

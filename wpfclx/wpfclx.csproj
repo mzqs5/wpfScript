@@ -39,6 +39,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -101,14 +102,23 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Abstract\ICopy.cs" />
     <Compile Include="Abstract\ILife.cs" />
     <Compile Include="Abstract\IMonitor.cs" />
     <Compile Include="Abstract\IPlot.cs" />
-    <Compile Include="Basic\aforge.cs" />
-    <Compile Include="Basic\bg.cs" />
-    <Compile Include="Concrete\Basic.cs" />
+    <Compile Include="Basic\AforgeHelper.cs" />
+    <Compile Include="Basic\Bg.cs" />
+    <Compile Include="Basic\BitmapHelper.cs" />
+    <Compile Include="Basic\LockBitmap.cs" />
+    <Compile Include="Basic\PointBitmap.cs" />
+    <Compile Include="Concrete\ActiveAction.cs" />
+    <Compile Include="Concrete\Copy.cs" />
     <Compile Include="Concrete\Life.cs" />
     <Compile Include="Concrete\Monitor.cs" />
+    <Compile Include="Concrete\PassiveAction.cs" />
+    <Compile Include="Concrete\PersonAction.cs" />
+    <Compile Include="Models\Windows\FindDirection.cs" />
+    <Compile Include="Models\Windows\FontLibrary.cs" />
     <Compile Include="Models\Windows\MsgType.cs" />
     <Compile Include="Resource1.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -276,6 +286,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\采集.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\楚留香字库.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

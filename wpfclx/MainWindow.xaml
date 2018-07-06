@@ -5,10 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:wpfclx"
         mc:Ignorable="d"
-        Title="楚留香辅助" Height="450" Width="800">
+        Title="楚留香辅助" Height="487" Width="437">
     <Grid>
-        <Button Content="定点挖矿" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="181,44,0,0" Name="btntest" Click="btntest_Click"/>
-        <TextBox Name="cjCount" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="999" VerticalAlignment="Top" Width="120" Margin="31,40,0,0"/>
+        <Button Content="定点挖矿" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="156,54,0,0" Name="btntest" Click="btntest_Click"/>
+        <TextBox Name="cjCount" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="999" VerticalAlignment="Top" Width="120" Margin="21,50,0,0"/>
+        <Button Content="绑定窗口" Name="btnBind" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="21,10,0,0" Click="btnBind_Click"/>
 
     </Grid>
 </Window>

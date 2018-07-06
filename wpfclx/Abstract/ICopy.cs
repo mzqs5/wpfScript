@@ -7,20 +7,21 @@ using System.Threading.Tasks;
 namespace wpfclx.Abstract
 {
     /// <summary>
-    /// 生活类接口
+    /// 副本类接口
     /// </summary>
-    public interface ILife
+    public interface ICopy
     {
         IntPtr handle { get; set; }
 
-        int count { get; set; }
-        void LifeCollect(int count);
+        void CreateTeam();
 
-        void LifeWorldLookUp();
+        void QuitTeam();
 
-        void LifeAroundLookUp();
+        void AutoMatch();
 
-        void LifeChangeLine();
+        void GoTo();
+
+        void Dialogue();
 
     }
 }

@@ -9,7 +9,7 @@ namespace wpfclx.Abstract
     /// <summary>
     /// 剧情类接口
     /// </summary>
-    internal interface IPlot
+    public interface IPlot
     {
 
     }
