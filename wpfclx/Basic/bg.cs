@@ -13,7 +13,7 @@ namespace wpfclx
     {
         private static int deviationX = 8;//窗口左偏移量
         private static int deviationY = 32;//窗口上偏移量
-        private static List<FontLibrary> fonts;
+        //private static List<FontLibrary> fonts;
 
         //static Bg()
         //{
@@ -82,6 +82,38 @@ namespace wpfclx
         }
 
         /// <summary>
+        /// 鼠标滚动
+        /// </summary>
+        /// <param name="handle"></param>
+        /// <param name="r"></param>
+        internal static void MouseWheel(IntPtr handle, int scroll = 20)
+        {
+            WinApi.PostMessage(handle, (uint)MsgType.WM_MOUSEWHEEL, 0 + (scroll << 16), 1 + (1 << 16));
+            Thread.Sleep(new Random().Next(10, 20));
+        }
+
+        /// <summary>
+        /// 鼠标拖动
+        /// </summary>
+        /// <param name="handle"></param>
+        /// <param name="r"></param>
+        internal static void MouseMove(IntPtr handle, Point p1, Point p2)
+        {
+
+            //移动鼠标到指定位置
+            MouseMove(handle, p1);
+            //按下鼠标左键
+            LeftMouseDown(handle, p1);
+
+            //移动鼠标到指定位置
+            MouseMove(handle, p2);
+
+            //松开鼠标左键
+            LeftMouseUp(handle, p2);
+
+        }
+
+        /// <summary>
         /// 设置窗口标题
         /// </summary>
         /// <param name="handle"></param>
@@ -114,6 +146,7 @@ namespace wpfclx
         {
             var soure = Capture(handle, r);
             var tempnew = BitmapHelper.ConvertToFormat(temp, PixelFormat.Format24bppRgb);
+            soure.Save($"C:/clx/soure{new Random().Next(10,20)}.bmp");
             var rect = AforgeHelper.ProcessImage(soure, tempnew, findType, similarity);
             Point p = new Point();
             if (!rect.IsEmpty)

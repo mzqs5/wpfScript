@@ -7,9 +7,10 @@
         mc:Ignorable="d"
         Title="楚留香辅助" Height="487" Width="437">
     <Grid>
-        <Button Content="定点挖矿" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="156,54,0,0" Name="btntest" Click="btntest_Click"/>
+        <Button Content="定点挖矿" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="156,54,0,0" Name="BtnFixedPointCollect" Click="BtnFixedPointCollect_Click"/>
         <TextBox Name="cjCount" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="999" VerticalAlignment="Top" Width="120" Margin="21,50,0,0"/>
         <Button Content="绑定窗口" Name="btnBind" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="21,10,0,0" Click="btnBind_Click"/>
+        <Button Content="测试" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="121,10,0,0" Name="btnTest" Click="btnTest_Click"/>
 
     </Grid>
 </Window>

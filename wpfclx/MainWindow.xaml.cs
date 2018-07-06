@@ -30,20 +30,21 @@ namespace wpfclx
         private ActiveAction active;
         private PassiveAction passive;
         private Timer timer;
+        private Timer timerMonitor;
         public MainWindow()
         {
             InitializeComponent();
         }
 
-        private void btntest_Click(object sender, RoutedEventArgs e)
+        private void BtnFixedPointCollect_Click(object sender, RoutedEventArgs e)
         {
             ThreadExecute(() =>
             {
-                btntest.Content = "正在采集...";
+                BtnFixedPointCollect.Content = "正在采集...";
                 timer = new Timer(new TimerCallback(active.FixedPointCollect), cjCount.Text, 1000, 2000);
             }, () =>
             {
-                btntest.Content = "定点采集";
+                BtnFixedPointCollect.Content = "定点采集";
             });
         }
 
@@ -54,6 +55,9 @@ namespace wpfclx
                 timer.Change(-1,0);
                 timer.Dispose();
                 timer = null;
+                timerMonitor.Change(-1, 0);
+                timerMonitor.Dispose();
+                timerMonitor = null;
                 end();
             }
             else
@@ -72,6 +76,12 @@ namespace wpfclx
                 btnBind.Content = "已绑定";
                 btnBind.IsEnabled = false;
             }
+        }
+
+        private void btnTest_Click(object sender, RoutedEventArgs e)
+        {
+            active.test();
+            
         }
     }
 }

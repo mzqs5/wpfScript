@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Timers;
 using wpfclx.Abstract;
 
+
 namespace wpfclx.Concrete
 {
     /// <summary>
@@ -20,6 +21,7 @@ namespace wpfclx.Concrete
             this.handle = handle;
             
         }
+
 
 
 
