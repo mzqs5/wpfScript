@@ -30,15 +30,15 @@ namespace wpfclx.Concrete
             for (int i = 0; i < 3; i++)
             {
                 Bg.LeftMouseClick(handle, new Point() { X = 124, Y = 701 });
-                Thread.Sleep(500);
+                Thread.Sleep(1000);
                 Bg.LeftMouseClick(handle, new Point() { X = 751, Y = 553 });
                 Thread.Sleep(1000);
                 if (i < 2)
                 {
                     Bg.MouseMove(handle, new Point() { X = 600, Y = 380 }, new Point() { X = 700, Y = 380 });
-                    Thread.Sleep(500);
+                    Thread.Sleep(1000);
                     Bg.MouseMove(handle, new Point() { X = 600, Y = 380 }, new Point() { X = 700, Y = 380 });
-                    Thread.Sleep(500);
+                    Thread.Sleep(1000);
                 }
                 if (i == 1) {
                     Bg.LeftMouseClick(handle,new Point() { X= 441 ,Y= 597 });
@@ -66,9 +66,9 @@ namespace wpfclx.Concrete
         public void lj()
         {
             Bg.LeftMouseClick(handle, new Point() { X = 494, Y = 702 });
-            Thread.Sleep(500);
+            Thread.Sleep(1000);
             Bg.LeftMouseClick(handle, new Point() { X = 239, Y = 460 });
-            Thread.Sleep(500);
+            Thread.Sleep(1000);
             Bg.SetWindowText(handle, "正在匹配");
             while (true)
             {
@@ -86,7 +86,7 @@ namespace wpfclx.Concrete
             Thread.Sleep(10000);
             Bg.SetWindowText(handle, "开始退出");
             Bg.LeftMouseClick(handle, new Point() { X = 1296, Y = 201 });
-            Thread.Sleep(500);
+            Thread.Sleep(1000);
             Bg.LeftMouseClick(handle, new Point() { X = 882, Y = 528 });
             Thread.Sleep(10000);
             //Bg.SetWindowText(handle, "开始倒计时");
@@ -143,7 +143,7 @@ namespace wpfclx.Concrete
                     Bg.LeftMouseClick(handle, r);
                     break;
                 }
-                Thread.Sleep(1000);
+                Thread.Sleep(2000);
             }
             Bg.SetWindowText(handle, "开始下一次论剑");
         }
@@ -171,7 +171,7 @@ namespace wpfclx.Concrete
         {
             Bg.SetWindowText(handle, "检查是否在队伍中...");
             Bg.LeftMouseClick(handle, new Point() { X = 13, Y = 322 });
-            Thread.Sleep(500);
+            Thread.Sleep(1000);
             var r = Bg.FindPic(handle, Resource1.退出队伍, new XRECT() { Left = 1048, Top = 566, Right = 1203, Bottom = 631 });
             if (!r.IsEmpty)
             {
