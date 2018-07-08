@@ -11,12 +11,13 @@ namespace wpfclx.Abstract
     /// </summary>
     public interface IMonitor
     {
-        IntPtr handle { get; set; }
         void StudyMonitor();
 
         void DrinkingMonitor();
 
         void UseMonitor();
+
+        void EdibleMonitor();
 
     }
 }

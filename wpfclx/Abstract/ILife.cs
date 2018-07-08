@@ -11,10 +11,7 @@ namespace wpfclx.Abstract
     /// </summary>
     public interface ILife
     {
-        IntPtr handle { get; set; }
-
-        int count { get; set; }
-        void LifeCollect(int count);
+        bool LifeCollect(int count);
 
         void LifeWorldLookUp();
 

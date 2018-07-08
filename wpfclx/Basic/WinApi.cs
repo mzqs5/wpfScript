@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.InteropServices;
+using System.Text;
 using System.Windows;
 
 namespace wpfclx
@@ -37,6 +38,11 @@ namespace wpfclx
             string lpString
         );
 
+        [DllImport("user32.dll")]
+        public static extern int GetWindowTextLength(IntPtr hWnd);
+
+        [DllImport("User32.dll", CharSet = CharSet.Auto)]
+        public static extern int GetWindowText(IntPtr hWnd, StringBuilder text, int nMaxCount);
         #endregion
 
         #region 获取窗体位置

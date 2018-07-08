@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Lierda.WPFHelper;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -13,5 +14,16 @@ namespace wpfclx
     /// </summary>
     public partial class App : Application
     {
+        LierdaCracker cracker = new LierdaCracker();
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            cracker.Cracker(100);
+            base.OnStartup(e);
+        }
+
+        protected override void OnExit(ExitEventArgs e)
+        {
+            base.OnExit(e);
+        }
     }
 }

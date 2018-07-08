@@ -83,9 +83,39 @@ namespace wpfclx {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap wifi {
+            get {
+                object obj = ResourceManager.GetObject("wifi", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap 乌饭团 {
             get {
                 object obj = ResourceManager.GetObject("乌饭团", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap 余额不足 {
+            get {
+                object obj = ResourceManager.GetObject("余额不足", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap 倒计时 {
+            get {
+                object obj = ResourceManager.GetObject("倒计时", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -123,16 +153,6 @@ namespace wpfclx {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap 关闭儿童节活动 {
-            get {
-                object obj = ResourceManager.GetObject("关闭儿童节活动", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
         internal static System.Drawing.Bitmap 关闭发红包 {
             get {
                 object obj = ResourceManager.GetObject("关闭发红包", resourceCulture);
@@ -143,9 +163,9 @@ namespace wpfclx {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap 关闭队伍面板 {
+        internal static System.Drawing.Bitmap 关闭设置 {
             get {
-                object obj = ResourceManager.GetObject("关闭队伍面板", resourceCulture);
+                object obj = ResourceManager.GetObject("关闭设置", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -313,16 +333,6 @@ namespace wpfclx {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap 挖矿 {
-            get {
-                object obj = ResourceManager.GetObject("挖矿", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
         internal static System.Drawing.Bitmap 接取缥缈任务 {
             get {
                 object obj = ResourceManager.GetObject("接取缥缈任务", resourceCulture);
@@ -381,6 +391,16 @@ namespace wpfclx {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap 活动 {
+            get {
+                object obj = ResourceManager.GetObject("活动", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap 活跃度 {
             get {
                 object obj = ResourceManager.GetObject("活跃度", resourceCulture);
@@ -401,9 +421,29 @@ namespace wpfclx {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap 物品 {
+            get {
+                object obj = ResourceManager.GetObject("物品", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap 狗子 {
             get {
                 object obj = ResourceManager.GetObject("狗子", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap 珍宝阁 {
+            get {
+                object obj = ResourceManager.GetObject("珍宝阁", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -491,9 +531,29 @@ namespace wpfclx {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap 确定 {
+            get {
+                object obj = ResourceManager.GetObject("确定", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap 童年的橱窗 {
             get {
                 object obj = ResourceManager.GetObject("童年的橱窗", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap 端游面板打开 {
+            get {
+                object obj = ResourceManager.GetObject("端游面板打开", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -521,9 +581,9 @@ namespace wpfclx {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap 红心 {
+        internal static System.Drawing.Bitmap 线 {
             get {
-                object obj = ResourceManager.GetObject("红心", resourceCulture);
+                object obj = ResourceManager.GetObject("线", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -591,9 +651,19 @@ namespace wpfclx {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap 论剑退出 {
+        internal static System.Drawing.Bitmap 论剑匹配成功 {
             get {
-                object obj = ResourceManager.GetObject("论剑退出", resourceCulture);
+                object obj = ResourceManager.GetObject("论剑匹配成功", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap 论剑离开 {
+            get {
+                object obj = ResourceManager.GetObject("论剑离开", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -634,6 +704,16 @@ namespace wpfclx {
         internal static System.Drawing.Bitmap 轶事 {
             get {
                 object obj = ResourceManager.GetObject("轶事", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap 退出队伍 {
+            get {
+                object obj = ResourceManager.GetObject("退出队伍", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -724,16 +804,6 @@ namespace wpfclx {
         internal static System.Drawing.Bitmap 队伍添加队友 {
             get {
                 object obj = ResourceManager.GetObject("队伍添加队友", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap 集市关注 {
-            get {
-                object obj = ResourceManager.GetObject("集市关注", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

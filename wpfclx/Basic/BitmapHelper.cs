@@ -97,15 +97,20 @@ namespace wpfclx
         {
             PointBitmap bitmap = new PointBitmap(source);
             bitmap.LockBits();
-            var c = colorHx16toRGB(color);
+            var c = colorHx16toRGB(color.Split('-')[0]);
+            var c1 = colorHx16toRGB(color.Split('-')[1]);
             for (int i = 0; i < bitmap.Width; i++)
             {
                 for (int j = 0; j < bitmap.Height; j++)
                 {
                     var pc = bitmap.GetPixel(i, j);
-                    if (pc.R == c.R && pc.G == c.G && pc.B == c.B)
+                    if (c1.R < pc.R && pc.R < c.R && c1.G < pc.G && pc.G < c.G && c1.B < pc.B && pc.B < c.B && Math.Abs(pc.R - pc.G) < 10 && Math.Abs(pc.G - pc.B) < 10)
                     {
                         bitmap.SetPixel(i, j, Color.FromArgb(0, 0, 0));
+                    }
+                    else
+                    {
+                        bitmap.SetPixel(i, j, Color.FromArgb(255, 255, 255));
                     }
                 }
             }

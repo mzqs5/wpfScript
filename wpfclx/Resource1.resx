@@ -121,6 +121,9 @@
   <data name="PK奖励已领取" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\PK奖励已领取.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="wifi" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\wifi.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="_0" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\_0.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -136,14 +139,8 @@
   <data name="关闭" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\关闭.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="关闭儿童节活动" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\关闭儿童节活动.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="关闭发红包" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\关闭发红包.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="关闭队伍面板" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\关闭队伍面板.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="前去打探" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\前去打探.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -192,9 +189,6 @@
   </data>
   <data name="手帕" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\手帕.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="挖矿" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\挖矿.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="接取缥缈任务" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\接取缥缈任务.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -253,9 +247,6 @@
   <data name="红包" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\红包.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="红心" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\红心.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="结算中" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\结算中.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -273,9 +264,6 @@
   </data>
   <data name="论剑匹配" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\论剑匹配.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="论剑退出" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\论剑退出.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="诗词排序" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\诗词排序.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -316,7 +304,40 @@
   <data name="队伍添加队友" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\队伍添加队友.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="集市关注" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\集市关注.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="关闭设置" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\关闭设置.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="确定" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\确定.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="端游面板打开" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\端游面板打开.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="线" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\线.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="珍宝阁" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\珍宝阁.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="余额不足" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\余额不足.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="活动" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\活动.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="物品" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\物品.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="退出队伍" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\退出队伍.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="倒计时" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\倒计时.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="论剑匹配成功" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\论剑匹配成功.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="论剑离开" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\论剑离开.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

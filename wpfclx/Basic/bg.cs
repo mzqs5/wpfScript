@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Threading;
+using System.Linq;
+using System.Text;
 
 namespace wpfclx
 {
@@ -48,15 +50,36 @@ namespace wpfclx
             LeftMouseUp(handle, r);
 
         }
+
+        internal static void KeyClick(IntPtr handle, KeyCode code)
+        {
+            WinApi.PostMessage(handle, (uint)MsgType.WM_KEYDOWN, (int)code, 0);
+            Thread.Sleep(new Random().Next(5, 10));
+            WinApi.PostMessage(handle, (uint)MsgType.WM_KEYUP, (int)code, 0);
+            Thread.Sleep(new Random().Next(5, 10));
+        }
+
+        internal static void KeyDown(IntPtr handle, KeyCode code)
+        {
+            WinApi.PostMessage(handle, (uint)MsgType.WM_KEYDOWN, (int)code, 0);
+            Thread.Sleep(new Random().Next(5, 10));
+        }
+
+        internal static void KeyUp(IntPtr handle, KeyCode code)
+        {
+            WinApi.PostMessage(handle, (uint)MsgType.WM_KEYUP, (int)code, 0);
+            Thread.Sleep(new Random().Next(5, 10));
+        }
+
         /// <summary>
         /// 移动鼠标到指定位置
         /// </summary>
         /// <param name="handle"></param>
         /// <param name="r"></param>
-        internal static void MouseMove(IntPtr handle, Point r)
+        internal static void MouseMove(IntPtr handle, Point r, WPARAM wparam = WPARAM.MK_Normal)
         {
-            WinApi.PostMessage(handle, (uint)MsgType.WM_NCHITTEST, 0, r.X + (r.Y << 16));
-            Thread.Sleep(new Random().Next(10, 20));
+            WinApi.PostMessage(handle, (uint)MsgType.WM_MOUSEMOVE, (int)wparam, r.X + (r.Y << 16));
+            Thread.Sleep(new Random().Next(5, 10));
         }
 
         /// <summary>
@@ -64,10 +87,10 @@ namespace wpfclx
         /// </summary>
         /// <param name="handle"></param>
         /// <param name="r"></param>
-        internal static void LeftMouseDown(IntPtr handle, Point r)
+        internal static void LeftMouseDown(IntPtr handle, Point r, WPARAM wparam = WPARAM.MK_LBUTTON)
         {
-            WinApi.PostMessage(handle, (uint)MsgType.WM_LBUTTONDOWN, 0, r.X + (r.Y << 16));
-            Thread.Sleep(new Random().Next(10, 20));
+            WinApi.PostMessage(handle, (uint)MsgType.WM_LBUTTONDOWN, (int)wparam, r.X + (r.Y << 16));
+            Thread.Sleep(new Random().Next(5, 10));
         }
 
         /// <summary>
@@ -75,21 +98,21 @@ namespace wpfclx
         /// </summary>
         /// <param name="handle"></param>
         /// <param name="r"></param>
-        internal static void LeftMouseUp(IntPtr handle, Point r)
+        internal static void LeftMouseUp(IntPtr handle, Point r, WPARAM wparam = WPARAM.MK_Normal)
         {
-            WinApi.PostMessage(handle, (uint)MsgType.WM_LBUTTONUP, 0, r.X + (r.Y << 16));
-            Thread.Sleep(new Random().Next(10, 20));
+            WinApi.PostMessage(handle, (uint)MsgType.WM_LBUTTONUP, (int)wparam, r.X + (r.Y << 16));
+            Thread.Sleep(new Random().Next(5, 10));
         }
 
         /// <summary>
         /// 鼠标滚动
         /// </summary>
         /// <param name="handle"></param>
-        /// <param name="r"></param>
-        internal static void MouseWheel(IntPtr handle, int scroll = 20)
+        /// <param name="scroll">正数向上滚 负数向下滚</param>
+        internal static void MouseWheel(IntPtr handle, Point r, int scroll = -1, WPARAM wparam = WPARAM.MK_Normal)
         {
-            WinApi.PostMessage(handle, (uint)MsgType.WM_MOUSEWHEEL, 0 + (scroll << 16), 1 + (1 << 16));
-            Thread.Sleep(new Random().Next(10, 20));
+            WinApi.PostMessage(handle, (uint)MsgType.WM_MOUSEWHEEL, (int)wparam + (scroll * 120 << 16), r.X + (r.Y << 16));
+            Thread.Sleep(new Random().Next(5, 10));
         }
 
         /// <summary>
@@ -105,8 +128,29 @@ namespace wpfclx
             //按下鼠标左键
             LeftMouseDown(handle, p1);
 
-            //移动鼠标到指定位置
-            MouseMove(handle, p2);
+            var x = p2.X - p1.X;
+            var y = p2.Y - p1.Y;
+            var signX = 10;
+            var signY = 10;
+            var count = 1;
+            if (x > y)
+            {
+                count = x / 10;
+                signY = y / count;
+            }
+            else
+            {
+                count = y / 10;
+                signX = x / count;
+            }
+
+            for (int i = 0; i < count; i++)
+            {
+                p1.X += signX;
+                p1.Y += signY;
+                //按住鼠标左键移动到指定位置
+                MouseMove(handle, p1, WPARAM.MK_LBUTTON);
+            }
 
             //松开鼠标左键
             LeftMouseUp(handle, p2);
@@ -124,6 +168,12 @@ namespace wpfclx
             return WinApi.SetWindowText(handle, text);
         }
 
+        internal static int GetWindowText(IntPtr handle)
+        {
+            int length = WinApi.GetWindowTextLength(handle);
+            StringBuilder windowName = new StringBuilder(length + 1);
+            return WinApi.GetWindowText(handle, windowName, windowName.Capacity);
+        }
         /// <summary>
         /// 图像识别
         /// </summary>
@@ -131,7 +181,7 @@ namespace wpfclx
         /// <param name="r"></param>
         internal static void Ocr(IntPtr handle, XRECT r)
         {
-            var soure = Capture(handle, r);
+            var source = Capture(handle, r);
         }
 
         /// <summary>
@@ -144,16 +194,85 @@ namespace wpfclx
         /// <returns>返回第一个找到的坐标</returns>
         internal static Point FindPic(IntPtr handle, Bitmap temp, XRECT r, FindDirection findType = FindDirection.LeftTopToRightDown, float similarity = 0.9f)
         {
-            var soure = Capture(handle, r);
+            var source = Capture(handle, r);
             var tempnew = BitmapHelper.ConvertToFormat(temp, PixelFormat.Format24bppRgb);
-            soure.Save($"C:/clx/soure{new Random().Next(10,20)}.bmp");
-            var rect = AforgeHelper.ProcessImage(soure, tempnew, findType, similarity);
+            //source.Save($"C:\\clx\\source{new Random().Next(100, 200)}.bmp");
+            //tempnew.Save($"C:\\clx\\tempnew{new Random().Next(100, 200)}.bmp");
+            var rect = AforgeHelper.ProcessImage(source, tempnew, findType, similarity);
             Point p = new Point();
-            if (!rect.IsEmpty)
+            if (rect.Count > 0)
             {
-                p.X = r.Left + rect.Left;
-                p.Y = r.Top + rect.Top;
+                p.X = r.Left + rect[0].Rectangle.Left;
+                p.Y = r.Top + rect[0].Rectangle.Top;
             }
+            source.Dispose();
+            tempnew.Dispose();
+            return p;
+        }
+
+        /// <summary>
+        /// 区域找图
+        /// </summary>
+        /// <param name="handle"></param>
+        /// <param name="temp"></param>
+        /// <param name="r"></param>
+        /// <param name="debug"></param>
+        /// <returns>返回找到的坐标集合</returns>
+        internal static List<Point> FindPicEx(IntPtr handle, Bitmap temp, XRECT r, FindDirection findType = FindDirection.LeftTopToRightDown, float similarity = 0.9f)
+        {
+            var source = Capture(handle, r);
+            var tempnew = BitmapHelper.ConvertToFormat(temp, PixelFormat.Format24bppRgb);
+            var rect = AforgeHelper.ProcessImage(source, tempnew, findType, similarity);
+            List<Point> list = new List<Point>();
+            rect.ForEach(o =>
+            {
+                Point p = new Point();
+                p.X = r.Left + o.Rectangle.Left;
+                p.Y = r.Top + o.Rectangle.Top;
+                list.Add(p);
+            });
+            //switch (findType)
+            //{
+            //    case FindDirection.LeftTopToRightDown:
+            //        list = list.AsEnumerable().OrderBy(o => o.X & o.Y).ToList();
+            //        break;
+            //    case FindDirection.RightDownToLeftTop:
+            //        list = list.OrderByDescending(o => o.X & o.Y).ToList();
+            //        break;
+            //    case FindDirection.CoreToAround:
+            //        list = list.OrderBy(o => Math.Abs(o.X - source.Width / 2) & Math.Abs(o.Y - source.Height / 2)).ToList();
+            //        break;
+            //}
+            source.Dispose();
+            tempnew.Dispose();
+            return list;
+        }
+
+        /// <summary>
+        /// 区域找透明文字
+        /// </summary>
+        /// <param name="handle"></param>
+        /// <param name="temp"></param>
+        /// <param name="r"></param>
+        /// <param name="debug"></param>
+        /// <returns>返回第一个找到的坐标</returns>
+        internal static Point FindPicFast(IntPtr handle, Bitmap temp, XRECT r, FindDirection findType = FindDirection.LeftTopToRightDown, float similarity = 0.9f)
+        {
+            var source = Capture(handle, r);
+            var tempnew = BitmapHelper.ConvertToFormat(temp, PixelFormat.Format24bppRgb);
+            source = AforgeHelper.GrayscaleThresholdBlobsFiltering(source, 90);
+            tempnew = AforgeHelper.GrayscaleThresholdBlobsFiltering(tempnew, 90);
+            //source.Save($"C:\\clx\\source{new Random().Next(100, 200)}.bmp");
+            //tempnew.Save($"C:\\clx\\tempnew{new Random().Next(100, 200)}.bmp");
+            var rect = AforgeHelper.ProcessImage(source, tempnew, findType, similarity);
+            Point p = new Point();
+            if (rect.Count > 0)
+            {
+                p.X = r.Left + rect[0].Rectangle.Left;
+                p.Y = r.Top + rect[0].Rectangle.Top;
+            }
+            source.Dispose();
+            tempnew.Dispose();
             return p;
         }
 
@@ -168,20 +287,22 @@ namespace wpfclx
         /// <returns>返回第一个找到的坐标</returns>
         internal static Point FindStr(IntPtr handle, string str, string color, XRECT r, FindDirection findType = FindDirection.LeftTopToRightDown, float similarity = 0.9f)
         {
-            var soure = Capture(handle, r);
+            var source = Capture(handle, r);
             var temp = BitmapHelper.ByteStrToBitmap(str);
             var tempnew = BitmapHelper.ConvertToFormat(temp, PixelFormat.Format24bppRgb);
-            BitmapHelper.ColorReplace(soure, color);
+            BitmapHelper.ColorReplace(source, color);
             BitmapHelper.ColorReplace(tempnew, color);
-            AforgeHelper.GrayscaleThresholdBlobsFiltering(soure);
+            AforgeHelper.GrayscaleThresholdBlobsFiltering(source);
             AforgeHelper.GrayscaleThresholdBlobsFiltering(tempnew);
-            var rect = AforgeHelper.ProcessImage(soure, tempnew, findType, similarity);
+            var rect = AforgeHelper.ProcessImage(source, tempnew, findType, similarity);
             Point p = new Point();
-            if (!rect.IsEmpty)
+            if (rect.Count > 0)
             {
-                p.X = r.Left + rect.Left;
-                p.Y = r.Top + rect.Top;
+                p.X = r.Left + rect[0].Rectangle.Left;
+                p.Y = r.Top + rect[0].Rectangle.Top;
             }
+            source.Dispose();
+            tempnew.Dispose();
             return p;
         }
 
@@ -193,11 +314,6 @@ namespace wpfclx
         /// <returns></returns>
         internal static Bitmap Capture(IntPtr hWnd, XRECT r)
         {
-            r.Left += deviationX;
-            r.Right += deviationX;
-            r.Top += deviationY;
-            r.Bottom += deviationY;
-
             IntPtr hscrdc = WinApi.GetWindowDC(hWnd);
             WinApi.RECT eCT = new WinApi.RECT();
             WinApi.GetWindowRect(hWnd, ref eCT);
@@ -208,7 +324,8 @@ namespace wpfclx
             Bitmap bmp = Bitmap.FromHbitmap(hbitmap);
             WinApi.DeleteDC(hscrdc);//删除用过的对象 
             WinApi.DeleteDC(hmemdc);//删除用过的对象 
-            Bitmap ect = BitmapHelper.ConvertToFormat(bmp, PixelFormat.Format24bppRgb, r);
+            Bitmap ect = BitmapHelper.ConvertToFormat(bmp, PixelFormat.Format24bppRgb, new XRECT() { Left = r.Left + deviationX, Right = r.Right + deviationX, Top = r.Top + deviationY, Bottom = r.Bottom + deviationY });
+            bmp.Dispose();
             return ect;
         }
 

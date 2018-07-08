@@ -11,8 +11,6 @@ namespace wpfclx.Abstract
     /// </summary>
     public interface ICopy
     {
-        IntPtr handle { get; set; }
-
         void CreateTeam();
 
         void QuitTeam();
@@ -23,5 +21,10 @@ namespace wpfclx.Abstract
 
         void Dialogue();
 
+        bool OpenMall();
+
+        void Chronicle();
+
+        void lj();
     }
 }

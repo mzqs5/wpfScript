@@ -79,6 +79,9 @@
     <Reference Include="AForge.Math, Version=2.2.5.0, Culture=neutral, PublicKeyToken=abba2e25397ee8c9, processorArchitecture=MSIL">
       <HintPath>..\packages\AForge.Math.2.2.5\lib\AForge.Math.dll</HintPath>
     </Reference>
+    <Reference Include="Lierda.WPFHelper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cbb49eab16984ff2, processorArchitecture=MSIL">
+      <HintPath>..\packages\Lierda.WPFHelper.1.0.3\lib\net461\Lierda.WPFHelper.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -106,6 +109,7 @@
     <Compile Include="Abstract\ILife.cs" />
     <Compile Include="Abstract\IMonitor.cs" />
     <Compile Include="Abstract\IPlot.cs" />
+    <Compile Include="Abstract\IRobBuy.cs" />
     <Compile Include="Basic\AforgeHelper.cs" />
     <Compile Include="Basic\Bg.cs" />
     <Compile Include="Basic\BitmapHelper.cs" />
@@ -117,16 +121,19 @@
     <Compile Include="Concrete\Monitor.cs" />
     <Compile Include="Concrete\PassiveAction.cs" />
     <Compile Include="Concrete\PersonAction.cs" />
+    <Compile Include="Concrete\RobBuy.cs" />
     <Compile Include="Models\Windows\FindDirection.cs" />
     <Compile Include="Models\Windows\FontLibrary.cs" />
+    <Compile Include="Models\Windows\KeyCode.cs" />
     <Compile Include="Models\Windows\MsgType.cs" />
+    <Compile Include="Models\Windows\WPARAM.cs" />
+    <Compile Include="Basic\WinApi.cs" />
+    <Compile Include="Models\Windows\XRECT.cs" />
     <Compile Include="Resource1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resource1.resx</DependentUpon>
     </Compile>
-    <Compile Include="Basic\WinApi.cs" />
-    <Compile Include="Models\Windows\XRECT.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -144,6 +151,7 @@
     <EmbeddedResource Include="Resource1.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resource1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <None Include="packages.config" />
   </ItemGroup>
@@ -169,7 +177,6 @@
     <Resource Include="Resources\公子音.bmp" />
     <Resource Include="Resources\共鸣礼.bmp" />
     <Resource Include="Resources\关闭.bmp" />
-    <Resource Include="Resources\关闭儿童节活动.bmp" />
     <Resource Include="Resources\关闭发红包.bmp" />
     <Resource Include="Resources\前去打探.bmp" />
     <Resource Include="Resources\前往.bmp" />
@@ -185,7 +192,6 @@
     <Resource Include="Resources\开启.bmp" />
     <Resource Include="Resources\御姐音.bmp" />
     <Resource Include="Resources\手帕.bmp" />
-    <Resource Include="Resources\挖矿.bmp" />
     <Resource Include="Resources\接取缥缈任务.bmp" />
     <Resource Include="Resources\揭榜.bmp" />
     <Resource Include="Resources\杜康酒.bmp" />
@@ -202,7 +208,6 @@
     <Resource Include="Resources\童年的橱窗.bmp" />
     <Resource Include="Resources\竹叶青.bmp" />
     <Resource Include="Resources\红包.bmp" />
-    <Resource Include="Resources\红心.bmp" />
     <Resource Include="Resources\结算中.bmp" />
     <Resource Include="Resources\肚兜.bmp" />
     <Resource Include="Resources\萝莉音.bmp" />
@@ -222,19 +227,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\app.manifest" />
-    <None Include="Resources\创建队伍.bmp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\队伍添加队友.bmp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\烽火匹配.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\关闭队伍面板.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\集市关注.bmp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\论剑匹配.bmp" />
@@ -246,40 +244,7 @@
     <None Include="Resources\没有在售的珍品.bmp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\取消.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\取消1.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\取消匹配.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\确定.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\申请.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\申请列表.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\刷新列表.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\退出队伍.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\一键喊话.bmp" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\在售.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\转为团队.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\自动匹配.bmp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\学习.bmp" />
@@ -289,6 +254,45 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\楚留香字库.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wifi.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\关闭设置.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\端游面板打开.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\线.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\确定.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\珍宝阁.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\物品.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\余额不足.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\活动.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\退出队伍.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\倒计时.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\论剑离开.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\论剑匹配成功.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
