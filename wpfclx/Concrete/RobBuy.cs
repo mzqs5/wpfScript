@@ -84,7 +84,7 @@ namespace wpfclx.Concrete
             if (r.IsEmpty)
             {
                 Bg.LeftMouseClick(handle, new Point() { X = 20, Y = 16 });
-                Thread.Sleep(200);
+                Thread.Sleep(1000);
                 return OpenMall();
             }
             else

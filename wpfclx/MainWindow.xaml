@@ -5,29 +5,86 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:wpfclx"
         mc:Ignorable="d"
-        Title="楚留香辅助" Height="487" Width="493" ResizeMode="NoResize" Closing="Window_Closing">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="361*"/>
-            <ColumnDefinition Width="89*"/>
-            <ColumnDefinition Width="37*"/>
-        </Grid.ColumnDefinitions>
-        <Button Content="换线采集" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="156,50,0,0" Name="BtnFixedPointCollect" Click="BtnFixedPointCollect_Click" Height="23"/>
-        <TextBox Name="cjCount" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="999" VerticalAlignment="Top" Width="120" Margin="21,50,0,0"/>
-        <Button Content="绑定窗口" Name="btnBind" Height="23" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="21,10,0,0" Click="btnBind_Click"/>
-        <Button Content="测试" HorizontalAlignment="Left" Height="23" VerticalAlignment="Top" Width="75" Margin="121,10,0,0" Name="btnTest" Click="btnTest_Click"/>
-        <TextBox Name="qgCount" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="120" Margin="21,94,0,0"/>
-        <Button Content="摆摊抢购" Name="BtnStallRobBuy" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="156,94,0,0" Height="23" Click="BtnStallRobBuy_Click"/>
-        <TextBox x:Name="jsqgCount" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="120" Margin="21,140,0,0"/>
-        <Button Content="集市抢购" x:Name="BtnMarketRobBuy" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="156,140,0,0" Height="23" Click="BtnMarketRobBuy_Click"/>
-        <Button Content="新秀一条" Name="BtnSimpleOne" Height="23" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="21,195,0,0" Click="BtnSimpleOne_Click"/>
-        <Button Content="悬赏" Name="BtnReward" Height="23" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="28,50,0,0" Click="BtnReward_Click" Grid.ColumnSpan="3" Grid.Column="1"/>
-        <TextBox Name="xsCount" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="10" VerticalAlignment="Top" Width="120" Margin="253,50,0,0" Grid.ColumnSpan="2"/>
-        <Button Name="BtnTheSword" Content="自动论剑" Height="23" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="28,94,0,0" Click="BtnTheSword_Click" Grid.ColumnSpan="3" Grid.Column="1"/>
-        <TextBox Name="ljCount" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="10" VerticalAlignment="Top" Width="120" Margin="253,94,0,0" Grid.ColumnSpan="2"/>
-        <Button Content="烽火挂机" Name="BtnBeacon" Height="23" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="28,140,0,0" Click="BtnBeacon_Click" Grid.ColumnSpan="3" Grid.Column="1"/>
-        <TextBox Name="fhCount" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="10" VerticalAlignment="Top" Width="120" Margin="253,140,0,0" Grid.ColumnSpan="2"/>
-        <Button Name="BtnAct" Content="行当一条" HorizontalAlignment="Left" Height="23" VerticalAlignment="Top" Width="75" Margin="121,195,0,0" Click="BtnAct_Click"/>
-
+        Title="楚留香辅助" Height="387" Width="463" ResizeMode="NoResize" Closing="Window_Closing">
+    <Grid >
+        <TabControl HorizontalAlignment="Left" Height="348" VerticalAlignment="Top" Width="447">
+            <TabItem Header="计划任务">
+                <Grid>
+                    <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="318" VerticalAlignment="Top" Width="235"/>
+                    <Label Content="所有任务" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="24,2,0,0" RenderTransformOrigin="0.707,0.56"/>
+                    <Label Content="已选任务" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="140,0,0,0" RenderTransformOrigin="0.707,0.56"/>
+                    <ListBox Name="alltask" HorizontalAlignment="Left" Height="281" VerticalAlignment="Top" Width="100" Margin="10,27,0,0">
+                        <CheckBox Name="todayyg" Content="每日一卦" Click="alltask_Checked"/>
+                        <CheckBox Name="todayfl" Content="每日福利" Click="alltask_Checked"/>
+                        <CheckBox Name="hdjh" Content="行当绝活" Click="alltask_Checked"/>
+                        <CheckBox Name="ky" Content="课业" Click="alltask_Checked"/>
+                        <CheckBox Name="bprw" Content="帮派任务" Click="alltask_Checked"/>
+                        <CheckBox Name="slrw" Content="势力任务" Click="alltask_Checked"/>
+                        <CheckBox Name="jhpm" Content="江湖飘渺" Click="alltask_Checked"/>
+                        <CheckBox Name="jhjs" Content="江湖纪事" Click="alltask_Checked"/>
+                        <CheckBox Name="wltf" Content="万里听风" Click="alltask_Checked"/>
+                        <CheckBox Name="jhxs" Content="江湖行商" Click="alltask_Checked"/>
+                        <CheckBox Name="jyhc" Content="佳肴荟萃" Click="alltask_Checked"/>
+                        <CheckBox Name="yzhj" Content="弈中幻境" Click="alltask_Checked"/>
+                        <CheckBox Name="szhw" Content="山珍海味" Click="alltask_Checked"/>
+                        <CheckBox Name="jypy" Content="聚义平冤" Click="alltask_Checked"/>
+                        <CheckBox Name="bbxs" Content="白榜悬赏" Click="alltask_Checked"/>
+                        <CheckBox Name="xsrw" Content="悬赏任务" Click="alltask_Checked"/>
+                        <CheckBox Name="sxyz" Content="刷侠义值" Click="alltask_Checked"/>
+                        <CheckBox Name="hslj" Content="华山论剑" Click="alltask_Checked"/>
+                        <CheckBox Name="ljmt" Content="论剑秒退" Click="alltask_Checked"/>
+                        <CheckBox Name="zcgj" Content="战场挂机" Click="alltask_Checked"/>
+                        <CheckBox Name="sdjg" Content="刷登剑阁" Click="alltask_Checked"/>
+                        <CheckBox Name="zdwb" Content="自动挖宝" Click="alltask_Checked"/>
+                        <CheckBox Name="gjdy" Content="挂机钓鱼" Click="alltask_Checked"/>
+                        <CheckBox Name="hxcj" Content="换线采集" Click="alltask_Checked"/>
+                        <CheckBox Name="cjgz" Content="采集罐子" Click="alltask_Checked"/>
+                        <CheckBox Name="mpm" Content="秒拍卖" Click="alltask_Checked"/>
+                        <CheckBox Name="gj" Content="关机" Click="alltask_Checked"/>
+                    </ListBox>
+                    <ListBox Name="selecttask" HorizontalAlignment="Left"  Height="281" VerticalAlignment="Top" Width="100" Margin="121,27,0,0"/>
+                    <Button Content="绑定窗口" Name="btnBind" Height="23" HorizontalAlignment="Left" VerticalAlignment="Top" Width="55" Margin="240,285,0,0" Click="btnBind_Click" RenderTransformOrigin="-0.84,2.348"/>
+                    <Button Content="开始任务" HorizontalAlignment="Left" Height="23" VerticalAlignment="Top" Width="51" Margin="300,285,0,0" Name="btnStart" RenderTransformOrigin="-0.745,0.478" Click="btnStart_Click" />
+                    <Label Content="悬赏设置" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="259,0,0,0"/>
+                    <ListBox HorizontalAlignment="Left" Height="63" VerticalAlignment="Top" Width="95" Margin="240,25,0,0">
+                        <CheckBox Content="十二连环坞" IsChecked="True"/>
+                        <CheckBox Content="薛家庄" IsChecked="True"/>
+                        <CheckBox Content="麻衣圣教"/>
+                    </ListBox>
+                    <Label Content="江湖纪事" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="360,0,0,0" RenderTransformOrigin="-0.138,0.44"/>
+                    <ListBox HorizontalAlignment="Left" Height="63" VerticalAlignment="Top" Width="95" Margin="340,25,0,0">
+                        <CheckBox Content="十二连环坞" IsChecked="True"/>
+                        <CheckBox Content="薛家庄" IsChecked="True"/>
+                        <CheckBox Content="麻衣圣教"/>
+                    </ListBox>
+                    <ListBox HorizontalAlignment="Left" Height="167" VerticalAlignment="Top" Width="95" Margin="240,113,0,0">
+                        <CheckBox Content="学习配方" IsChecked="True"/>
+                        <CheckBox Content="包满自清理" IsChecked="True"/>
+                        <CheckBox Content="保留可摹印" IsChecked="True"/>
+                        <CheckBox Content="分解蓝色" IsChecked="True"/>
+                        <CheckBox Content="拆解紫色" IsChecked="True"/>
+                    </ListBox>
+                    <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="167" VerticalAlignment="Top" Width="95" Margin="340,113,0,0"/>
+                    <Label Content="其他设置" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="360,88,0,0"/>
+                    <Label Content="论剑次数" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="340,113,0,0" RenderTransformOrigin="0.534,0.64"/>
+                    <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="10" VerticalAlignment="Top" Width="33" Margin="398,115,0,0"/>
+                    <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="10" VerticalAlignment="Top" Width="33" Margin="398,140,0,0"/>
+                    <Label Content="战场次数" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="340,138,0,0"/>
+                    <Label Content="清包设置" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="263,88,0,0" RenderTransformOrigin="0.931,0.56"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="其他功能">
+                <Grid>
+                    <Button Content="换线采集" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="179,80,0,0" Name="BtnFixedPointCollect" Click="BtnFixedPointCollect_Click" Height="23"/>
+                    <TextBox Name="cjCount" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="999" VerticalAlignment="Top" Width="120" Margin="25,83,0,0" RenderTransformOrigin="-2.5,-2.957"/>
+                    <TextBox Name="qgCount" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="120" Margin="25,129,0,0"/>
+                    <Button Content="摆摊抢购" Name="BtnStallRobBuy" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="179,126,0,0" Height="23" Click="BtnStallRobBuy_Click"/>
+                    <TextBox x:Name="jsqgCount" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="120" Margin="25,177,0,0" />
+                    <Button Content="集市抢购" x:Name="BtnMarketRobBuy" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="179,177,0,0" Height="23" Click="BtnMarketRobBuy_Click"/>
+                    <Button Name="BtnTheSword" Content="自动论剑" Height="23" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="179,39,0,0" Click="BtnTheSword_Click"/>
+                    <TextBox Name="ljCount" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="10" VerticalAlignment="Top" Width="120" Margin="25,39,0,0" />
+                </Grid>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>

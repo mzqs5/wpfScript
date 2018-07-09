@@ -30,7 +30,6 @@ namespace wpfclx
         private ActiveAction active;
         private PassiveAction passive;
         private Thread activeThread;
-        private Thread monitorThread;
         public MainWindow()
         {
             InitializeComponent();
@@ -75,13 +74,6 @@ namespace wpfclx
                 passive = new PassiveAction(handle);
             }
         }
-
-        private void btnTest_Click(object sender, RoutedEventArgs e)
-        {
-            active.test();
-
-        }
-
         private void BtnStallRobBuy_Click(object sender, RoutedEventArgs e)
         {
             if (V()) return;
@@ -116,40 +108,6 @@ namespace wpfclx
             }
         }
 
-        private void BtnSimpleOne_Click(object sender, RoutedEventArgs e)
-        {
-            if (V()) return;
-            if (activeThread == null)
-            {
-                BtnSimpleOne.Content = "正在新秀一条...";
-                activeThread = new Thread(active.SimpleOne);
-                activeThread.Start(); //开始执行线程
-            }
-            else
-            {
-                activeThread.Abort();
-                activeThread = null;
-                BtnSimpleOne.Content = "新秀一条";
-            }
-        }
-
-        private void BtnReward_Click(object sender, RoutedEventArgs e)
-        {
-            if (V()) return;
-            if (activeThread == null)
-            {
-                BtnReward.Content = "正在悬赏...";
-                activeThread = new Thread(active.test);
-                activeThread.Start(); //开始执行线程
-            }
-            else
-            {
-                activeThread.Abort();
-                activeThread = null;
-                BtnReward.Content = "悬赏";
-            }
-        }
-
         private void BtnTheSword_Click(object sender, RoutedEventArgs e)
         {
             if (V()) return;
@@ -167,43 +125,57 @@ namespace wpfclx
             }
         }
 
-        private void BtnBeacon_Click(object sender, RoutedEventArgs e)
+
+
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if (V()) return;
-            if (activeThread == null)
+
+        }
+
+
+        private void alltask_Checked(object sender, RoutedEventArgs e)
+        {
+            CheckBox cb = (CheckBox)sender;
+            if (cb.IsChecked.HasValue && cb.IsChecked.Value)
             {
-                BtnBeacon.Content = "正在烽火...";
-                activeThread = new Thread(active.test);
-                activeThread.Start(jsqgCount.Text); //开始执行线程
+                //选中
+                ListBoxItem item = new ListBoxItem();
+                item.Name = cb.Name;
+                item.Content = cb.Content;
+                selecttask.Items.Add(item);
             }
             else
             {
-                activeThread.Abort();
-                activeThread = null;
-                BtnBeacon.Content = "烽火挂机";
+                //取消选中
+                for (int i = 0; i < selecttask.Items.Count; i++)
+                {
+                    ListBoxItem item = (ListBoxItem)selecttask.Items[i];
+                    if (item.Name == cb.Name) {
+                        selecttask.Items.RemoveAt(i);
+                        break;
+                    }
+                }
             }
         }
 
-        private void BtnAct_Click(object sender, RoutedEventArgs e)
+        private void btnStart_Click(object sender, RoutedEventArgs e)
         {
             if (V()) return;
             if (activeThread == null)
             {
-                BtnAct.Content = "正在行当一条...";
-                activeThread = new Thread(active.test);
+
+
+                btnStart.Content = "正在执行...";
+                activeThread = new Thread(active.Start);
                 activeThread.Start(); //开始执行线程
             }
             else
             {
                 activeThread.Abort();
                 activeThread = null;
-                BtnAct.Content = "行当一条";
+                btnStart.Content = "开始任务";
             }
-        }
-
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            
         }
     }
 }

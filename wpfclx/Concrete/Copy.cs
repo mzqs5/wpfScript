@@ -72,23 +72,24 @@ namespace wpfclx.Concrete
             Bg.SetWindowText(handle, "正在匹配");
             while (true)
             {
-                var r = Bg.FindPic(handle, Resource1.确定, new XRECT() { Left = 800, Top = 480, Right = 980, Bottom = 580 });
+                var r = Bg.FindPic(handle, Resource1.确定, new XRECT() { Left = 850, Top = 500, Right = 900, Bottom = 550 });
                 if (!r.IsEmpty)
                 {
                     Bg.LeftMouseClick(handle, r);
                 }
-                r = Bg.FindPic(handle, Resource1.论剑匹配成功, new XRECT() { Left = 625, Top = 410, Right = 700, Bottom = 500 });
+                Thread.Sleep(500);
+                r = Bg.FindPic(handle, Resource1.论剑匹配成功, new XRECT() { Left = 630, Top = 410, Right = 670, Bottom = 450 });
                 if (!r.IsEmpty)
                     break;
-                Thread.Sleep(2000);
+                Thread.Sleep(1500);
             }
             Bg.SetWindowText(handle, "匹配成功");
-            Thread.Sleep(10000);
+            Thread.Sleep(25000);
             Bg.SetWindowText(handle, "开始退出");
             Bg.LeftMouseClick(handle, new Point() { X = 1296, Y = 201 });
             Thread.Sleep(1000);
             Bg.LeftMouseClick(handle, new Point() { X = 882, Y = 528 });
-            Thread.Sleep(10000);
+            Thread.Sleep(20000);
             //Bg.SetWindowText(handle, "开始倒计时");
             //while (true)
             //{
@@ -154,7 +155,7 @@ namespace wpfclx.Concrete
             if (r.IsEmpty)
             {
                 Bg.LeftMouseClick(handle, new Point() { X = 20, Y = 16 });
-                Thread.Sleep(200);
+                Thread.Sleep(1000);
                 return OpenMall();
             }
             else
