@@ -111,6 +111,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Helper\BindHelper.cs" />
+    <Compile Include="Helper\TaskHelper.cs" />
     <Compile Include="Task\jsqgTask.cs" />
     <Compile Include="Task\btqgTask.cs" />
     <Compile Include="Task\gjTask.cs" />
@@ -262,9 +263,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\论剑匹配.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\论剑退出.bmp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\没有在售的珍品.bmp" />
