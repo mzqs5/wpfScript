@@ -43,6 +43,11 @@ namespace wpfclx
 
         [DllImport("User32.dll", CharSet = CharSet.Auto)]
         public static extern int GetWindowText(IntPtr hWnd, StringBuilder text, int nMaxCount);
+
+
+        [DllImport("user32.dll", ExactSpelling = true, SetLastError = true)]
+        internal static extern bool ExitWindowsEx(int flg, int rea);
+
         #endregion
 
         #region 获取窗体位置

@@ -18,7 +18,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using wpfclx.Concrete;
+using wpfclx.Helper;
+using wpfclx.Models;
+using wpfclx.Task;
 
 namespace wpfclx
 {
@@ -27,8 +29,7 @@ namespace wpfclx
     /// </summary>
     public partial class MainWindow : Window
     {
-        private ActiveAction active;
-        private PassiveAction passive;
+        private IntPtr handle;
         private Thread activeThread;
         public MainWindow()
         {
@@ -37,7 +38,7 @@ namespace wpfclx
 
         private bool V()
         {
-            if (active == null)
+            if (handle == IntPtr.Zero)
             {
                 MessageBox.Show("请先绑定窗口");
                 return true;
@@ -46,91 +47,18 @@ namespace wpfclx
                 return false;
         }
 
-        private void BtnFixedPointCollect_Click(object sender, RoutedEventArgs e)
-        {
-            if (V()) return;
-            if (activeThread == null)
-            {
-                BtnFixedPointCollect.Content = "正在采集...";
-                activeThread = new Thread(active.FixedPointCollect);
-                activeThread.Start(cjCount.Text); //开始执行线程
-            }
-            else
-            {
-                activeThread.Abort();
-                activeThread = null;
-                BtnFixedPointCollect.Content = "换线采集";
-            }
-        }
-
         private void btnBind_Click(object sender, RoutedEventArgs e)
         {
-            if (active == null)
+            handle = WinApi.FindWindow("Messiah_Game", null);
+            if (handle == IntPtr.Zero)
             {
-                btnBind.Content = "已绑定";
-                btnBind.IsEnabled = false;
-                var handle = WinApi.FindWindow("Messiah_Game", null);
-                active = new ActiveAction(handle);
-                passive = new PassiveAction(handle);
+                MessageBox.Show("未找到游戏窗口，请以管理员身份运行。");
+                Close();
+                return;
             }
-        }
-        private void BtnStallRobBuy_Click(object sender, RoutedEventArgs e)
-        {
-            if (V()) return;
-            if (activeThread == null)
-            {
-                BtnStallRobBuy.Content = "正在抢购...";
-                activeThread = new Thread(active.StallRobBuy);
-                activeThread.Start(qgCount.Text); //开始执行线程
-            }
-            else
-            {
-                activeThread.Abort();
-                activeThread = null;
-                BtnStallRobBuy.Content = "摆摊抢购";
-            }
-        }
-
-        private void BtnMarketRobBuy_Click(object sender, RoutedEventArgs e)
-        {
-            if (V()) return;
-            if (activeThread == null)
-            {
-                BtnMarketRobBuy.Content = "正在抢购...";
-                activeThread = new Thread(active.MarketRobBuy);
-                activeThread.Start(jsqgCount.Text); //开始执行线程
-            }
-            else
-            {
-                activeThread.Abort();
-                activeThread = null;
-                BtnMarketRobBuy.Content = "集市抢购";
-            }
-        }
-
-        private void BtnTheSword_Click(object sender, RoutedEventArgs e)
-        {
-            if (V()) return;
-            if (activeThread == null)
-            {
-                BtnTheSword.Content = "正在论剑...";
-                activeThread = new Thread(active.lj);
-                activeThread.Start(ljCount.Text); //开始执行线程
-            }
-            else
-            {
-                activeThread.Abort();
-                activeThread = null;
-                BtnTheSword.Content = "自动论剑";
-            }
-        }
-
-
-
-
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-
+            ThreadPool.QueueUserWorkItem(new WaitCallback(BindHelper.Init), handle);
+            btnBind.Content = "已绑定";
+            btnBind.IsEnabled = false;
         }
 
 
@@ -151,7 +79,8 @@ namespace wpfclx
                 for (int i = 0; i < selecttask.Items.Count; i++)
                 {
                     ListBoxItem item = (ListBoxItem)selecttask.Items[i];
-                    if (item.Name == cb.Name) {
+                    if (item.Name == cb.Name)
+                    {
                         selecttask.Items.RemoveAt(i);
                         break;
                     }
@@ -164,10 +93,9 @@ namespace wpfclx
             if (V()) return;
             if (activeThread == null)
             {
-
-
+                
                 btnStart.Content = "正在执行...";
-                activeThread = new Thread(active.Start);
+                activeThread = new Thread(TaskStart);
                 activeThread.Start(); //开始执行线程
             }
             else
@@ -176,6 +104,39 @@ namespace wpfclx
                 activeThread = null;
                 btnStart.Content = "开始任务";
             }
+        }
+
+        private void TaskStart()
+        {
+            TaskModel model = new TaskModel();
+            model.qgCount = Convert.ToInt32(qgCount.Text);
+            model.cjCount = Convert.ToInt32(cjCount.Text);
+            model.ljCount = Convert.ToInt32(ljCount.Text);
+            model.zcCount = Convert.ToInt32(zcCount.Text);
+            model.xsselhw = xsselhw.IsChecked.HasValue ? xsselhw.IsChecked.Value : false;
+            model.xsxjz = xsxjz.IsChecked.HasValue ? xsxjz.IsChecked.Value : false;
+            model.xsmysj = xsmysj.IsChecked.HasValue ? xsmysj.IsChecked.Value : false;
+            model.jhselhw = jhselhw.IsChecked.HasValue ? jhselhw.IsChecked.Value : false;
+            model.jhxjz = jhxjz.IsChecked.HasValue ? jhxjz.IsChecked.Value : false;
+            model.jhmysj = jhmysj.IsChecked.HasValue ? jhmysj.IsChecked.Value : false;
+            model.xxpf = xxpf.IsChecked.HasValue ? xxpf.IsChecked.Value : false;
+            model.bmzql = bmzql.IsChecked.HasValue ? bmzql.IsChecked.Value : false;
+            model.fjls = fjls.IsChecked.HasValue ? fjls.IsChecked.Value : false;
+            model.fjzs = fjzs.IsChecked.HasValue ? fjzs.IsChecked.Value : false;
+            for (int i = 0; i < selecttask.Items.Count; i++)
+            {
+                ListBoxItem item = (ListBoxItem)selecttask.Items[i];
+                Type taskType = Assembly.Load($"wpfclx.Task").GetTypes().Where(o => o.Name == $"{item.Name}Task").SingleOrDefault();
+
+                var task = Activator.CreateInstance(taskType, handle) as TaskBase;
+
+                task.Start(model);
+            }
+        }
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            GC.Collect();
+            Environment.Exit(0);
         }
     }
 }

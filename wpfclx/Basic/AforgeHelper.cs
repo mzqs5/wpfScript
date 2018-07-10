@@ -28,13 +28,13 @@ namespace wpfclx
                 switch (findType)
                 {
                     case FindDirection.LeftTopToRightDown:
-                        list = compare.OrderBy(o => o.Rectangle.Left & o.Rectangle.Top).ToList();
+                        list = compare.OrderBy(o => o.Rectangle.Left + o.Rectangle.Top).ToList();
                         break;
                     case FindDirection.RightDownToLeftTop:
-                        list = compare.OrderByDescending(o => o.Rectangle.Left & o.Rectangle.Top).ToList();
+                        list = compare.OrderByDescending(o => o.Rectangle.Left + o.Rectangle.Top).ToList();
                         break;
                     case FindDirection.CoreToAround:
-                        list = compare.OrderBy(o => Math.Abs(o.Rectangle.Left - source.Width / 2) & Math.Abs(o.Rectangle.Top - source.Height / 2)).ToList();
+                        list = compare.OrderBy(o => Math.Abs(o.Rectangle.Left - source.Width / 2) + Math.Abs(o.Rectangle.Top - source.Height / 2)).ToList();
                         break;
                 }
                 return list;

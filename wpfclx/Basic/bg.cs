@@ -154,7 +154,6 @@ namespace wpfclx
 
             //松开鼠标左键
             LeftMouseUp(handle, p2);
-
         }
 
         /// <summary>
@@ -184,6 +183,10 @@ namespace wpfclx
             var source = Capture(handle, r);
         }
 
+        internal static void ExitWindowsEx()
+        {
+            WinApi.ExitWindowsEx(0x00000001, 0);
+        }
         /// <summary>
         /// 区域找图
         /// </summary>
@@ -195,10 +198,8 @@ namespace wpfclx
         internal static Point FindPic(IntPtr handle, Bitmap temp, XRECT r, FindDirection findType = FindDirection.LeftTopToRightDown, float similarity = 0.9f)
         {
             var source = Capture(handle, r);
-            var tempnew = BitmapHelper.ConvertToFormat(temp, PixelFormat.Format24bppRgb);
             //source.Save($"C:\\clx\\source{new Random().Next(100, 200)}.bmp");
-            //tempnew.Save($"C:\\clx\\tempnew{new Random().Next(100, 200)}.bmp");
-            var rect = AforgeHelper.ProcessImage(source, tempnew, findType, similarity);
+            var rect = AforgeHelper.ProcessImage(source, BitmapHelper.ConvertToFormat(temp, PixelFormat.Format24bppRgb), findType, similarity);
             Point p = new Point();
             if (rect.Count > 0)
             {
@@ -206,7 +207,6 @@ namespace wpfclx
                 p.Y = r.Top + rect[0].Rectangle.Top;
             }
             source.Dispose();
-            tempnew.Dispose();
             return p;
         }
 
@@ -221,9 +221,8 @@ namespace wpfclx
         internal static List<Point> FindPicEx(IntPtr handle, Bitmap temp, XRECT r, FindDirection findType = FindDirection.LeftTopToRightDown, float similarity = 0.9f)
         {
             var source = Capture(handle, r);
-            var tempnew = BitmapHelper.ConvertToFormat(temp, PixelFormat.Format24bppRgb);
-            var rect = AforgeHelper.ProcessImage(source, tempnew, findType, similarity);
             List<Point> list = new List<Point>();
+            var rect = AforgeHelper.ProcessImage(source, BitmapHelper.ConvertToFormat(temp, PixelFormat.Format24bppRgb), findType, similarity);
             rect.ForEach(o =>
             {
                 Point p = new Point();
@@ -231,20 +230,34 @@ namespace wpfclx
                 p.Y = r.Top + o.Rectangle.Top;
                 list.Add(p);
             });
-            //switch (findType)
-            //{
-            //    case FindDirection.LeftTopToRightDown:
-            //        list = list.AsEnumerable().OrderBy(o => o.X & o.Y).ToList();
-            //        break;
-            //    case FindDirection.RightDownToLeftTop:
-            //        list = list.OrderByDescending(o => o.X & o.Y).ToList();
-            //        break;
-            //    case FindDirection.CoreToAround:
-            //        list = list.OrderBy(o => Math.Abs(o.X - source.Width / 2) & Math.Abs(o.Y - source.Height / 2)).ToList();
-            //        break;
-            //}
             source.Dispose();
-            tempnew.Dispose();
+            return list;
+        }
+
+        /// <summary>
+        /// 区域找多图
+        /// </summary>
+        /// <param name="handle"></param>
+        /// <param name="temp"></param>
+        /// <param name="r"></param>
+        /// <param name="debug"></param>
+        /// <returns>返回找到的坐标集合</returns>
+        internal static List<Point> FindPicEx(IntPtr handle, List<Bitmap> temps, XRECT r, FindDirection findType = FindDirection.LeftTopToRightDown, float similarity = 0.9f)
+        {
+            var source = Capture(handle, r);
+            List<Point> list = new List<Point>();
+            foreach (var item in temps)
+            {
+                var rect = AforgeHelper.ProcessImage(source, BitmapHelper.ConvertToFormat(item, PixelFormat.Format24bppRgb), findType, similarity);
+                rect.ForEach(o =>
+                {
+                    Point p = new Point();
+                    p.X = r.Left + o.Rectangle.Left;
+                    p.Y = r.Top + o.Rectangle.Top;
+                    list.Add(p);
+                });
+            }
+            source.Dispose();
             return list;
         }
 
@@ -263,7 +276,6 @@ namespace wpfclx
             source = AforgeHelper.GrayscaleThresholdBlobsFiltering(source, 90);
             tempnew = AforgeHelper.GrayscaleThresholdBlobsFiltering(tempnew, 90);
             //source.Save($"C:\\clx\\source{new Random().Next(100, 200)}.bmp");
-            //tempnew.Save($"C:\\clx\\tempnew{new Random().Next(100, 200)}.bmp");
             var rect = AforgeHelper.ProcessImage(source, tempnew, findType, similarity);
             Point p = new Point();
             if (rect.Count > 0)
