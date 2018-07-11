@@ -31,6 +31,7 @@ namespace wpfclx
     {
         private IntPtr handle;
         private Thread activeThread;
+        private TaskModel model;
         public MainWindow()
         {
             InitializeComponent();
@@ -59,6 +60,7 @@ namespace wpfclx
             ThreadPool.QueueUserWorkItem(new WaitCallback(BindHelper.Init), handle);
             btnBind.Content = "已绑定";
             btnBind.IsEnabled = false;
+            model = new TaskModel();
         }
 
 
@@ -93,10 +95,30 @@ namespace wpfclx
             if (V()) return;
             if (activeThread == null)
             {
-                
+                model.qgCount = Convert.ToInt32(qgCount.Text);
+                model.cjCount = Convert.ToInt32(cjCount.Text);
+                model.ljCount = Convert.ToInt32(ljCount.Text);
+                model.zcCount = Convert.ToInt32(zcCount.Text);
+                model.xsselhw = xsselhw.IsChecked.HasValue ? xsselhw.IsChecked.Value : false;
+                model.xsxjz = xsxjz.IsChecked.HasValue ? xsxjz.IsChecked.Value : false;
+                model.xsmysj = xsmysj.IsChecked.HasValue ? xsmysj.IsChecked.Value : false;
+                model.jhselhw = jhselhw.IsChecked.HasValue ? jhselhw.IsChecked.Value : false;
+                model.jhxjz = jhxjz.IsChecked.HasValue ? jhxjz.IsChecked.Value : false;
+                model.jhmysj = jhmysj.IsChecked.HasValue ? jhmysj.IsChecked.Value : false;
+                model.xxpf = xxpf.IsChecked.HasValue ? xxpf.IsChecked.Value : false;
+                model.bmzql = bmzql.IsChecked.HasValue ? bmzql.IsChecked.Value : false;
+                model.fjls = fjls.IsChecked.HasValue ? fjls.IsChecked.Value : false;
+                model.fjzs = fjzs.IsChecked.HasValue ? fjzs.IsChecked.Value : false;
+                List<string> list = new List<string>();
+                for (int i = 0; i < selecttask.Items.Count; i++)
+                {
+                    ListBoxItem item = (ListBoxItem)selecttask.Items[i];
+
+                    list.Add(item.Name);
+                }
                 btnStart.Content = "正在执行...";
                 activeThread = new Thread(TaskStart);
-                activeThread.Start(); //开始执行线程
+                activeThread.Start(list); //开始执行线程
             }
             else
             {
@@ -106,27 +128,12 @@ namespace wpfclx
             }
         }
 
-        private void TaskStart()
+        private void TaskStart(object obj)
         {
-            TaskModel model = new TaskModel();
-            model.qgCount = Convert.ToInt32(qgCount.Text);
-            model.cjCount = Convert.ToInt32(cjCount.Text);
-            model.ljCount = Convert.ToInt32(ljCount.Text);
-            model.zcCount = Convert.ToInt32(zcCount.Text);
-            model.xsselhw = xsselhw.IsChecked.HasValue ? xsselhw.IsChecked.Value : false;
-            model.xsxjz = xsxjz.IsChecked.HasValue ? xsxjz.IsChecked.Value : false;
-            model.xsmysj = xsmysj.IsChecked.HasValue ? xsmysj.IsChecked.Value : false;
-            model.jhselhw = jhselhw.IsChecked.HasValue ? jhselhw.IsChecked.Value : false;
-            model.jhxjz = jhxjz.IsChecked.HasValue ? jhxjz.IsChecked.Value : false;
-            model.jhmysj = jhmysj.IsChecked.HasValue ? jhmysj.IsChecked.Value : false;
-            model.xxpf = xxpf.IsChecked.HasValue ? xxpf.IsChecked.Value : false;
-            model.bmzql = bmzql.IsChecked.HasValue ? bmzql.IsChecked.Value : false;
-            model.fjls = fjls.IsChecked.HasValue ? fjls.IsChecked.Value : false;
-            model.fjzs = fjzs.IsChecked.HasValue ? fjzs.IsChecked.Value : false;
-            for (int i = 0; i < selecttask.Items.Count; i++)
+            List<string> list = (List<string>)obj;
+            foreach (var item in list)
             {
-                ListBoxItem item = (ListBoxItem)selecttask.Items[i];
-                Type taskType = Assembly.Load($"wpfclx.Task").GetTypes().Where(o => o.Name == $"{item.Name}Task").SingleOrDefault();
+                Type taskType = Assembly.Load($"wpfclx.Task").GetTypes().Where(o => o.Name == $"{item}Task").SingleOrDefault();
 
                 var task = Activator.CreateInstance(taskType, handle) as TaskBase;
 
