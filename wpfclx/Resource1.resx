@@ -337,4 +337,10 @@
   <data name="队伍添加队友" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\队伍添加队友.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="剧情" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\剧情.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="副本结算" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\副本结算.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

@@ -18,28 +18,27 @@ namespace wpfclx.Task
         {
         }
 
+
+        private List<string> list = new List<string>();
         public override void Start(TaskModel model)
         {
-            for (int i = 0; i < 3; i++)
+            if (model.jhselhw)
+                list.Add("selhw");
+            if(model.jhxjz)
+                list.Add("xjz");
+            if (model.jhmysj)
+                list.Add("mysj");
+            foreach (var item in list)
             {
-                Bg.LeftMouseClick(handle, new Point() { X = 124, Y = 701 });
-                Thread.Sleep(1000);
-                Bg.LeftMouseClick(handle, new Point() { X = 751, Y = 553 });
-                Thread.Sleep(1000);
-                if (i < 2)
-                {
-                    Bg.MouseMove(handle, new Point() { X = 600, Y = 380 }, new Point() { X = 700, Y = 380 });
-                    Thread.Sleep(1000);
-                    Bg.MouseMove(handle, new Point() { X = 600, Y = 380 }, new Point() { X = 700, Y = 380 });
-                    Thread.Sleep(1000);
-                }
-                if (i == 1)
-                {
-                    Bg.LeftMouseClick(handle, new Point() { X = 441, Y = 597 });
-                }
 
-                Thread.Sleep(50000);
+                Bg.LeftMouseClick(handle, new Point() { X = 260, Y = 521 });
+                Sleep(500);
+                Bg.LeftMouseClick(handle, new Point() { X = 260, Y = 521 });
+                Sleep(500);
+               
+
             }
+            
         }
     }
 }

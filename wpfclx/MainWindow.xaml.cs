@@ -141,6 +141,8 @@ namespace wpfclx
 
                 GC.Collect();
             }
+            Bg.SetWindowText(handle,"任务已完成");
+            Thread.CurrentThread.Abort();
         }
         private void Window_Closed(object sender, EventArgs e)
         {
