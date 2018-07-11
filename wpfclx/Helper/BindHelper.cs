@@ -13,7 +13,7 @@ namespace wpfclx.Helper
         public static void Init(object obj)
         {
             IntPtr handle = (IntPtr)obj;
-            Point p = Bg.FindPic(handle, Resource1.wifi, new XRECT() { Left = 150, Top = 700, Right = 220, Bottom = 740 });
+            Point p = Bg.FindPic(handle, Resource1.wifi1, new XRECT() { Left = 150, Top = 700, Right = 220, Bottom = 740 });
             if (!p.IsEmpty)
             {
                 //当前是手游模式 开始切换端游模式 并设置画质节约cpu
