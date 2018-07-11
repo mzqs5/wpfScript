@@ -133,11 +133,13 @@ namespace wpfclx
             List<string> list = (List<string>)obj;
             foreach (var item in list)
             {
-                Type taskType = Assembly.Load($"wpfclx.Task").GetTypes().Where(o => o.Name == $"{item}Task").SingleOrDefault();
+                Type taskType = Assembly.GetExecutingAssembly().GetTypes().Where(o => o.Name == $"{item}Task").SingleOrDefault();
 
                 var task = Activator.CreateInstance(taskType, handle) as TaskBase;
 
                 task.Start(model);
+
+                GC.Collect();
             }
         }
         private void Window_Closed(object sender, EventArgs e)

@@ -28,7 +28,7 @@
     <PublisherName>dawu</PublisherName>
     <SuiteName>wpfclx</SuiteName>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>2</ApplicationRevision>
+    <ApplicationRevision>3</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -112,6 +112,11 @@
     </ApplicationDefinition>
     <Compile Include="Helper\BindHelper.cs" />
     <Compile Include="Helper\TaskHelper.cs" />
+    <Compile Include="Resource1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource1.resx</DependentUpon>
+    </Compile>
     <Compile Include="Task\jsqgTask.cs" />
     <Compile Include="Task\btqgTask.cs" />
     <Compile Include="Task\gjTask.cs" />
@@ -156,11 +161,6 @@
     <Compile Include="Basic\WinApi.cs" />
     <Compile Include="Models\Windows\XRECT.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Resource1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resource1.resx</DependentUpon>
-    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -175,11 +175,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resource1.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resource1.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -259,34 +254,19 @@
     <None Include="Resources\队伍添加队友.bmp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\烽火匹配.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\论剑匹配.bmp" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\没有在售的珍品.bmp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\在售.bmp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\学习.bmp" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\采集.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\楚留香字库.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\wifi.bmp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\关闭设置.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\端游面板打开.bmp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\线.bmp" />
@@ -310,14 +290,31 @@
     <None Include="Resources\退出队伍.bmp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\倒计时.bmp" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\论剑离开.bmp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\论剑匹配成功.bmp" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\wifi1.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\采集1.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\洛阳铲.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\挖宝.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\在售1.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resource1.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource1.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
