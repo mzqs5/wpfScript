@@ -8,19 +8,35 @@ using System.Threading.Tasks;
 
 namespace wpfclx.Helper
 {
-    public class selhwCopy : CopyBase
+    public class xjzCopy : CopyBase
     {
-        public selhwCopy(IntPtr handle) : base(handle)
+        public xjzCopy(IntPtr handle) : base(handle)
         {
-            Count = 2;
+            Count = 3;
         }
 
         protected override void OrganizeTeam()
         {
-            Bg.LeftMouseClick(handle, new Point() { X = 260, Y = 521 });
+            Bg.LeftMouseClick(handle, new Point() { X = 260, Y = 520 });
             Thread.Sleep(500);
+            Find();
         }
 
+        private void Find()
+        {
+            Bg.MouseMove(handle, new Point() { X = 260, Y = 520 }, new Point() { X = 260, Y = 250 });
+            Thread.Sleep(1000);
+            var r = Bg.FindPic(handle, Resource1.薛家庄新秀, new XRECT() { Left = 143, Top = 140, Right = 374, Bottom = 635 });
+            if (!r.IsEmpty)
+            {
+                Bg.LeftMouseClick(handle, r);
+                Thread.Sleep(500);
+            }
+            else
+            {
+                Find();
+            }
+        }
         /// <summary>
         /// 开始副本
         /// </summary>

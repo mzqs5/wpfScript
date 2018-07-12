@@ -133,7 +133,17 @@ namespace wpfclx
             var signX = 10;
             var signY = 10;
             var count = 1;
-            if (x > y)
+            if (x == 0)
+            {
+                signX = 0;
+                signY = y / 10;
+            }
+            else if (y == 0)
+            {
+                signY = 0;
+                signX = x / 10;
+            }
+            else if (x > y)
             {
                 count = x / 10;
                 signY = y / count;

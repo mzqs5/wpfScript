@@ -109,5 +109,30 @@ namespace wpfclx.Task
             Sleep(500);
         }
 
+        protected bool IsGetInto()
+        {
+            Bg.LeftMouseClick(handle, new Point() { X = 942, Y = 603 });
+            Bg.SetWindowText(handle, "正在自动匹配...");
+            Thread.Sleep(500);
+            for (int i = 0; i < 10; i++)
+            {
+                var r = Bg.FindPic(handle, Resource1.跟随确认, new XRECT() { Left = 596, Top = 236, Right = 735, Bottom = 276 });
+                if (!r.IsEmpty)
+                {
+                    Bg.SetWindowText(handle, "匹配成功，前往跟随...");
+                    Bg.LeftMouseClick(handle, new Point() { X = 875, Y = 526 });
+                    Thread.Sleep(500);
+                    return true;
+                }
+                Thread.Sleep(1000);
+            }
+            Bg.SetWindowText(handle, "取消匹配...");
+            Bg.LeftMouseClick(handle, new Point() { X = 942, Y = 603 });
+            Thread.Sleep(500);
+            Bg.LeftMouseClick(handle, new Point() { X = 1111, Y = 602 });
+            Thread.Sleep(500);
+            return IsGetInto();
+        }
+
     }
 }

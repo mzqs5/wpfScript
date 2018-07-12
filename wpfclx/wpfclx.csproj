@@ -28,7 +28,7 @@
     <PublisherName>dawu</PublisherName>
     <SuiteName>wpfclx</SuiteName>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>5</ApplicationRevision>
+    <ApplicationRevision>6</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -39,7 +39,7 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
-    <Optimize>true</Optimize>
+    <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
@@ -59,7 +59,7 @@
     <TargetZone>LocalIntranet</TargetZone>
   </PropertyGroup>
   <PropertyGroup>
-    <GenerateManifests>false</GenerateManifests>
+    <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup />
   <PropertyGroup>
@@ -115,8 +115,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Helper\BindHelper.cs" />
     <Compile Include="Helper\CopyBase.cs" />
+    <Compile Include="Helper\mysjCopy.cs" />
+    <Compile Include="Helper\xjzCopy.cs" />
     <Compile Include="Helper\selhwCopy.cs" />
     <Compile Include="Helper\TaskHelper.cs" />
     <Compile Include="Resource1.Designer.cs">
@@ -334,6 +335,45 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\副本结算.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\确.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\课业.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\弈中幻境.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\山珍海味.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\聚义平冤.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\麻衣圣教新秀.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\薛家庄新秀.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\挂机.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\课业困难.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\答对.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\一键提交.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\跟随确认.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\算命卜卦.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

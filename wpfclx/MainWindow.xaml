@@ -11,10 +11,10 @@
         <Label Content="所有任务" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="24,2,0,0" RenderTransformOrigin="0.707,0.56"/>
         <Label Content="已选任务" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="140,0,0,0" RenderTransformOrigin="0.707,0.56"/>
         <ListBox Name="alltask" HorizontalAlignment="Left" Height="281" VerticalAlignment="Top" Width="100" Margin="10,27,0,0">
-            <CheckBox Name="todayyg" Content="每日一卦" Click="alltask_Checked"/>
+            <CheckBox Name="mryg" Content="每日一卦" Click="alltask_Checked"/>
             <CheckBox Name="btqg" Content="摆摊抢购" Click="alltask_Checked"/>
             <CheckBox Name="jsqg" Content="集市抢购" Click="alltask_Checked"/>
-            <CheckBox Name="todayfl" Content="每日福利" Click="alltask_Checked"/>
+            <CheckBox Name="mrfl" Content="每日福利" Click="alltask_Checked"/>
             <CheckBox Name="hdjh" Content="行当绝活" Click="alltask_Checked"/>
             <CheckBox Name="ky" Content="课业" Click="alltask_Checked"/>
             <CheckBox Name="bprw" Content="帮派任务" Click="alltask_Checked"/>
