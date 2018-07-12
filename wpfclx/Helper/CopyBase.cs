@@ -40,7 +40,7 @@ namespace wpfclx.Helper
                 {
                     Bg.SetWindowText(handle, "匹配成功，前往跟随...");
                     Bg.LeftMouseClick(handle, new Point() { X = 875, Y = 526 });
-                    Thread.Sleep(500);
+                    Thread.Sleep(10000);
                     return true;
                 }
                 Thread.Sleep(1000);

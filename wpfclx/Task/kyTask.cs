@@ -35,6 +35,8 @@ namespace wpfclx.Task
                 {
                     Bg.LeftMouseClick(handle, r);
                     Sleep(1000);
+                    Bg.LeftMouseClick(handle, new Point() { X = 1149, Y = 474 });
+                    Sleep(1000);
                     break;
                 }
                 Sleep(2000);
@@ -52,6 +54,14 @@ namespace wpfclx.Task
                         Sleep(1000);
                     }
                 }
+                r = Bg.FindPic(handle, Resource1.铜币购买, new XRECT() { Left = 812, Top = 574, Right = 962, Bottom = 630 });
+                if (!r.IsEmpty)
+                {
+                    Bg.LeftMouseClick(handle, r);
+                    Sleep(500);
+                    Bg.LeftMouseClick(handle, new Point() { X = 875, Y = 526 });
+                    Sleep(1000);
+                }
                 r = Bg.FindPic(handle, Resource1.购买, new XRECT() { Left = 620, Top = 509, Right = 700, Bottom = 550 });
                 if (!r.IsEmpty)
                 {
@@ -68,7 +78,11 @@ namespace wpfclx.Task
                     Bg.LeftMouseClick(handle, new Point() { X = 883, Y = 527 });
                     break;
                 }
-                Sleep(3000);
+                else
+                {
+                    Bg.LeftMouseClick(handle, new Point() { X = 110, Y = 155 });
+                }
+                Sleep(2000);
             }
             GC.Collect();
         }

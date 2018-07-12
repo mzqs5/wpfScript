@@ -304,19 +304,10 @@
     <None Include="Resources\论剑匹配成功.bmp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\wifi1.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\采集1.bmp" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\洛阳铲.bmp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\挖宝.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\在售1.bmp" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resource1.resx">
@@ -374,6 +365,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\算命卜卦.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\设置.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\电池.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

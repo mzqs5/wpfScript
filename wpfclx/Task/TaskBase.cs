@@ -57,6 +57,15 @@ namespace wpfclx.Task
 
         }
         /// <summary>
+        /// 体力回复
+        /// </summary>
+        public void PhysicalRecovery() {
+            var r = Bg.FindPic(handle, Resource1.确定, new XRECT() { Left = 627, Top = 508, Right = 704, Bottom = 550 });
+            if (!r.IsEmpty)
+                Bg.LeftMouseClick(handle, r);
+        }
+
+        /// <summary>
         /// 监控使用物品 饮用 食用 学习
         /// </summary>
         public virtual void MonitorUse()

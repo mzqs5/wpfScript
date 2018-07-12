@@ -42,32 +42,44 @@ namespace wpfclx.Helper
                     isok = true;
                     break;
                 }
-                Thread.Sleep(2000);
-            }
-            if (!isok) Start();
-            Bg.SetWindowText(handle, "检测到副本剧情...");
-            Thread.Sleep(10000);
-            int c = 0;
-            while (true)
-            {
-                var r = Bg.FindPic(handle, Resource1.副本结算, new XRECT() { Left = 1269, Top = 12, Right = 1319, Bottom = 66 });
+                r = Bg.FindPic(handle, Resource1.确, new XRECT() { Left = 986, Top = 574, Right = 1194, Bottom = 661 });
                 if (!r.IsEmpty)
                 {
-                    Bg.LeftMouseClick(handle, r);
-                    c++;
-                }
-                if (c >= Count)
+                    isok = true;
                     break;
-                Thread.Sleep(5000);
+                }
+                Thread.Sleep(2000);
             }
-            //点击退出副本
-            Bg.LeftMouseClick(handle, new Point() { X = 1296, Y = 203 });
-            Thread.Sleep(500);
-            //点击确定
-            Bg.LeftMouseClick(handle, new Point() { X = 881, Y = 527 });
-            Thread.Sleep(500);
-            Bg.LeftMouseClick(handle, new Point() { X = 1296, Y = 203 });
-            Thread.Sleep(300000);//挂起300秒等待结算结束
+            if (isok)
+            {
+                Bg.SetWindowText(handle, "检测到副本剧情...");
+                Thread.Sleep(10000);
+                int c = 0;
+                while (true)
+                {
+                    var r = Bg.FindPic(handle, Resource1.副本结算, new XRECT() { Left = 1269, Top = 12, Right = 1319, Bottom = 66 });
+                    if (!r.IsEmpty)
+                    {
+                        Bg.LeftMouseClick(handle, r);
+                        c++;
+                    }
+                    if (c >= Count)
+                        break;
+                    Thread.Sleep(5000);
+                }
+                //点击退出副本
+                Bg.LeftMouseClick(handle, new Point() { X = 1296, Y = 203 });
+                Thread.Sleep(500);
+                //点击确定
+                Bg.LeftMouseClick(handle, new Point() { X = 881, Y = 527 });
+                Thread.Sleep(500);
+                Bg.LeftMouseClick(handle, new Point() { X = 1296, Y = 203 });
+                Thread.Sleep(300000);//挂起300秒等待结算结束
+            }
+            else
+            {
+                Start();
+            }
             return;
         }
     }
