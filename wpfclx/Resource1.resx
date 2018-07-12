@@ -121,9 +121,6 @@
   <data name="PK奖励已领取" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\PK奖励已领取.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="wifi" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\wifi1.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="_0" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\_0.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -156,9 +153,6 @@
   </data>
   <data name="副本0" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\副本0.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="在售" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\在售1.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="大叔音" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\大叔音.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -310,9 +304,6 @@
   <data name="配方" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\配方.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="采集" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\采集1.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="重逢礼" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\重逢礼.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -372,5 +363,14 @@
   </data>
   <data name="算命卜卦" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\算命卜卦.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="wifi" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\wifi.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="在售" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\在售.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="采集" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\采集.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
