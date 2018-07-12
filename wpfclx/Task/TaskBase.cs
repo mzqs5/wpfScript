@@ -94,5 +94,20 @@ namespace wpfclx.Task
             Sleep(500);
         }
 
+        public virtual void ConvenientTeam() {
+            Bg.SetWindowText(handle, "开始便捷组队...");
+            Bg.LeftMouseClick(handle, new Point() { X = 13, Y = 322 });
+            Sleep(1000);
+            var r = Bg.FindPic(handle, Resource1.退出队伍, new XRECT() { Left = 1048, Top = 566, Right = 1203, Bottom = 631 });
+            if (!r.IsEmpty)
+            {
+                Bg.SetWindowText(handle, "退出队伍...");
+                Bg.LeftMouseClick(handle, r);
+                Sleep(500);
+            }
+            Bg.LeftMouseClick(handle,new Point() { X= 1117 ,Y= 604 });
+            Sleep(500);
+        }
+
     }
 }

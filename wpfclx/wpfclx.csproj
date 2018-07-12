@@ -116,6 +116,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Helper\BindHelper.cs" />
+    <Compile Include="Helper\CopyBase.cs" />
+    <Compile Include="Helper\selhwCopy.cs" />
     <Compile Include="Helper\TaskHelper.cs" />
     <Compile Include="Resource1.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -326,6 +328,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\剧情.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\副本结算.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

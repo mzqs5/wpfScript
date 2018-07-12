@@ -193,9 +193,29 @@ namespace wpfclx {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap 剧情 {
+            get {
+                object obj = ResourceManager.GetObject("剧情", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap 副本0 {
             get {
                 object obj = ResourceManager.GetObject("副本0", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap 副本结算 {
+            get {
+                object obj = ResourceManager.GetObject("副本结算", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
