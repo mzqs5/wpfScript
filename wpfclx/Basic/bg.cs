@@ -205,10 +205,11 @@ namespace wpfclx
         /// <param name="r"></param>
         /// <param name="debug"></param>
         /// <returns>返回第一个找到的坐标</returns>
-        internal static Point FindPic(IntPtr handle, Bitmap temp, XRECT r, FindDirection findType = FindDirection.LeftTopToRightDown, float similarity = 0.9f)
+        internal static Point FindPic(IntPtr handle, Bitmap temp, XRECT r, FindDirection findType = FindDirection.LeftTopToRightDown, float similarity = 0.9f, bool debug = false)
         {
             var source = Capture(handle, r);
-            //source.Save($"C:\\clx\\source{new Random().Next(100, 200)}.bmp");
+            if (debug)
+                source.Save($"C:\\clx\\source{new Random().Next(100, 200)}.bmp");
             var rect = AforgeHelper.ProcessImage(source, BitmapHelper.ConvertToFormat(temp, PixelFormat.Format24bppRgb), findType, similarity);
             Point p = new Point();
             if (rect.Count > 0)
@@ -341,11 +342,13 @@ namespace wpfclx
             WinApi.GetWindowRect(hWnd, ref eCT);
             IntPtr hbitmap = WinApi.CreateCompatibleBitmap(hscrdc, eCT.Right - eCT.Left, eCT.Bottom - eCT.Top);
             IntPtr hmemdc = WinApi.CreateCompatibleDC(hscrdc);
-            WinApi.SelectObject(hmemdc, hbitmap);
+            IntPtr ints = WinApi.SelectObject(hmemdc, hbitmap);
             WinApi.PrintWindow(hWnd, hmemdc, 0);
             Bitmap bmp = Bitmap.FromHbitmap(hbitmap);
             WinApi.DeleteDC(hscrdc);//删除用过的对象 
             WinApi.DeleteDC(hmemdc);//删除用过的对象 
+            WinApi.DeleteDC(hbitmap);//删除用过的对象 
+            WinApi.DeleteDC(ints);//删除用过的对象 
             Bitmap ect = BitmapHelper.ConvertToFormat(bmp, PixelFormat.Format24bppRgb, new XRECT() { Left = r.Left + deviationX, Right = r.Right + deviationX, Top = r.Top + deviationY, Bottom = r.Bottom + deviationY });
             bmp.Dispose();
             return ect;

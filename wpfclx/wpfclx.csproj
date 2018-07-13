@@ -215,7 +215,6 @@
     <Resource Include="Resources\女儿红.bmp" />
     <Resource Include="Resources\宝匣.bmp" />
     <Resource Include="Resources\宝箱.bmp" />
-    <Resource Include="Resources\对话帮派任务.bmp" />
     <Resource Include="Resources\对话车.bmp" />
     <Resource Include="Resources\就近复活.bmp" />
     <Resource Include="Resources\就近复活_灰.bmp" />
@@ -371,6 +370,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\电池.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\任帮派务.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\帮派任务.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\关系.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\单人任务.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -145,12 +145,6 @@
   <data name="关闭设置" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\关闭设置.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="前去打探" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\前去打探.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="前往" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\前往.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="副本0" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\副本0.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -165,9 +159,6 @@
   </data>
   <data name="宝箱" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\宝箱.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="对话帮派任务" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\对话帮派任务.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="对话车" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\对话车.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -378,5 +369,20 @@
   </data>
   <data name="设置" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\设置.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="前去打探" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\前去打探.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="前往" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\前往.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="关系" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\关系.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="单人任务" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\单人任务.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="帮派任务" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\帮派任务.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -143,6 +143,16 @@ namespace wpfclx {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap 关系 {
+            get {
+                object obj = ResourceManager.GetObject("关系", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap 关闭 {
             get {
                 object obj = ResourceManager.GetObject("关闭", resourceCulture);
@@ -223,6 +233,16 @@ namespace wpfclx {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap 单人任务 {
+            get {
+                object obj = ResourceManager.GetObject("单人任务", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap 在售 {
             get {
                 object obj = ResourceManager.GetObject("在售", resourceCulture);
@@ -273,16 +293,6 @@ namespace wpfclx {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap 对话帮派任务 {
-            get {
-                object obj = ResourceManager.GetObject("对话帮派任务", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
         internal static System.Drawing.Bitmap 对话车 {
             get {
                 object obj = ResourceManager.GetObject("对话车", resourceCulture);
@@ -316,6 +326,16 @@ namespace wpfclx {
         internal static System.Drawing.Bitmap 山珍海味 {
             get {
                 object obj = ResourceManager.GetObject("山珍海味", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap 帮派任务 {
+            get {
+                object obj = ResourceManager.GetObject("帮派任务", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

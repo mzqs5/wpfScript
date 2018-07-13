@@ -27,7 +27,7 @@ namespace wpfclx.Task
             Bg.LeftMouseClick(handle, new Point() { X = 283, Y = 519 });
             Sleep(500);
             Bg.SetWindowText(handle, "开始前往课业...");
-            Sleep(10000);
+            Sleep(20000);
             while (true)
             {
                 var r = Bg.FindPic(handle, Resource1.课业, new XRECT() { Left = 1113, Top = 453, Right = 1207, Bottom = 503 });
@@ -39,21 +39,22 @@ namespace wpfclx.Task
                     Sleep(1000);
                     break;
                 }
-                Sleep(2000);
+                Sleep(3000);
             }
             Difficulty();//选择课业
             Sleep(10000);
             while (true)
             {
-                var r = Bg.FindPic(handle, Resource1.答对, new XRECT() { Left = 1113, Top = 453, Right = 1207, Bottom = 503 });
+                var r = Bg.FindPic(handle, Resource1.答对, new XRECT() { Left = 1172, Top = 106, Right = 1272, Bottom = 159 });
                 if (!r.IsEmpty)
                 {
                     for (int i = 0; i < 5; i++)
                     {
-                        Bg.LeftMouseClick(handle, new Point() { X = 1147, Y = 213 });
+                        Bg.LeftMouseClick(handle, new Point() { X = 1039, Y = 206 });
                         Sleep(1000);
                     }
                 }
+                Sleep(1000);
                 r = Bg.FindPic(handle, Resource1.铜币购买, new XRECT() { Left = 812, Top = 574, Right = 962, Bottom = 630 });
                 if (!r.IsEmpty)
                 {
@@ -62,6 +63,7 @@ namespace wpfclx.Task
                     Bg.LeftMouseClick(handle, new Point() { X = 875, Y = 526 });
                     Sleep(1000);
                 }
+                Sleep(1000);
                 r = Bg.FindPic(handle, Resource1.购买, new XRECT() { Left = 620, Top = 509, Right = 700, Bottom = 550 });
                 if (!r.IsEmpty)
                 {
@@ -70,6 +72,7 @@ namespace wpfclx.Task
                     Bg.LeftMouseClick(handle, new Point() { X = 875, Y = 526 });
                     Sleep(1000);
                 }
+                Sleep(1000);
                 r = Bg.FindPic(handle, Resource1.一键提交, new XRECT() { Left = 1050, Top = 412, Right = 1179, Bottom = 449 });
                 if (!r.IsEmpty)
                 {
@@ -82,9 +85,8 @@ namespace wpfclx.Task
                 {
                     Bg.LeftMouseClick(handle, new Point() { X = 110, Y = 155 });
                 }
-                Sleep(2000);
+                Sleep(1000);
             }
-            GC.Collect();
         }
 
         private void Difficulty()

@@ -27,7 +27,7 @@ namespace wpfclx.Task
                 {
                     Bg.LeftMouseClick(handle, new Point() { X = 494, Y = 702 });
                     Thread.Sleep(1000);
-                    Bg.LeftMouseClick(handle, new Point() { X = 239, Y = 460 });
+                    Bg.LeftMouseClick(handle, new Point() { X = 447, Y = 291 });
                     Thread.Sleep(1000);
                     Bg.SetWindowText(handle, "正在匹配");
                     while (true)
@@ -40,7 +40,7 @@ namespace wpfclx.Task
                         Thread.Sleep(1500);
                     }
                     Bg.SetWindowText(handle, "匹配成功");
-                    Thread.Sleep(25000);
+                    Thread.Sleep(20000);
 
                     zd();
 
