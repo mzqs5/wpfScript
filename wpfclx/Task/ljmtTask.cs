@@ -104,6 +104,11 @@ namespace wpfclx.Task
                     }
                     Bg.SetWindowText(handle, "开始下一次论剑");
                 }
+                else
+                {
+                    i--;
+                    Thread.Sleep(2000);
+                }
             }
         }
 
