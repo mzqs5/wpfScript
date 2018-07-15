@@ -58,7 +58,7 @@ namespace wpfclx.Task
                             break;
                         }
                     }
-                    Thread.Sleep(500);
+                    Thread.Sleep(300);
                 }
             }
         }

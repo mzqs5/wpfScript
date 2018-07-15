@@ -337,7 +337,7 @@ namespace wpfclx
         /// <returns></returns>
         internal static Bitmap Capture(IntPtr hWnd, XRECT r)
         {
-            IntPtr hscrdc = WinApi.GetDC(hWnd);
+            IntPtr hscrdc = WinApi.GetWindowDC(hWnd);
             WinApi.RECT eCT = new WinApi.RECT();
             WinApi.GetWindowRect(hWnd, ref eCT);
             IntPtr hbitmap = WinApi.CreateCompatibleBitmap(hscrdc, eCT.Right - eCT.Left, eCT.Bottom - eCT.Top);
