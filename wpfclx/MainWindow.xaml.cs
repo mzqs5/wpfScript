@@ -213,7 +213,7 @@ namespace wpfclx
         }
         private void Window_Closed(object sender, EventArgs e)
         {
-            
+            GC.Collect();
             Environment.Exit(0);
         }
     }
