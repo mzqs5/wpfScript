@@ -47,12 +47,13 @@ namespace wpfclx.Task
                         Bg.LeftMouseClick(handle, new Point() { X = 659, Y = 526 });
                         Thread.Sleep(100);
                         Bg.LeftMouseClick(handle, new Point() { X = 885, Y = 528 });
-                        Thread.Sleep(100);
+                        Thread.Sleep(1000);
                         r = Bg.FindPic(handle, Resource1.余额不足, new XRECT() { Left = 400, Top = 500, Right = 500, Bottom = 560 });
                         if (!r.IsEmpty)
                         {
                             Bg.LeftMouseClick(handle, r);
                             Bg.SetWindowText(handle, "余额不足，退出抢购...");
+                            Thread.Sleep(1000);
                             break;
                         }
                     }

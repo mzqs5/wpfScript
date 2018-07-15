@@ -36,30 +36,30 @@ namespace wpfclx
         public MainWindow()
         {
             InitializeComponent();
-            Directory.CreateDirectory(PATH);
-            //释放所有资源
-            IEnumerable<PropertyInfo> ps = typeof(Resource1).GetRuntimeProperties();
-            foreach (PropertyInfo i in ps)
-            {
-                object obj = i.GetValue(i.Name, null);
-                if (i.PropertyType == typeof(byte[]))
-                {
-                    using (FileStream fs = File.OpenWrite(PATH + $"{i.Name}.dll"))
-                    {
-                        fs.Write((byte[])obj, 0, ((byte[])obj).Length);
-                    }
-                }
-                else if (i.PropertyType == typeof(System.Drawing.Bitmap))
-                {
-                    var bmp = (System.Drawing.Bitmap)obj;
-                    bmp.Save(PATH + $"{i.Name}.bmp");
-                }
-                else if (i.PropertyType == typeof(string))
-                {
-                    File.WriteAllText(PATH + $"{i.Name}.txt", obj.ToString());
-                }
+            //Directory.CreateDirectory(PATH);
+            ////释放所有资源
+            //IEnumerable<PropertyInfo> ps = typeof(Resource1).GetRuntimeProperties();
+            //foreach (PropertyInfo i in ps)
+            //{
+            //    object obj = i.GetValue(i.Name, null);
+            //    if (i.PropertyType == typeof(byte[]))
+            //    {
+            //        using (FileStream fs = File.OpenWrite(PATH + $"{i.Name}.dll"))
+            //        {
+            //            fs.Write((byte[])obj, 0, ((byte[])obj).Length);
+            //        }
+            //    }
+            //    else if (i.PropertyType == typeof(System.Drawing.Bitmap))
+            //    {
+            //        var bmp = (System.Drawing.Bitmap)obj;
+            //        bmp.Save(PATH + $"{i.Name}.bmp");
+            //    }
+            //    else if (i.PropertyType == typeof(string))
+            //    {
+            //        File.WriteAllText(PATH + $"{i.Name}.txt", obj.ToString());
+            //    }
 
-            }
+            //}
         }
 
         private bool V()
