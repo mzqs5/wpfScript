@@ -17,7 +17,7 @@ namespace wpfclx
         LierdaCracker cracker = new LierdaCracker();
         protected override void OnStartup(StartupEventArgs e)
         {
-            cracker.Cracker(100);
+            cracker.Cracker(30);
             base.OnStartup(e);
         }
 

@@ -36,6 +36,7 @@ namespace wpfclx.Task
             if (r.IsEmpty)
             {
                 Bg.LeftMouseClick(handle, new Point() { X = 20, Y = 16 });
+                
                 Sleep(3000);
                 return OpenMall(temp);
             }
@@ -140,6 +141,7 @@ namespace wpfclx.Task
             Thread.Sleep(500);
             Bg.LeftMouseClick(handle, new Point() { X = 1111, Y = 602 });
             Thread.Sleep(500);
+            
             return IsGetInto();
         }
 

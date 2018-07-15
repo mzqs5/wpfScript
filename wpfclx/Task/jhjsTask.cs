@@ -37,7 +37,7 @@ namespace wpfclx.Task
                 var copy = Activator.CreateInstance(Assembly.GetExecutingAssembly().GetTypes().Where(o => o.Name == $"{item}Copy").FirstOrDefault(), handle) as CopyBase;
                 copy.Start();
                 copy = null;
-                GC.Collect();
+                
             }
         }
     }

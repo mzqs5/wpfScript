@@ -37,6 +37,7 @@ namespace wpfclx.Task
                     Bg.LeftMouseClick(handle, new Point() { X = 1149, Y = 476 });
                     break;
                 }
+                
                 Sleep(3000);
             }
             Sleep(10000);

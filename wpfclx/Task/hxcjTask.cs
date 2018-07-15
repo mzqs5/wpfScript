@@ -42,6 +42,7 @@ namespace wpfclx.Task
                         j++;
                         break;
                     }
+                    Thread.Sleep(500);
                 }
                 Thread.Sleep(1000);
                 //换线
@@ -62,7 +63,7 @@ namespace wpfclx.Task
                     host.Add(p[0]);
                     Thread.Sleep(500);
                 }
-                GC.Collect();
+                
             }
         }
         

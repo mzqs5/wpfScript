@@ -31,9 +31,10 @@ namespace wpfclx.Task
                 if (!r.IsEmpty)
                 {
                     Bg.LeftMouseClick(handle, r);
-                    Sleep(500);
+                    Sleep(1000);
                     break;
                 }
+                Sleep(5000);
             }
             Bg.LeftMouseClick(handle, new Point() { X = 649, Y = 201 });
             Sleep(1000);

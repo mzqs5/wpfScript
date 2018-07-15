@@ -26,7 +26,7 @@ namespace wpfclx
                 g.DrawImage(image, new Rectangle(0, 0, image.Width, image.Height), new Rectangle(0, 0, image.Width, image.Height), GraphicsUnit.Pixel);
 
             }
-            //image.Dispose();
+            image.Dispose();
             return b;
         }
 

@@ -212,7 +212,7 @@ namespace wpfclx
                 source.Save($"C:\\clx\\source{new Random().Next(100, 200)}.bmp");
             var rect = AforgeHelper.ProcessImage(source, BitmapHelper.ConvertToFormat(temp, PixelFormat.Format24bppRgb), findType, similarity);
             Point p = new Point();
-            if (rect.Count > 0)
+            if (rect != null)
             {
                 p.X = r.Left + rect[0].Rectangle.Left;
                 p.Y = r.Top + rect[0].Rectangle.Top;
@@ -289,7 +289,7 @@ namespace wpfclx
             //source.Save($"C:\\clx\\source{new Random().Next(100, 200)}.bmp");
             var rect = AforgeHelper.ProcessImage(source, tempnew, findType, similarity);
             Point p = new Point();
-            if (rect.Count > 0)
+            if (rect != null)
             {
                 p.X = r.Left + rect[0].Rectangle.Left;
                 p.Y = r.Top + rect[0].Rectangle.Top;
@@ -319,7 +319,7 @@ namespace wpfclx
             AforgeHelper.GrayscaleThresholdBlobsFiltering(tempnew);
             var rect = AforgeHelper.ProcessImage(source, tempnew, findType, similarity);
             Point p = new Point();
-            if (rect.Count > 0)
+            if (rect != null)
             {
                 p.X = r.Left + rect[0].Rectangle.Left;
                 p.Y = r.Top + rect[0].Rectangle.Top;

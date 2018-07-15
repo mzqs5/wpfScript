@@ -22,9 +22,9 @@ namespace wpfclx
         {
             ExhaustiveTemplateMatching templateMatching = new ExhaustiveTemplateMatching(similarity);
             TemplateMatch[] compare = templateMatching.ProcessImage(source, temp);
+            List<TemplateMatch> list = null;
             if (compare.Count() > 0)
             {
-                List<TemplateMatch> list = null;
                 switch (findType)
                 {
                     case FindDirection.LeftTopToRightDown:
@@ -37,9 +37,8 @@ namespace wpfclx
                         list = compare.OrderBy(o => Math.Abs(o.Rectangle.Left - source.Width / 2) + Math.Abs(o.Rectangle.Top - source.Height / 2)).ToList();
                         break;
                 }
-                return list;
             }
-            return new List<TemplateMatch>();
+            return list;
         }
 
 

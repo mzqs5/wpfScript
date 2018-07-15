@@ -103,6 +103,7 @@ namespace wpfclx.Task
                         Thread.Sleep(2000);
                     }
                     Bg.SetWindowText(handle, "开始下一次论剑");
+                    
                 }
                 else
                 {
