@@ -39,7 +39,6 @@ namespace wpfclx.Task
             Bg.SetWindowText(handle, "万里听风10环已完成，正在前往抓捕贼王...");
             Sleep(120000);
             Bg.SetWindowText(handle, "万里听风已完成");
-            GC.Collect();
         }
 
     }

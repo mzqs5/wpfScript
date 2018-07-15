@@ -350,7 +350,6 @@ namespace wpfclx
             WinApi.DeleteDC(hbitmap);//删除用过的对象 
             WinApi.DeleteDC(ints);//删除用过的对象 
             Bitmap ect = BitmapHelper.ConvertToFormat(bmp, PixelFormat.Format24bppRgb, new XRECT() { Left = r.Left + deviationX, Right = r.Right + deviationX, Top = r.Top + deviationY, Bottom = r.Bottom + deviationY });
-            bmp.Dispose();
             return ect;
         }
 
