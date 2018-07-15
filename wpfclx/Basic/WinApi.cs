@@ -48,6 +48,9 @@ namespace wpfclx
         [DllImport("user32.dll", ExactSpelling = true, SetLastError = true)]
         internal static extern bool ExitWindowsEx(int flg, int rea);
 
+        [DllImport("Kernel32.dll")]
+        public extern static int FormatMessage(int flag, ref IntPtr source, int msgid, int langid, ref string buf, int size, ref IntPtr args);
+
         #endregion
 
         #region 获取窗体位置
@@ -219,6 +222,10 @@ IntPtr lpInitData // optional printer data
         IntPtr hgdiobj // handle to object 
         );
         [DllImport("gdi32.dll")]
+        public static extern int DeleteObject(
+        IntPtr hdc // handle to object
+        );
+        [DllImport("gdi32.dll")]
         public static extern int DeleteDC(
         IntPtr hdc // handle to DC 
         );
@@ -228,9 +235,19 @@ IntPtr lpInitData // optional printer data
         IntPtr hdcBlt, // HDC to print into,Handle to the device context. 
         UInt32 nFlags // Optional flags,Specifies the drawing options. It can be one of the following values. 
         );
+
         [DllImport("user32.dll")]
+        //获取整个窗口DC
         public static extern IntPtr GetWindowDC(
         IntPtr hwnd);
+
+        [DllImport("user32.dll")]
+        //获取窗口客户区DC
+        public static extern IntPtr GetDC(
+        IntPtr hwnd);
+
+        [DllImportAttribute("user32.dll", EntryPoint = "ReleaseDC")]
+        public static extern int ReleaseDC(IntPtr hWnd, IntPtr hDC);
         #endregion
 
     }

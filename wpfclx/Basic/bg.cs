@@ -337,7 +337,7 @@ namespace wpfclx
         /// <returns></returns>
         internal static Bitmap Capture(IntPtr hWnd, XRECT r)
         {
-            IntPtr hscrdc = WinApi.GetWindowDC(hWnd);
+            IntPtr hscrdc = WinApi.GetDC(hWnd);
             WinApi.RECT eCT = new WinApi.RECT();
             WinApi.GetWindowRect(hWnd, ref eCT);
             IntPtr hbitmap = WinApi.CreateCompatibleBitmap(hscrdc, eCT.Right - eCT.Left, eCT.Bottom - eCT.Top);
@@ -345,12 +345,25 @@ namespace wpfclx
             IntPtr ints = WinApi.SelectObject(hmemdc, hbitmap);
             WinApi.PrintWindow(hWnd, hmemdc, 0);
             Bitmap bmp = Bitmap.FromHbitmap(hbitmap);
-            WinApi.DeleteDC(hscrdc);//删除用过的对象 
-            WinApi.DeleteDC(hmemdc);//删除用过的对象 
-            WinApi.DeleteDC(hbitmap);//删除用过的对象 
-            WinApi.DeleteDC(ints);//删除用过的对象 
+            WinApi.ReleaseDC(hWnd, hscrdc);//删除用过的DC
+            WinApi.DeleteDC(hmemdc);//删除创建的DC
+            WinApi.DeleteDC(hbitmap);//删除创建的DC
+            WinApi.DeleteObject(ints);//删除用过的gdi对象
             Bitmap ect = BitmapHelper.ConvertToFormat(bmp, PixelFormat.Format24bppRgb, new XRECT() { Left = r.Left + deviationX, Right = r.Right + deviationX, Top = r.Top + deviationY, Bottom = r.Bottom + deviationY });
             return ect;
+        }
+
+        /// <summary>
+        /// 获取系统错误信息描述
+        /// </summary>
+        /// <param name="errCode">系统错误码</param>
+        /// <returns></returns>
+        public static string GetSysErrMsg(int errCode)
+        {
+            IntPtr tempptr = IntPtr.Zero;
+            string msg = null;
+            WinApi.FormatMessage(0x1300, ref tempptr, errCode, 0, ref msg, 255, ref tempptr);
+            return msg;
         }
 
     }
