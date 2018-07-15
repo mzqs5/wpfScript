@@ -32,6 +32,7 @@ namespace wpfclx
         private IntPtr handle;
         private Thread activeThread;
         private TaskModel model;
+        private List<IntPtr> hlist;
         private string PATH = AppDomain.CurrentDomain.BaseDirectory + "res\\";//程序运行目录
         public MainWindow()
         {
@@ -75,56 +76,67 @@ namespace wpfclx
 
         private void btnBind_Click(object sender, RoutedEventArgs e)
         {
+            hlist = new List<IntPtr>();
             handle = WinApi.FindWindow("Messiah_Game", null);
+            //for (int i = 0; i < 5; i++)
+            //{
+            //    var handle2 = WinApi.FindWindowEx(IntPtr.Zero, i == 0 ? IntPtr.Zero : hlist[hlist.Count - 1], "Messiah_Game", null);
+            //    if (handle2 != IntPtr.Zero)
+            //        hlist.Add(handle2);
+            //}
+
             if (handle == IntPtr.Zero)
             {
                 MessageBox.Show("未找到游戏窗口，请以管理员身份运行。");
                 Close();
                 return;
             }
-            ThreadPool.QueueUserWorkItem(new WaitCallback(obj =>
-            {
-                IntPtr handle = (IntPtr)obj;
-                System.Drawing.Point p = Bg.FindPic(handle, Resource1.电池, new XRECT() { Left = 130, Top = 700, Right = 180, Bottom = 740 });
-                if (!p.IsEmpty)
+            //foreach (var item in hlist)
+            //{
+                ThreadPool.QueueUserWorkItem(new WaitCallback(obj =>
                 {
-                    //当前是手游模式 开始切换端游模式 并设置画质节约cpu
-                    Bg.SetWindowText(handle, "检测到目前是手机模式，开始切换端游模式...");
-                    Bg.LeftMouseClick(handle, new System.Drawing.Point() { X = 1269, Y = 207 });
-                    Thread.Sleep(500);
-                    System.Drawing.Point r = Bg.FindPic(handle, Resource1.设置, new XRECT() { Left = 1236, Top = 559, Right = 1294, Bottom = 706 });
-                    if (!r.IsEmpty)
+                    IntPtr handle = (IntPtr)obj;
+                    System.Drawing.Point p = Bg.FindPic(handle, Resource1.电池, new XRECT() { Left = 130, Top = 700, Right = 180, Bottom = 740 });
+                    if (!p.IsEmpty)
                     {
-                        Bg.LeftMouseClick(handle, r);
+                        //当前是手游模式 开始切换端游模式 并设置画质节约cpu
+                        Bg.SetWindowText(handle, "检测到目前是手机模式，开始切换端游模式...");
+                        Bg.LeftMouseClick(handle, new System.Drawing.Point() { X = 1269, Y = 207 });
                         Thread.Sleep(500);
+                        System.Drawing.Point r = Bg.FindPic(handle, Resource1.设置, new XRECT() { Left = 1236, Top = 559, Right = 1294, Bottom = 706 });
+                        if (!r.IsEmpty)
+                        {
+                            Bg.LeftMouseClick(handle, r);
+                            Thread.Sleep(500);
 
-                        Bg.LeftMouseClick(handle, new System.Drawing.Point() { X = 290, Y = 423 });
-                        Thread.Sleep(500);
-                        //修改镜头模式
-                        Bg.LeftMouseClick(handle, new System.Drawing.Point() { X = 1157, Y = 283 });
-                        Thread.Sleep(500);
-                        Bg.LeftMouseClick(handle, new System.Drawing.Point() { X = 151, Y = 492 });
-                        Thread.Sleep(500);
-                        //修改画质
-                        Bg.LeftMouseClick(handle, new System.Drawing.Point() { X = 1157, Y = 385 });
-                        Thread.Sleep(500);
-                        Bg.LeftMouseClick(handle, new System.Drawing.Point() { X = 313, Y = 213 });
-                        Thread.Sleep(500);
-                        //修改偏好
-                        Bg.LeftMouseClick(handle, new System.Drawing.Point() { X = 1159, Y = 481 });
-                        Thread.Sleep(500);
-                        Bg.LeftMouseClick(handle, new System.Drawing.Point() { X = 735, Y = 193 });
-                        Thread.Sleep(500);
-                        Bg.LeftMouseClick(handle, new System.Drawing.Point() { X = 735, Y = 254 });
-                        Thread.Sleep(500);
-                        //关闭设置面板
-                        Bg.LeftMouseClick(handle, new System.Drawing.Point() { X = 1152, Y = 67 });
-                        Thread.Sleep(500);
+                            Bg.LeftMouseClick(handle, new System.Drawing.Point() { X = 290, Y = 423 });
+                            Thread.Sleep(500);
+                            //修改镜头模式
+                            Bg.LeftMouseClick(handle, new System.Drawing.Point() { X = 1157, Y = 283 });
+                            Thread.Sleep(500);
+                            Bg.LeftMouseClick(handle, new System.Drawing.Point() { X = 151, Y = 492 });
+                            Thread.Sleep(500);
+                            //修改画质
+                            Bg.LeftMouseClick(handle, new System.Drawing.Point() { X = 1157, Y = 385 });
+                            Thread.Sleep(500);
+                            Bg.LeftMouseClick(handle, new System.Drawing.Point() { X = 313, Y = 213 });
+                            Thread.Sleep(500);
+                            //修改偏好
+                            Bg.LeftMouseClick(handle, new System.Drawing.Point() { X = 1159, Y = 481 });
+                            Thread.Sleep(500);
+                            Bg.LeftMouseClick(handle, new System.Drawing.Point() { X = 735, Y = 193 });
+                            Thread.Sleep(500);
+                            Bg.LeftMouseClick(handle, new System.Drawing.Point() { X = 735, Y = 254 });
+                            Thread.Sleep(500);
+                            //关闭设置面板
+                            Bg.LeftMouseClick(handle, new System.Drawing.Point() { X = 1152, Y = 67 });
+                            Thread.Sleep(500);
+                        }
                     }
-                }
-                Bg.SetWindowText(handle, "窗口绑定成功...");
-                
-            }), handle);
+                    Bg.SetWindowText(handle, "窗口绑定成功...");
+
+                }), handle);
+            //}
             btnBind.Content = "已绑定";
             btnBind.IsEnabled = false;
             model = new TaskModel();
