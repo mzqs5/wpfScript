@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -17,6 +18,7 @@ namespace wpfclx
         LierdaCracker cracker = new LierdaCracker();
         protected override void OnStartup(StartupEventArgs e)
         {
+            //new Timer(new TimerCallback(o => { GC.Collect(); }), null, 1000, 30000);
             cracker.Cracker(30);
             base.OnStartup(e);
         }

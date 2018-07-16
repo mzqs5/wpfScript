@@ -63,7 +63,7 @@ namespace wpfclx.Task
                     host.Add(p[0]);
                     Thread.Sleep(500);
                 }
-                
+                GC.Collect();
             }
         }
         
