@@ -29,14 +29,16 @@ namespace wpfclx
     /// </summary>
     public partial class MainWindow : Window
     {
-        private IntPtr handle;
-        private Thread activeThread;
+        //private IntPtr handle;
+        //private Thread activeThread;
         private TaskModel model;
+        private List<Thread> threads;
         private List<IntPtr> hlist;
         private string PATH = AppDomain.CurrentDomain.BaseDirectory + "res\\";//程序运行目录
         public MainWindow()
         {
             InitializeComponent();
+            hlist = new List<IntPtr>();
             //Directory.CreateDirectory(PATH);
             ////释放所有资源
             //IEnumerable<PropertyInfo> ps = typeof(Resource1).GetRuntimeProperties();
@@ -65,7 +67,7 @@ namespace wpfclx
 
         private bool V()
         {
-            if (handle == IntPtr.Zero)
+            if (hlist.Count == 0)
             {
                 MessageBox.Show("请先绑定窗口");
                 return true;
@@ -76,23 +78,22 @@ namespace wpfclx
 
         private void btnBind_Click(object sender, RoutedEventArgs e)
         {
-            hlist = new List<IntPtr>();
-            handle = WinApi.FindWindow("Messiah_Game", null);
-            //for (int i = 0; i < 5; i++)
-            //{
-            //    var handle2 = WinApi.FindWindowEx(IntPtr.Zero, i == 0 ? IntPtr.Zero : hlist[hlist.Count - 1], "Messiah_Game", null);
-            //    if (handle2 != IntPtr.Zero)
-            //        hlist.Add(handle2);
-            //}
+            //handle = WinApi.FindWindow("Messiah_Game", null);
+            for (int i = 0; i < 5; i++)
+            {
+                var handle2 = WinApi.FindWindowEx(IntPtr.Zero, i == 0 ? IntPtr.Zero : hlist[hlist.Count - 1], "Messiah_Game", null);
+                if (handle2 != IntPtr.Zero && !hlist.Contains(handle2))
+                    hlist.Add(handle2);
+            }
 
-            if (handle == IntPtr.Zero)
+            if (hlist.Count == 0)
             {
                 MessageBox.Show("未找到游戏窗口，请以管理员身份运行。");
                 Close();
                 return;
             }
-            //foreach (var item in hlist)
-            //{
+            foreach (var item in hlist)
+            {
                 ThreadPool.QueueUserWorkItem(new WaitCallback(obj =>
                 {
                     IntPtr handle = (IntPtr)obj;
@@ -135,8 +136,8 @@ namespace wpfclx
                     }
                     Bg.SetWindowText(handle, "窗口绑定成功...");
 
-                }), handle);
-            //}
+                }), item);
+            }
             btnBind.Content = "已绑定";
             btnBind.IsEnabled = false;
             model = new TaskModel();
@@ -168,11 +169,11 @@ namespace wpfclx
                 }
             }
         }
-
+        private List<string> list = new List<string>();
         private void btnStart_Click(object sender, RoutedEventArgs e)
         {
             if (V()) return;
-            if (activeThread == null)
+            if (threads == null)
             {
                 model.qgCount = Convert.ToInt32(qgCount.Text);
                 model.cjCount = Convert.ToInt32(cjCount.Text);
@@ -188,7 +189,7 @@ namespace wpfclx
                 model.bmzql = bmzql.IsChecked.HasValue ? bmzql.IsChecked.Value : false;
                 model.fjls = fjls.IsChecked.HasValue ? fjls.IsChecked.Value : false;
                 model.fjzs = fjzs.IsChecked.HasValue ? fjzs.IsChecked.Value : false;
-                List<string> list = new List<string>();
+
                 for (int i = 0; i < selecttask.Items.Count; i++)
                 {
                     ListBoxItem item = (ListBoxItem)selecttask.Items[i];
@@ -196,20 +197,30 @@ namespace wpfclx
                     list.Add(item.Name);
                 }
                 btnStart.Content = "正在执行...";
-                activeThread = new Thread(TaskStart);
-                activeThread.Start(list); //开始执行线程
+                threads = new List<Thread>();
+                for (int i = 0; i < hlist.Count; i++)
+                {
+                    threads.Add(new Thread(TaskStart));
+                    threads[i].Start(hlist[i]);
+                }
             }
             else
             {
-                activeThread.Abort();
-                activeThread = null;
+                for (int i = 0; i < threads.Count; i++)
+                {
+                    threads[i].Abort();
+                    threads[i] = null;
+                }
+                threads.Clear();
+                threads = null;
+                list.Clear();
                 btnStart.Content = "开始任务";
             }
         }
 
         private void TaskStart(object obj)
         {
-            List<string> list = (List<string>)obj;
+            IntPtr handle = (IntPtr)obj;
             foreach (var item in list)
             {
                 Type taskType = Assembly.GetExecutingAssembly().GetTypes().Where(o => o.Name == $"{item}Task").SingleOrDefault();

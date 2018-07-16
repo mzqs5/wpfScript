@@ -136,12 +136,12 @@ namespace wpfclx
             if (x == 0)
             {
                 signX = 0;
-                signY = y / 10;
+                count = y / 10;
             }
             else if (y == 0)
             {
                 signY = 0;
-                signX = x / 10;
+                count = x / 10;
             }
             else if (x > y)
             {
@@ -208,9 +208,10 @@ namespace wpfclx
         internal static Point FindPic(IntPtr handle, Bitmap temp, XRECT r, FindDirection findType = FindDirection.LeftTopToRightDown, float similarity = 0.9f, bool debug = false)
         {
             var source = Capture(handle, r);
+            var tempnew = BitmapHelper.ConvertToFormat(temp, PixelFormat.Format24bppRgb);
             if (debug)
                 source.Save($"C:\\clx\\source{new Random().Next(100, 200)}.bmp");
-            var rect = AforgeHelper.ProcessImage(source, BitmapHelper.ConvertToFormat(temp, PixelFormat.Format24bppRgb), findType, similarity);
+            var rect = AforgeHelper.ProcessImage(source, tempnew, findType, similarity);
             Point p = new Point();
             if (rect != null)
             {
@@ -218,6 +219,7 @@ namespace wpfclx
                 p.Y = r.Top + rect[0].Rectangle.Top;
             }
             source.Dispose();
+            tempnew.Dispose();
             return p;
         }
 
@@ -232,16 +234,19 @@ namespace wpfclx
         internal static List<Point> FindPicEx(IntPtr handle, Bitmap temp, XRECT r, FindDirection findType = FindDirection.LeftTopToRightDown, float similarity = 0.9f)
         {
             var source = Capture(handle, r);
+            var tempnew = BitmapHelper.ConvertToFormat(temp, PixelFormat.Format24bppRgb);
             List<Point> list = new List<Point>();
-            var rect = AforgeHelper.ProcessImage(source, BitmapHelper.ConvertToFormat(temp, PixelFormat.Format24bppRgb), findType, similarity);
-            rect.ForEach(o =>
-            {
-                Point p = new Point();
-                p.X = r.Left + o.Rectangle.Left;
-                p.Y = r.Top + o.Rectangle.Top;
-                list.Add(p);
-            });
+            var rect = AforgeHelper.ProcessImage(source, tempnew, findType, similarity);
+            if (rect != null)
+                rect.ForEach(o =>
+                {
+                    Point p = new Point();
+                    p.X = r.Left + o.Rectangle.Left;
+                    p.Y = r.Top + o.Rectangle.Top;
+                    list.Add(p);
+                });
             source.Dispose();
+            tempnew.Dispose();
             return list;
         }
 
@@ -256,19 +261,24 @@ namespace wpfclx
         internal static List<Point> FindPicEx(IntPtr handle, List<Bitmap> temps, XRECT r, FindDirection findType = FindDirection.LeftTopToRightDown, float similarity = 0.9f)
         {
             var source = Capture(handle, r);
+
             List<Point> list = new List<Point>();
             foreach (var item in temps)
             {
-                var rect = AforgeHelper.ProcessImage(source, BitmapHelper.ConvertToFormat(item, PixelFormat.Format24bppRgb), findType, similarity);
-                rect.ForEach(o =>
-                {
-                    Point p = new Point();
-                    p.X = r.Left + o.Rectangle.Left;
-                    p.Y = r.Top + o.Rectangle.Top;
-                    list.Add(p);
-                });
+                var tempnew = BitmapHelper.ConvertToFormat(item, PixelFormat.Format24bppRgb);
+                var rect = AforgeHelper.ProcessImage(source, tempnew, findType, similarity);
+                if (rect != null)
+                    rect.ForEach(o =>
+                    {
+                        Point p = new Point();
+                        p.X = r.Left + o.Rectangle.Left;
+                        p.Y = r.Top + o.Rectangle.Top;
+                        list.Add(p);
+                    });
+                tempnew.Dispose();
             }
             source.Dispose();
+
             return list;
         }
 
@@ -337,21 +347,34 @@ namespace wpfclx
         /// <returns></returns>
         internal static Bitmap Capture(IntPtr hWnd, XRECT r)
         {
-            IntPtr hscrdc = WinApi.GetWindowDC(hWnd);
-            WinApi.RECT eCT = new WinApi.RECT();
-            WinApi.GetWindowRect(hWnd, ref eCT);
-            IntPtr hbitmap = WinApi.CreateCompatibleBitmap(hscrdc, eCT.Right - eCT.Left, eCT.Bottom - eCT.Top);
-            IntPtr hmemdc = WinApi.CreateCompatibleDC(hscrdc);
-            IntPtr ints = WinApi.SelectObject(hmemdc, hbitmap);
-            WinApi.PrintWindow(hWnd, hmemdc, 0);
-            Bitmap bmp = Bitmap.FromHbitmap(hbitmap);
-            WinApi.ReleaseDC(hWnd, hscrdc);//删除用过的DC
-            WinApi.DeleteDC(hmemdc);//删除创建的DC
-            WinApi.DeleteDC(hbitmap);//删除创建的DC
-            WinApi.DeleteObject(ints);//删除用过的gdi对象
-            Bitmap ect = BitmapHelper.ConvertToFormat(bmp, PixelFormat.Format24bppRgb, new XRECT() { Left = r.Left + deviationX, Right = r.Right + deviationX, Top = r.Top + deviationY, Bottom = r.Bottom + deviationY });
+            //if (GetTimestamp() - times > 1000)
+            //{
+                IntPtr hscrdc = WinApi.GetWindowDC(hWnd);
+                WinApi.RECT eCT = new WinApi.RECT();
+                WinApi.GetWindowRect(hWnd, ref eCT);
+                IntPtr hbitmap = WinApi.CreateCompatibleBitmap(hscrdc, eCT.Right - eCT.Left, eCT.Bottom - eCT.Top);
+                IntPtr hmemdc = WinApi.CreateCompatibleDC(hscrdc);
+                IntPtr ints = WinApi.SelectObject(hmemdc, hbitmap);
+                WinApi.PrintWindow(hWnd, hmemdc, 0);
+                Bitmap bmp = Bitmap.FromHbitmap(hbitmap);
+                WinApi.ReleaseDC(hWnd, hscrdc);//删除用过的DC
+                WinApi.DeleteDC(hmemdc);//删除创建的DC
+                WinApi.DeleteDC(hbitmap);//删除创建的DC
+                WinApi.DeleteObject(ints);//删除用过的gdi对象
+                Bitmap ect = BitmapHelper.ConvertToFormat(bmp, PixelFormat.Format24bppRgb, new XRECT() { Left = r.Left + deviationX, Right = r.Right + deviationX, Top = r.Top + deviationY, Bottom = r.Bottom + deviationY });
+            //    capture = ect;
+            //    times = GetTimestamp();
+            //}
             return ect;
         }
+
+        //private static double times;
+        //private static Bitmap capture;
+        //internal static double GetTimestamp()
+        //{
+        //    TimeSpan ts = DateTime.Now - new DateTime(1970, 1, 1);
+        //    return ts.TotalMilliseconds;
+        //}
 
         /// <summary>
         /// 获取系统错误信息描述

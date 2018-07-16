@@ -45,7 +45,7 @@ namespace wpfclx.Task
             Sleep(10000);
             while (true)
             {
-                var r = Bg.FindPic(handle, Resource1.答对, new XRECT() { Left = 1172, Top = 106, Right = 1272, Bottom = 159 });
+                var r = Bg.FindPicFast(handle, Resource1.答对, new XRECT() { Left = 1172, Top = 106, Right = 1272, Bottom = 159 });
                 if (!r.IsEmpty)
                 {
                     for (int i = 0; i < 5; i++)
@@ -62,6 +62,13 @@ namespace wpfclx.Task
                     Sleep(500);
                     Bg.LeftMouseClick(handle, new Point() { X = 875, Y = 526 });
                     Sleep(1000);
+                }
+                Sleep(1000);
+                r = Bg.FindPic(handle, Resource1.单人任务进行中, new XRECT() { Left = 961, Top = 357, Right = 1043, Bottom = 570 });
+                if (!r.IsEmpty)
+                {
+                    Bg.LeftMouseClick(handle, r);
+                    Sleep(500);
                 }
                 Sleep(1000);
                 r = Bg.FindPic(handle, Resource1.购买, new XRECT() { Left = 620, Top = 509, Right = 700, Bottom = 550 });

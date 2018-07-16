@@ -223,6 +223,16 @@ namespace wpfclx {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap 副本中 {
+            get {
+                object obj = ResourceManager.GetObject("副本中", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap 副本结算 {
             get {
                 object obj = ResourceManager.GetObject("副本结算", resourceCulture);
@@ -236,6 +246,16 @@ namespace wpfclx {
         internal static System.Drawing.Bitmap 单人任务 {
             get {
                 object obj = ResourceManager.GetObject("单人任务", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap 单人任务进行中 {
+            get {
+                object obj = ResourceManager.GetObject("单人任务进行中", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -286,6 +306,16 @@ namespace wpfclx {
         internal static System.Drawing.Bitmap 宝箱 {
             get {
                 object obj = ResourceManager.GetObject("宝箱", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap 对话中 {
+            get {
+                object obj = ResourceManager.GetObject("对话中", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -32,12 +32,9 @@ namespace wpfclx.Task
                 list.Add("mysj");
             foreach (var item in list)
             {
-                Bg.LeftMouseClick(handle, new Point() { X = 260, Y = 521 });
-                Sleep(500);
                 var copy = Activator.CreateInstance(Assembly.GetExecutingAssembly().GetTypes().Where(o => o.Name == $"{item}Copy").FirstOrDefault(), handle) as CopyBase;
                 copy.Start();
-                copy = null;
-                
+                copy = null;    
             }
         }
     }

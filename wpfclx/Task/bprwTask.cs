@@ -44,7 +44,7 @@ namespace wpfclx.Task
             Bg.SetWindowText(handle, "帮派任务正在进行中...");
             while (true)
             {
-                var r = Bg.FindPic(handle, Resource1.答对, new XRECT() { Left = 1172, Top = 106, Right = 1272, Bottom = 159 });
+                var r = Bg.FindPicFast(handle, Resource1.答对, new XRECT() { Left = 1172, Top = 106, Right = 1272, Bottom = 159 });
                 if (!r.IsEmpty)
                 {
                     for (int i = 0; i < 5; i++)

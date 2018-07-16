@@ -10,24 +10,32 @@ namespace wpfclx
     {
         public static Bitmap ConvertToFormat(Bitmap image, PixelFormat format)
         {
-            var b = new Bitmap(image.Width, image.Height, format);
-            b.SetResolution(image.HorizontalResolution, image.VerticalResolution);
-            using (Graphics g = Graphics.FromImage(b))
+            try
             {
-                // 用白色清空 
-                g.Clear(Color.White);
+                var b = new Bitmap(image.Width, image.Height, format);
+                b.SetResolution(image.HorizontalResolution, image.VerticalResolution);
+                using (Graphics g = Graphics.FromImage(b))
+                {
+                    // 用白色清空 
+                    g.Clear(Color.White);
 
-                // 指定高质量的双三次插值法。执行预筛选以确保高质量的收缩。此模式可产生质量最高的转换图像。 
-                g.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                    // 指定高质量的双三次插值法。执行预筛选以确保高质量的收缩。此模式可产生质量最高的转换图像。 
+                    g.InterpolationMode = InterpolationMode.HighQualityBicubic;
 
-                // 指定高质量、低速度呈现。 
-                g.SmoothingMode = SmoothingMode.HighQuality;
-                // 在指定位置并且按指定大小绘制指定的 Image 的指定部分。 
-                g.DrawImage(image, new Rectangle(0, 0, image.Width, image.Height), new Rectangle(0, 0, image.Width, image.Height), GraphicsUnit.Pixel);
+                    // 指定高质量、低速度呈现。 
+                    g.SmoothingMode = SmoothingMode.HighQuality;
+                    // 在指定位置并且按指定大小绘制指定的 Image 的指定部分。 
+                    g.DrawImage(image, new Rectangle(0, 0, image.Width, image.Height), new Rectangle(0, 0, image.Width, image.Height), GraphicsUnit.Pixel);
 
+                }
+                //image.Dispose();
+                return b;
             }
-            //image.Dispose();
-            return b;
+            catch (Exception e)
+            {
+                Log.log("ConvertToFormat", e.Message);
+                return image;
+            }
         }
 
         public static Bitmap ConvertToFormat(Bitmap image, PixelFormat format, XRECT r)

@@ -115,12 +115,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Basic\Log.cs" />
     <Compile Include="Basic\ResourceH.cs" />
     <Compile Include="Helper\CopyBase.cs" />
     <Compile Include="Helper\mysjCopy.cs" />
     <Compile Include="Helper\xjzCopy.cs" />
     <Compile Include="Helper\selhwCopy.cs" />
     <Compile Include="Helper\TaskHelper.cs" />
+    <Compile Include="Helper\jypyCopy.cs" />
+    <Compile Include="Helper\szhwCopy.cs" />
+    <Compile Include="Helper\yzhjCopy.cs" />
     <Compile Include="Resource1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -313,6 +317,7 @@
     <EmbeddedResource Include="Resource1.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resource1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -383,6 +388,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\单人任务.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\对话中.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\副本中.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\单人任务进行中.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

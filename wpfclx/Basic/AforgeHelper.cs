@@ -20,23 +20,31 @@ namespace wpfclx
         /// <returns></returns>
         public static List<TemplateMatch> ProcessImage(Bitmap source, Bitmap temp, FindDirection findType = FindDirection.LeftTopToRightDown, float similarity = 0.9f)
         {
-            ExhaustiveTemplateMatching templateMatching = new ExhaustiveTemplateMatching(similarity);
-            TemplateMatch[] compare = templateMatching.ProcessImage(source, temp);
             List<TemplateMatch> list = null;
-            if (compare.Count() > 0)
+            try
             {
-                switch (findType)
+
+                ExhaustiveTemplateMatching templateMatching = new ExhaustiveTemplateMatching(similarity);
+                TemplateMatch[] compare = templateMatching.ProcessImage(source, temp);
+                if (compare.Count() > 0)
                 {
-                    case FindDirection.LeftTopToRightDown:
-                        list = compare.OrderBy(o => o.Rectangle.Left + o.Rectangle.Top).ToList();
-                        break;
-                    case FindDirection.RightDownToLeftTop:
-                        list = compare.OrderByDescending(o => o.Rectangle.Left + o.Rectangle.Top).ToList();
-                        break;
-                    case FindDirection.CoreToAround:
-                        list = compare.OrderBy(o => Math.Abs(o.Rectangle.Left - source.Width / 2) + Math.Abs(o.Rectangle.Top - source.Height / 2)).ToList();
-                        break;
+                    switch (findType)
+                    {
+                        case FindDirection.LeftTopToRightDown:
+                            list = compare.OrderBy(o => o.Rectangle.Left + o.Rectangle.Top).ToList();
+                            break;
+                        case FindDirection.RightDownToLeftTop:
+                            list = compare.OrderByDescending(o => o.Rectangle.Left + o.Rectangle.Top).ToList();
+                            break;
+                        case FindDirection.CoreToAround:
+                            list = compare.OrderBy(o => Math.Abs(o.Rectangle.Left - source.Width / 2) + Math.Abs(o.Rectangle.Top - source.Height / 2)).ToList();
+                            break;
+                    }
                 }
+            }
+            catch (Exception e)
+            {
+                Log.log("ProcessImage", e.Message);
             }
             return list;
         }

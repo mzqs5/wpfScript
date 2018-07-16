@@ -66,6 +66,13 @@ namespace wpfclx.Task
                 Bg.LeftMouseClick(handle, r);
         }
 
+        public void Dialogue()
+        {
+            var r = Bg.FindPic(handle, Resource1.对话中, new XRECT() { Left = 1264, Top = 605, Right = 1315, Bottom = 644 });
+            if (!r.IsEmpty)
+                Bg.LeftMouseClick(handle, new Point() { X = 500, Y = 500 });
+        }
+
         /// <summary>
         /// 监控使用物品 饮用 食用 学习
         /// </summary>
