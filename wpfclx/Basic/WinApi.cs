@@ -13,21 +13,24 @@ namespace wpfclx
 
         #region 根据句柄寻找窗体并发送消息
 
-        [DllImport("user32.dll", EntryPoint = "FindWindow", SetLastError = true)]
+        [DllImport("user32.dll", EntryPoint = "FindWindow")]
         //参数1:指的是类名。参数2，指的是窗口的标题名。两者至少要知道1个
         public static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
 
-        [DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Auto)]
+        [DllImport("user32.dll", CharSet = CharSet.Auto)]
         public static extern IntPtr FindWindowEx(IntPtr parentHandle, IntPtr childAfter, string lclassName, string windowTitle);
 
-        [DllImport("user32.dll", EntryPoint = "SendMessage", SetLastError = true, CharSet = CharSet.Auto)]
+        [DllImport("user32.dll", EntryPoint = "SendMessage", CharSet = CharSet.Auto)]
         public static extern IntPtr SendMessage(IntPtr hwnd, uint wMsg, int wParam, string lParam);
 
-        [DllImport("user32.dll", EntryPoint = "SendMessage", SetLastError = true, CharSet = CharSet.Auto)]
+        [DllImport("user32.dll", EntryPoint = "SendMessage", CharSet = CharSet.Auto)]
         public static extern IntPtr SendMessage(IntPtr hwnd, uint wMsg, int wParam, int lParam);
 
         [DllImport("user32.dll", EntryPoint = "PostMessage")]
-        public static extern IntPtr PostMessage(IntPtr hWnd, uint wMsg, int wParam, int lParam);
+        public static extern bool PostMessage(IntPtr hWnd, uint wMsg, int wParam, int lParam);
+
+        [DllImport("user32.dll", EntryPoint = "PostMessage", SetLastError = true)]
+        public static extern int PostMessage(IntPtr hWnd, uint wMsg, IntPtr wParam, int lParam);
 
         [DllImport("User32.dll", CharSet = CharSet.Auto)]
         public static extern int GetWindowThreadProcessId(IntPtr hwnd, out int ID);
@@ -50,6 +53,9 @@ namespace wpfclx
 
         [DllImport("Kernel32.dll")]
         public extern static int FormatMessage(int flag, ref IntPtr source, int msgid, int langid, ref string buf, int size, ref IntPtr args);
+
+        [DllImport("user32.dll")]
+        public static extern int MapVirtualKey(uint Ucode, uint uMapType);
 
         #endregion
 

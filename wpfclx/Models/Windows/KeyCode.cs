@@ -3,6 +3,8 @@
     public enum KeyCode
     {
         VK_TAB = 9,
+        VK_SHIFT=16,
+        VK_CONTROL=17,
         VK_ESCAPE = 27,
         VK_SPACE = 32,
         VK_1 = 49,

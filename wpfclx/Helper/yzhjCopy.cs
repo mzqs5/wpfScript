@@ -22,10 +22,9 @@ namespace wpfclx.Helper
             Find();
         }
 
-        protected override void StartCopy()
+        protected override void StartTestingCopy()
         {
-            Thread.Sleep(720000);
-            Bg.SetWindowText(handle, "副本已结束...");
+            
         }
 
         private void Find()

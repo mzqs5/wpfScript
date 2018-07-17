@@ -18,7 +18,12 @@ namespace wpfclx.Task
 
         public override void Start(TaskModel model)
         {
-            Bg.ExitWindowsEx();
+            var r = Bg.FindPic(handle, Resource1.副本中, new XRECT() { Left = 1280, Top = 180, Right = 1310, Bottom = 210 }, FindDirection.LeftTopToRightDown, 0.9f, true);
+            if (!r.IsEmpty)
+            {
+                Bg.SetWindowText(handle, r.ToString());
+            }
+            //Bg.ExitWindowsEx();
         }
     }
 }

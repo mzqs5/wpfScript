@@ -30,7 +30,7 @@ namespace wpfclx.Task
                 Bg.LeftMouseClick(handle, new Point() { X = 114, Y = 608 });
                 Sleep(1000);
                 Bg.SetWindowText(handle, "自动寻路中...");
-                Sleep(20000);
+                Sleep(10000);
                 Bg.SetWindowText(handle, "势力任务正在进行中...");
                 while (true)
                 {
@@ -58,7 +58,7 @@ namespace wpfclx.Task
                         Sleep(3000);
                         break;
                     }
-                    Sleep(1000);
+                    Sleep(500);
                 }
             }
         }

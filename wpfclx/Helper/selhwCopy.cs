@@ -12,7 +12,7 @@ namespace wpfclx.Helper
     {
         public selhwCopy(IntPtr handle) : base(handle)
         {
-            Count = 2;
+
         }
 
         protected override void OrganizeTeam()
@@ -21,5 +21,9 @@ namespace wpfclx.Helper
             Thread.Sleep(500);
         }
 
+        protected override void StartTestingCopy()
+        {
+            
+        }
     }
 }

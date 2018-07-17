@@ -28,7 +28,7 @@
     <PublisherName>dawu</PublisherName>
     <SuiteName>wpfclx</SuiteName>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>11</ApplicationRevision>
+    <ApplicationRevision>12</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -121,7 +121,6 @@
     <Compile Include="Helper\mysjCopy.cs" />
     <Compile Include="Helper\xjzCopy.cs" />
     <Compile Include="Helper\selhwCopy.cs" />
-    <Compile Include="Helper\TaskHelper.cs" />
     <Compile Include="Helper\jypyCopy.cs" />
     <Compile Include="Helper\szhwCopy.cs" />
     <Compile Include="Helper\yzhjCopy.cs" />
@@ -223,7 +222,6 @@
     <Resource Include="Resources\对话车.bmp" />
     <Resource Include="Resources\就近复活.bmp" />
     <Resource Include="Resources\就近复活_灰.bmp" />
-    <Resource Include="Resources\开启.bmp" />
     <Resource Include="Resources\御姐音.bmp" />
     <Resource Include="Resources\手帕.bmp" />
     <Resource Include="Resources\接取缥缈任务.bmp" />
@@ -232,17 +230,14 @@
     <Resource Include="Resources\活跃度.bmp" />
     <Resource Include="Resources\狗子.bmp" />
     <Resource Include="Resources\界面_任务.bmp" />
-    <Resource Include="Resources\界面_地图.bmp" />
     <Resource Include="Resources\界面_小窗口.bmp" />
     <Resource Include="Resources\界面_悬赏.bmp" />
     <Resource Include="Resources\界面_拼图.bmp" />
     <Resource Include="Resources\界面_江湖.bmp" />
     <Resource Include="Resources\界面_活动.bmp" />
     <Resource Include="Resources\界面_队伍.bmp" />
-    <Resource Include="Resources\童年的橱窗.bmp" />
     <Resource Include="Resources\竹叶青.bmp" />
     <Resource Include="Resources\红包.bmp" />
-    <Resource Include="Resources\结算中.bmp" />
     <Resource Include="Resources\肚兜.bmp" />
     <Resource Include="Resources\萝莉音.bmp" />
     <Resource Include="Resources\藏宝图.bmp" />
@@ -251,7 +246,6 @@
     <Resource Include="Resources\货单.bmp" />
     <Resource Include="Resources\购买.bmp" />
     <Resource Include="Resources\轶事.bmp" />
-    <Resource Include="Resources\选中江湖栏.bmp" />
     <Resource Include="Resources\邮件.bmp" />
     <Resource Include="Resources\配方.bmp" />
     <Resource Include="Resources\重逢礼.bmp" />
@@ -261,12 +255,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\app.manifest" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\队伍添加队友.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\没有在售的珍品.bmp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\在售.bmp" />
@@ -302,9 +290,6 @@
     <None Include="Resources\退出队伍.bmp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\论剑离开.bmp" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\论剑匹配成功.bmp" />
   </ItemGroup>
   <ItemGroup>
@@ -314,17 +299,7 @@
     <None Include="Resources\挖宝.bmp" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resource1.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resource1.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="icon.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\icon.ico" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\剧情.bmp" />
@@ -378,12 +353,6 @@
     <None Include="Resources\电池.bmp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\任帮派务.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\帮派任务.bmp" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\关系.bmp" />
   </ItemGroup>
   <ItemGroup>
@@ -397,6 +366,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\单人任务进行中.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resource1.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource1.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\退出茶馆.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\活动界面前往.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\副本退出.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

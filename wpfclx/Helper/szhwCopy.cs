@@ -22,11 +22,11 @@ namespace wpfclx.Helper
             Find();
         }
 
-        protected override void StartCopy()
+        protected override void StartTestingCopy()
         {
-            Thread.Sleep(720000);
-            Bg.SetWindowText(handle, "副本已结束...");
+            
         }
+
         private void Find()
         {
             Bg.MouseMove(handle, new Point() { X = 260, Y = 520 }, new Point() { X = 260, Y = 250 });

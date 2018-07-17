@@ -53,21 +53,22 @@ namespace wpfclx
 
         internal static void KeyClick(IntPtr handle, KeyCode code)
         {
-            WinApi.PostMessage(handle, (uint)MsgType.WM_KEYDOWN, (int)code, 0);
-            Thread.Sleep(new Random().Next(5, 10));
-            WinApi.PostMessage(handle, (uint)MsgType.WM_KEYUP, (int)code, 0);
-            Thread.Sleep(new Random().Next(5, 10));
+            KeyDown(handle,code);
+            Thread.Sleep(new Random().Next(20, 30));
+            KeyUp(handle, code);
         }
 
         internal static void KeyDown(IntPtr handle, KeyCode code)
         {
-            WinApi.PostMessage(handle, (uint)MsgType.WM_KEYDOWN, (int)code, 0);
+            var scan=WinApi.MapVirtualKey((uint)code,0);
+            WinApi.PostMessage(handle, (uint)MsgType.WM_KEYDOWN, new IntPtr((int)code), 0);
             Thread.Sleep(new Random().Next(5, 10));
         }
 
         internal static void KeyUp(IntPtr handle, KeyCode code)
         {
-            WinApi.PostMessage(handle, (uint)MsgType.WM_KEYUP, (int)code, 0);
+            var scan = WinApi.MapVirtualKey((uint)code, 0);
+            WinApi.PostMessage(handle, (uint)MsgType.WM_KEYUP, scan, 1 + (scan << 16) + (1 << 30) + (1 << 31));
             Thread.Sleep(new Random().Next(5, 10));
         }
 

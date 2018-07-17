@@ -12,7 +12,7 @@ namespace wpfclx.Helper
     {
         public xjzCopy(IntPtr handle) : base(handle)
         {
-            Count = 3;
+
         }
 
         protected override void OrganizeTeam()
@@ -20,6 +20,11 @@ namespace wpfclx.Helper
             Bg.LeftMouseClick(handle, new Point() { X = 260, Y = 520 });
             Thread.Sleep(500);
             Find();
+        }
+
+        protected override void StartTestingCopy()
+        {
+            
         }
 
         private void Find()
