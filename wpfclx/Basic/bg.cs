@@ -13,8 +13,8 @@ namespace wpfclx
     /// </summary>
     internal class Bg
     {
-        private static int deviationX = 8;//窗口左偏移量
-        private static int deviationY = 32;//窗口上偏移量
+        //private static int deviationX = 8;//窗口左偏移量
+        //private static int deviationY = 32;//窗口上偏移量
         //private static List<FontLibrary> fonts;
 
         //static Bg()
@@ -51,26 +51,26 @@ namespace wpfclx
 
         }
 
-        internal static void KeyClick(IntPtr handle, KeyCode code)
-        {
-            KeyDown(handle,code);
-            Thread.Sleep(new Random().Next(20, 30));
-            KeyUp(handle, code);
-        }
+        //internal static void KeyClick(IntPtr handle, KeyCode code)
+        //{
+        //    KeyDown(handle, code);
+        //    Thread.Sleep(new Random().Next(20, 30));
+        //    KeyUp(handle, code);
+        //}
 
-        internal static void KeyDown(IntPtr handle, KeyCode code)
-        {
-            var scan=WinApi.MapVirtualKey((uint)code,0);
-            WinApi.PostMessage(handle, (uint)MsgType.WM_KEYDOWN, new IntPtr((int)code), 0);
-            Thread.Sleep(new Random().Next(5, 10));
-        }
+        //internal static void KeyDown(IntPtr handle, KeyCode code)
+        //{
+        //    var scan = WinApi.MapVirtualKey((uint)code, 0);
+        //    WinApi.PostMessage(handle, (uint)MsgType.WM_KEYDOWN, new IntPtr((int)code), 0);
+        //    Thread.Sleep(new Random().Next(5, 10));
+        //}
 
-        internal static void KeyUp(IntPtr handle, KeyCode code)
-        {
-            var scan = WinApi.MapVirtualKey((uint)code, 0);
-            WinApi.PostMessage(handle, (uint)MsgType.WM_KEYUP, scan, 1 + (scan << 16) + (1 << 30) + (1 << 31));
-            Thread.Sleep(new Random().Next(5, 10));
-        }
+        //internal static void KeyUp(IntPtr handle, KeyCode code)
+        //{
+        //    var scan = WinApi.MapVirtualKey((uint)code, 0);
+        //    WinApi.PostMessage(handle, (uint)MsgType.WM_KEYUP, scan, 1 + (scan << 16) + (1 << 30) + (1 << 31));
+        //    Thread.Sleep(new Random().Next(5, 10));
+        //}
 
         /// <summary>
         /// 移动鼠标到指定位置
@@ -178,20 +178,16 @@ namespace wpfclx
             return WinApi.SetWindowText(handle, text);
         }
 
-        internal static int GetWindowText(IntPtr handle)
-        {
-            int length = WinApi.GetWindowTextLength(handle);
-            StringBuilder windowName = new StringBuilder(length + 1);
-            return WinApi.GetWindowText(handle, windowName, windowName.Capacity);
-        }
         /// <summary>
         /// 图像识别
         /// </summary>
         /// <param name="handle"></param>
         /// <param name="r"></param>
-        internal static void Ocr(IntPtr handle, XRECT r)
+        internal static void Ocr(IntPtr handle)
         {
-            var source = Capture(handle, r);
+            Bitmap capture = Capture(handle);
+            capture.Save($"C:\\clx\\source{new Random().Next(100, 200)}.bmp");
+            capture.Dispose();
         }
 
         internal static void ExitWindowsEx()
@@ -208,21 +204,38 @@ namespace wpfclx
         /// <returns>返回第一个找到的坐标</returns>
         internal static Point FindPic(IntPtr handle, Bitmap temp, XRECT r, FindDirection findType = FindDirection.LeftTopToRightDown, float similarity = 0.9f, bool debug = false)
         {
-            var source = Capture(handle, r);
-            var tempnew = BitmapHelper.ConvertToFormat(temp, PixelFormat.Format24bppRgb);
+            Bitmap capture = Capture(handle);
+            Bitmap source = BitmapHelper.ConvertToFormat(capture, PixelFormat.Format24bppRgb, r);
+            capture.Dispose();
+            Bitmap tempnew = BitmapHelper.ConvertToFormat(temp, PixelFormat.Format24bppRgb);
             if (debug)
                 source.Save($"C:\\clx\\source{new Random().Next(100, 200)}.bmp");
             var rect = AforgeHelper.ProcessImage(source, tempnew, findType, similarity);
-            Point p = new Point();
-            if (rect != null)
-            {
-                p.X = r.Left + rect[0].Rectangle.Left;
-                p.Y = r.Top + rect[0].Rectangle.Top;
-            }
             source.Dispose();
             tempnew.Dispose();
-            return p;
+            return rect != null ? new Point() { X = r.Left + rect[0].Rectangle.Left, Y = r.Top + rect[0].Rectangle.Top } : new Point();
         }
+
+        /// <summary>
+        /// 区域找多图
+        /// </summary>
+        /// <param name="handle"></param>
+        /// <param name="temp"></param>
+        /// <param name="r"></param>
+        /// <param name="debug"></param>
+        /// <returns>返回第一个找到的坐标</returns>
+        internal static Point FindPicEx(IntPtr handle, Bitmap capture, Bitmap temp, XRECT r, FindDirection findType = FindDirection.LeftTopToRightDown, float similarity = 0.9f, bool debug = false)
+        {
+            Bitmap source = BitmapHelper.ConvertToFormat(capture, PixelFormat.Format24bppRgb, r);
+            Bitmap tempnew = BitmapHelper.ConvertToFormat(temp, PixelFormat.Format24bppRgb);
+            if (debug)
+                source.Save($"C:\\clx\\source{new Random().Next(100, 200)}.bmp");
+            var rect = AforgeHelper.ProcessImage(source, tempnew, findType, similarity);
+            source.Dispose();
+            tempnew.Dispose();
+            return rect != null ? new Point() { X = r.Left + rect[0].Rectangle.Left, Y = r.Top + rect[0].Rectangle.Top } : new Point();
+        }
+
 
         /// <summary>
         /// 区域找图
@@ -234,8 +247,10 @@ namespace wpfclx
         /// <returns>返回找到的坐标集合</returns>
         internal static List<Point> FindPicEx(IntPtr handle, Bitmap temp, XRECT r, FindDirection findType = FindDirection.LeftTopToRightDown, float similarity = 0.9f)
         {
-            var source = Capture(handle, r);
-            var tempnew = BitmapHelper.ConvertToFormat(temp, PixelFormat.Format24bppRgb);
+            Bitmap capture = Capture(handle);
+            Bitmap source = BitmapHelper.ConvertToFormat(capture, PixelFormat.Format24bppRgb, r);
+            capture.Dispose();
+            Bitmap tempnew = BitmapHelper.ConvertToFormat(temp, PixelFormat.Format24bppRgb);
             List<Point> list = new List<Point>();
             var rect = AforgeHelper.ProcessImage(source, tempnew, findType, similarity);
             if (rect != null)
@@ -250,38 +265,7 @@ namespace wpfclx
             tempnew.Dispose();
             return list;
         }
-
-        /// <summary>
-        /// 区域找多图
-        /// </summary>
-        /// <param name="handle"></param>
-        /// <param name="temp"></param>
-        /// <param name="r"></param>
-        /// <param name="debug"></param>
-        /// <returns>返回找到的坐标集合</returns>
-        internal static List<Point> FindPicEx(IntPtr handle, List<Bitmap> temps, XRECT r, FindDirection findType = FindDirection.LeftTopToRightDown, float similarity = 0.9f)
-        {
-            var source = Capture(handle, r);
-
-            List<Point> list = new List<Point>();
-            foreach (var item in temps)
-            {
-                var tempnew = BitmapHelper.ConvertToFormat(item, PixelFormat.Format24bppRgb);
-                var rect = AforgeHelper.ProcessImage(source, tempnew, findType, similarity);
-                if (rect != null)
-                    rect.ForEach(o =>
-                    {
-                        Point p = new Point();
-                        p.X = r.Left + o.Rectangle.Left;
-                        p.Y = r.Top + o.Rectangle.Top;
-                        list.Add(p);
-                    });
-                tempnew.Dispose();
-            }
-            source.Dispose();
-
-            return list;
-        }
+       
 
         /// <summary>
         /// 区域找透明文字
@@ -291,23 +275,20 @@ namespace wpfclx
         /// <param name="r"></param>
         /// <param name="debug"></param>
         /// <returns>返回第一个找到的坐标</returns>
-        internal static Point FindPicFast(IntPtr handle, Bitmap temp, XRECT r, FindDirection findType = FindDirection.LeftTopToRightDown, float similarity = 0.9f)
+        internal static Point FindPicFast(IntPtr handle, Bitmap temp, XRECT r, FindDirection findType = FindDirection.LeftTopToRightDown, float similarity = 0.9f, bool debug = false)
         {
-            var source = Capture(handle, r);
-            var tempnew = BitmapHelper.ConvertToFormat(temp, PixelFormat.Format24bppRgb);
+            Bitmap capture = Capture(handle);
+            Bitmap source = BitmapHelper.ConvertToFormat(capture, PixelFormat.Format24bppRgb, r);
+            capture.Dispose();
+            Bitmap tempnew = BitmapHelper.ConvertToFormat(temp, PixelFormat.Format24bppRgb);
             source = AforgeHelper.GrayscaleThresholdBlobsFiltering(source, 90);
             tempnew = AforgeHelper.GrayscaleThresholdBlobsFiltering(tempnew, 90);
-            //source.Save($"C:\\clx\\source{new Random().Next(100, 200)}.bmp");
+            if (debug)
+                source.Save($"C:\\clx\\source{new Random().Next(100, 200)}.bmp");
             var rect = AforgeHelper.ProcessImage(source, tempnew, findType, similarity);
-            Point p = new Point();
-            if (rect != null)
-            {
-                p.X = r.Left + rect[0].Rectangle.Left;
-                p.Y = r.Top + rect[0].Rectangle.Top;
-            }
             source.Dispose();
             tempnew.Dispose();
-            return p;
+            return rect != null ? new Point() { X = r.Left + rect[0].Rectangle.Left, Y = r.Top + rect[0].Rectangle.Top } : new Point();
         }
 
         /// <summary>
@@ -321,73 +302,45 @@ namespace wpfclx
         /// <returns>返回第一个找到的坐标</returns>
         internal static Point FindStr(IntPtr handle, string str, string color, XRECT r, FindDirection findType = FindDirection.LeftTopToRightDown, float similarity = 0.9f)
         {
-            var source = Capture(handle, r);
-            var temp = BitmapHelper.ByteStrToBitmap(str);
-            var tempnew = BitmapHelper.ConvertToFormat(temp, PixelFormat.Format24bppRgb);
+            Bitmap capture = Capture(handle);
+            Bitmap source = BitmapHelper.ConvertToFormat(capture, PixelFormat.Format24bppRgb, r);
+            capture.Dispose();
+            Bitmap temp = BitmapHelper.ByteStrToBitmap(str);
+            Bitmap tempnew = BitmapHelper.ConvertToFormat(temp, PixelFormat.Format24bppRgb);
             BitmapHelper.ColorReplace(source, color);
             BitmapHelper.ColorReplace(tempnew, color);
             AforgeHelper.GrayscaleThresholdBlobsFiltering(source);
             AforgeHelper.GrayscaleThresholdBlobsFiltering(tempnew);
             var rect = AforgeHelper.ProcessImage(source, tempnew, findType, similarity);
-            Point p = new Point();
-            if (rect != null)
-            {
-                p.X = r.Left + rect[0].Rectangle.Left;
-                p.Y = r.Top + rect[0].Rectangle.Top;
-            }
             source.Dispose();
             tempnew.Dispose();
-            return p;
+            return rect != null ? new Point() { X = r.Left + rect[0].Rectangle.Left, Y = r.Top + rect[0].Rectangle.Top } : new Point();
         }
 
         /// <summary>
-        /// 捕获当前窗体坐标区域图像
+        /// 捕获当前窗体截屏
         /// </summary>
         /// <param name="hWnd"></param>
         /// <param name="r"></param>
         /// <returns></returns>
-        internal static Bitmap Capture(IntPtr hWnd, XRECT r)
+        internal static Bitmap Capture(IntPtr hWnd)
         {
-            //if (GetTimestamp() - times > 1000)
-            //{
-                IntPtr hscrdc = WinApi.GetWindowDC(hWnd);
-                WinApi.RECT eCT = new WinApi.RECT();
-                WinApi.GetWindowRect(hWnd, ref eCT);
-                IntPtr hbitmap = WinApi.CreateCompatibleBitmap(hscrdc, eCT.Right - eCT.Left, eCT.Bottom - eCT.Top);
-                IntPtr hmemdc = WinApi.CreateCompatibleDC(hscrdc);
-                IntPtr ints = WinApi.SelectObject(hmemdc, hbitmap);
-                WinApi.PrintWindow(hWnd, hmemdc, 0);
-                Bitmap bmp = Bitmap.FromHbitmap(hbitmap);
-                WinApi.ReleaseDC(hWnd, hscrdc);//删除用过的DC
-                WinApi.DeleteDC(hmemdc);//删除创建的DC
-                WinApi.DeleteDC(hbitmap);//删除创建的DC
-                WinApi.DeleteObject(ints);//删除用过的gdi对象
-                Bitmap ect = BitmapHelper.ConvertToFormat(bmp, PixelFormat.Format24bppRgb, new XRECT() { Left = r.Left + deviationX, Right = r.Right + deviationX, Top = r.Top + deviationY, Bottom = r.Bottom + deviationY });
-            //    capture = ect;
-            //    times = GetTimestamp();
-            //}
-            return ect;
-        }
-
-        //private static double times;
-        //private static Bitmap capture;
-        //internal static double GetTimestamp()
-        //{
-        //    TimeSpan ts = DateTime.Now - new DateTime(1970, 1, 1);
-        //    return ts.TotalMilliseconds;
-        //}
-
-        /// <summary>
-        /// 获取系统错误信息描述
-        /// </summary>
-        /// <param name="errCode">系统错误码</param>
-        /// <returns></returns>
-        public static string GetSysErrMsg(int errCode)
-        {
-            IntPtr tempptr = IntPtr.Zero;
-            string msg = null;
-            WinApi.FormatMessage(0x1300, ref tempptr, errCode, 0, ref msg, 255, ref tempptr);
-            return msg;
+            IntPtr hscrdc = WinApi.GetDC(hWnd);
+            WinApi.RECT eCT = new WinApi.RECT();
+            WinApi.GetClientRect(hWnd, ref eCT);
+            IntPtr hmemdc = WinApi.CreateCompatibleDC(hscrdc);
+            IntPtr hbitmap = WinApi.CreateCompatibleBitmap(hscrdc, eCT.Right - eCT.Left, eCT.Bottom - eCT.Top);
+            IntPtr hOldBitmap = WinApi.SelectObject(hmemdc, hbitmap);
+            WinApi.BitBlt(hmemdc, 0, 0, eCT.Right - eCT.Left, eCT.Bottom - eCT.Top, hscrdc, 0, 0, 13369376);
+            //WinApi.PrintWindow(hWnd, hmemdc, 0);
+            IntPtr hNewBitmap = WinApi.SelectObject(hmemdc, hOldBitmap);
+            Bitmap bmp = Bitmap.FromHbitmap(hNewBitmap);
+            WinApi.ReleaseDC(hWnd, hscrdc);//删除用过的DC
+            WinApi.DeleteDC(hmemdc);//删除创建的DC
+            WinApi.DeleteObject(hbitmap);//删除创建的对象
+            WinApi.DeleteObject(hOldBitmap);//删除用过的gdi对象
+            WinApi.DeleteObject(hNewBitmap);//删除用过的gdi对象
+            return bmp;
         }
 
     }

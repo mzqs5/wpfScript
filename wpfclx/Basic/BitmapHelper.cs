@@ -28,7 +28,6 @@ namespace wpfclx
                     g.DrawImage(image, new Rectangle(0, 0, image.Width, image.Height), new Rectangle(0, 0, image.Width, image.Height), GraphicsUnit.Pixel);
 
                 }
-                //image.Dispose();
                 return b;
             }
             catch (Exception e)
@@ -56,7 +55,6 @@ namespace wpfclx
                 g.DrawImage(image, new Rectangle(0, 0, r.Right - r.Left, r.Bottom - r.Top), new Rectangle(r.Left, r.Top, r.Right - r.Left, r.Bottom - r.Top), GraphicsUnit.Pixel);
 
             }
-            image.Dispose();
             return b;
         }
 

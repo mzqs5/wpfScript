@@ -20,7 +20,6 @@ namespace wpfclx.Task
         public override void Start(TaskModel model)
         {
             Bg.SetWindowText(handle, "开始自动挖宝...");
-            Bg.KeyClick(handle, KeyCode.B);
             Sleep(1000);
             for (int i = 0; i < 5; i++)
             {
