@@ -81,7 +81,7 @@ namespace wpfclx
         internal static void MouseMove(IntPtr handle, Point r, WPARAM wparam = WPARAM.MK_Normal)
         {
             WinApi.PostMessage(handle, (uint)MsgType.WM_MOUSEMOVE, (int)wparam, r.X + (r.Y << 16));
-            Thread.Sleep(new Random().Next(5, 10));
+            Thread.Sleep(new Random().Next(10, 20));
         }
 
         /// <summary>
@@ -225,7 +225,7 @@ namespace wpfclx
         /// <param name="r"></param>
         /// <param name="debug"></param>
         /// <returns>返回第一个找到的坐标</returns>
-        internal static Point FindPicEx(IntPtr handle, Bitmap capture, Bitmap temp, XRECT r, FindDirection findType = FindDirection.LeftTopToRightDown, float similarity = 0.9f, bool debug = false)
+        internal static Point FindPicEx(IntPtr handle, Bitmap capture, Bitmap temp, XRECT r, FindDirection findType = FindDirection.LeftTopToRightDown, float similarity = 0.85f, bool debug = false)
         {
             Bitmap source = BitmapHelper.ConvertToFormat(capture, PixelFormat.Format24bppRgb, r);
             Bitmap tempnew = BitmapHelper.ConvertToFormat(temp, PixelFormat.Format24bppRgb);

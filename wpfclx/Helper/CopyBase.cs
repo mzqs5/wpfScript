@@ -20,9 +20,10 @@ namespace wpfclx.Helper
             while (true)
             {
                 var capture = Bg.Capture(handle);
-                var r = Bg.FindPicEx(handle, capture, Resource1.副本退出, new XRECT() { Left = 1144, Top = 180, Right = 1180, Bottom = 220 }, FindDirection.LeftTopToRightDown, 0.9f);
+                var r = Bg.FindPicEx(handle, capture, Resource1.副本退出, new XRECT() { Left = 1150, Top = 190, Right = 1180, Bottom = 220 }, FindDirection.LeftTopToRightDown, 0.85f, true);
                 if (!r.IsEmpty)
                     break;
+                capture.Dispose();
                 Thread.Sleep(5000);
             }
         }
@@ -47,7 +48,7 @@ namespace wpfclx.Helper
             var isok = false;
             for (int i = 0; i < 10; i++)
             {
-                var r = Bg.FindPic(handle, Resource1.副本中, new XRECT() { Left = 1280, Top = 180, Right = 1310, Bottom = 220 }, FindDirection.LeftTopToRightDown, 0.9f);
+                var r = Bg.FindPic(handle, Resource1.副本中, new XRECT() { Left = 1280, Top = 180, Right = 1310, Bottom = 220 }, FindDirection.LeftTopToRightDown, 0.85f);
                 if (!r.IsEmpty)
                 {
                     isok = true;
@@ -69,7 +70,7 @@ namespace wpfclx.Helper
         {
             Bg.LeftMouseClick(handle, new Point() { X = 942, Y = 603 });
             Bg.SetWindowText(handle, "正在自动匹配...");
-            Thread.Sleep(500);
+            Thread.Sleep(1000);
             for (int i = 0; i < 10; i++)
             {
                 var r = Bg.FindPic(handle, Resource1.跟随确认, new XRECT() { Left = 596, Top = 236, Right = 735, Bottom = 276 });
@@ -84,9 +85,9 @@ namespace wpfclx.Helper
             }
             Bg.SetWindowText(handle, "取消匹配...");
             Bg.LeftMouseClick(handle, new Point() { X = 942, Y = 603 });
-            Thread.Sleep(500);
+            Thread.Sleep(1000);
             Bg.LeftMouseClick(handle, new Point() { X = 1111, Y = 602 });
-            Thread.Sleep(500);
+            Thread.Sleep(1000);
             return IsGetInto();
         }
 
@@ -100,10 +101,12 @@ namespace wpfclx.Helper
             {
                 Bg.SetWindowText(handle, "退出队伍...");
                 Bg.LeftMouseClick(handle, r);
-                Thread.Sleep(500);
+                Thread.Sleep(1000);
+                Bg.LeftMouseClick(handle, new Point() { X = 881, Y = 522 });
+                Thread.Sleep(1000);
             }
             Bg.LeftMouseClick(handle, new Point() { X = 1117, Y = 604 });
-            Thread.Sleep(500);
+            Thread.Sleep(1000);
         }
 
     }

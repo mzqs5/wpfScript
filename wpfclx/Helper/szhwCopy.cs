@@ -22,14 +22,9 @@ namespace wpfclx.Helper
             Find();
         }
 
-        protected override void StartTestingCopy()
-        {
-            
-        }
-
         private void Find()
         {
-            Bg.MouseMove(handle, new Point() { X = 260, Y = 520 }, new Point() { X = 260, Y = 250 });
+            Bg.MouseMove(handle, new Point() { X = 260, Y = 600 }, new Point() { X = 260, Y = 400 });
             Thread.Sleep(1000);
             var r = Bg.FindPic(handle, Resource1.山珍海味, new XRECT() { Left = 143, Top = 140, Right = 374, Bottom = 635 });
             if (!r.IsEmpty)

@@ -45,7 +45,8 @@ namespace wpfclx.Task
             Sleep(10000);
             while (true)
             {
-                var r = Bg.FindPicFast(handle, Resource1.答对, new XRECT() { Left = 1172, Top = 106, Right = 1272, Bottom = 159 });
+                var capture = Bg.Capture(handle);
+                var r = Bg.FindPicEx(handle, capture, Resource1.答对, new XRECT() { Left = 1172, Top = 106, Right = 1272, Bottom = 159 });
                 if (!r.IsEmpty)
                 {
                     for (int i = 0; i < 5; i++)
@@ -53,46 +54,53 @@ namespace wpfclx.Task
                         Bg.LeftMouseClick(handle, new Point() { X = 1039, Y = 206 });
                         Sleep(1000);
                     }
+                    continue;
                 }
-                Sleep(1000);
-                r = Bg.FindPic(handle, Resource1.铜币购买, new XRECT() { Left = 812, Top = 574, Right = 962, Bottom = 630 });
+                r = Bg.FindPicEx(handle, capture, Resource1.铜币购买, new XRECT() { Left = 812, Top = 574, Right = 962, Bottom = 630 });
                 if (!r.IsEmpty)
                 {
                     Bg.LeftMouseClick(handle, r);
                     Sleep(500);
                     Bg.LeftMouseClick(handle, new Point() { X = 875, Y = 526 });
                     Sleep(1000);
+                    continue;
                 }
-                Sleep(1000);
+                r = Bg.FindPicEx(handle, capture, Resource1.购买, new XRECT() { Left = 620, Top = 509, Right = 700, Bottom = 550 });
+                if (!r.IsEmpty)
+                {
+                    Bg.LeftMouseClick(handle, r);
+                    Sleep(500);
+                    Bg.LeftMouseClick(handle, new Point() { X = 875, Y = 526 });
+                    Sleep(1000);
+                    Bg.LeftMouseClick(handle, new Point() { X = 148, Y = 192 });
+                    Sleep(1000);
+                    Bg.LeftMouseClick(handle, new Point() { X = 142, Y = 235 });
+                    Sleep(1000);
+                    continue;
+                }
                 r = Bg.FindPic(handle, Resource1.单人任务进行中, new XRECT() { Left = 961, Top = 357, Right = 1043, Bottom = 570 });
                 if (!r.IsEmpty)
                 {
                     Bg.LeftMouseClick(handle, r);
-                    Sleep(500);
-                }
-                Sleep(1000);
-                r = Bg.FindPic(handle, Resource1.购买, new XRECT() { Left = 620, Top = 509, Right = 700, Bottom = 550 });
-                if (!r.IsEmpty)
-                {
-                    Bg.LeftMouseClick(handle, r);
-                    Sleep(500);
-                    Bg.LeftMouseClick(handle, new Point() { X = 875, Y = 526 });
                     Sleep(1000);
+                    continue;
                 }
-                Sleep(1000);
-                r = Bg.FindPic(handle, Resource1.一键提交, new XRECT() { Left = 1050, Top = 412, Right = 1179, Bottom = 449 });
+                r = Bg.FindPicEx(handle, capture, Resource1.一键提交, new XRECT() { Left = 1050, Top = 412, Right = 1179, Bottom = 449 });
                 if (!r.IsEmpty)
                 {
                     Bg.LeftMouseClick(handle, r);
+                    Bg.SetWindowText(handle, "已提交");
                     Sleep(1000);
                     Bg.LeftMouseClick(handle, new Point() { X = 883, Y = 527 });
+                    Sleep(20000);
                     break;
                 }
                 else
                 {
                     Bg.LeftMouseClick(handle, new Point() { X = 110, Y = 155 });
                 }
-                Sleep(1000);
+                capture.Dispose();
+                Sleep(5000);
             }
         }
 

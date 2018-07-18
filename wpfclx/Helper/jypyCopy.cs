@@ -23,9 +23,5 @@ namespace wpfclx.Helper
             Thread.Sleep(1000);
         }
 
-        protected override void StartTestingCopy()
-        {
-            
-        }
     }
 }

@@ -34,12 +34,13 @@ namespace wpfclx.Task
                 Bg.SetWindowText(handle, "势力任务正在进行中...");
                 while (true)
                 {
-                    var r = Bg.FindPicFast(handle, Resource1.答对, new XRECT() { Left = 1172, Top = 106, Right = 1272, Bottom = 159 });
+                    var capture = Bg.Capture(handle);
+                    var r = Bg.FindPicEx(handle, capture, Resource1.答对, new XRECT() { Left = 1172, Top = 106, Right = 1272, Bottom = 159 });
                     if (!r.IsEmpty)
                     {
                         Bg.LeftMouseClick(handle, new Point() { X = 1039, Y = 206 });
                         Sleep(1000);
-                        r = Bg.FindPic(handle, Resource1.关系, new XRECT() { Left = 633, Top = 139, Right = 740, Bottom = 193 });
+                        r = Bg.FindPicEx(handle, capture, Resource1.关系, new XRECT() { Left = 633, Top = 139, Right = 740, Bottom = 193 });
                         if (!r.IsEmpty)
                         {
                             Bg.SetWindowText(handle,"本次势力任务已结束");
@@ -49,16 +50,16 @@ namespace wpfclx.Task
                         else
                             Bg.LeftMouseClick(handle, new Point() { X = 129, Y = 242 });
                     }
-                    Sleep(500);
 
-                    r = Bg.FindPic(handle, Resource1.关系, new XRECT() { Left = 633, Top = 139, Right = 740, Bottom = 193 });
+                    r = Bg.FindPicEx(handle, capture, Resource1.关系, new XRECT() { Left = 633, Top = 139, Right = 740, Bottom = 193 });
                     if (!r.IsEmpty)
                     {
                         Bg.SetWindowText(handle, "本次势力任务已结束");
                         Sleep(3000);
                         break;
                     }
-                    Sleep(500);
+                    capture.Dispose();
+                    Sleep(1000);
                 }
             }
         }

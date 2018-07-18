@@ -20,18 +20,15 @@ namespace wpfclx.Task
 
         public override void Start(TaskModel model)
         {
-            Bitmap capture = Bg.Capture(handle);
-            Bitmap temp=BitmapHelper.ConvertToFormat(capture, System.Drawing.Imaging.PixelFormat.Format24bppRgb);
-            capture.Dispose();
-            BitmapHelper.ColorReplace(temp,BitmapHelper.colorHx16toRGB("F0F0F0"));
-            temp.Save($"C:\\clx\\source{new Random().Next(100, 200)}.bmp");
-            //Bg.FindPicFast(handle, Resource1._5, new XRECT() { Left = 0, Top = 0, Right = 1300, Bottom = 750 }, FindDirection.LeftTopToRightDown, 0.9f, true);
-            //var r = Bg.FindPicFast(handle, Resource1._5, new XRECT() { Left = 141, Top = 121, Right = 154, Bottom = 140 }, FindDirection.LeftTopToRightDown, 0.7f);
-            //if (!r.IsEmpty)
-            //{
-            //    Bg.SetWindowText(handle, r.ToString());
-            //}
-            temp.Dispose();
+            //Bitmap capture = Bg.Capture(handle);
+            //Bitmap temp=BitmapHelper.ConvertToFormat(capture, System.Drawing.Imaging.PixelFormat.Format24bppRgb);
+            //capture.Dispose();
+            //BitmapHelper.ColorReplace(temp,BitmapHelper.colorHx16toRGB("F0F0F0"));
+            //temp.Save($"C:\\clx\\source{new Random().Next(100, 200)}.bmp");
+            var capture = Bg.Capture(handle);
+            var r = Bg.FindPicEx(handle, capture, Resource1.副本退出, new XRECT() { Left = 1150, Top = 190, Right = 1180, Bottom = 220 }, FindDirection.LeftTopToRightDown, 0.85f, true);
+            Bg.SetWindowText(handle,r.ToString());
+
             Thread.Sleep(10000);
             //Bg.ExitWindowsEx();
         }
