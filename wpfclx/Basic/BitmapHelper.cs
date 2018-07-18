@@ -99,28 +99,59 @@ namespace wpfclx
         /// </summary>
         /// <param name="source"></param>
         /// <param name="color"></param>
-        public static void ColorReplace(Bitmap source, string color)
+        public static void ColorReplace(Bitmap source, Color color)
         {
             PointBitmap bitmap = new PointBitmap(source);
             bitmap.LockBits();
-            var c = colorHx16toRGB(color.Split('-')[0]);
-            var c1 = colorHx16toRGB(color.Split('-')[1]);
             for (int i = 0; i < bitmap.Width; i++)
             {
                 for (int j = 0; j < bitmap.Height; j++)
                 {
                     var pc = bitmap.GetPixel(i, j);
-                    if (c1.R < pc.R && pc.R < c.R && c1.G < pc.G && pc.G < c.G && c1.B < pc.B && pc.B < c.B && Math.Abs(pc.R - pc.G) < 10 && Math.Abs(pc.G - pc.B) < 10)
-                    {
-                        bitmap.SetPixel(i, j, Color.FromArgb(0, 0, 0));
-                    }
-                    else
-                    {
+                    if (Math.Abs(pc.R - color.R) < 100 && Math.Abs(pc.G - color.G) < 20 && Math.Abs(pc.B - color.B) < 20)
                         bitmap.SetPixel(i, j, Color.FromArgb(255, 255, 255));
-                    }
+                    else
+                        bitmap.SetPixel(i, j, Color.FromArgb(0, 0, 0));
                 }
             }
             bitmap.UnlockBits();
+        }
+
+        /// <summary>
+        /// 增强对比度
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="color"></param>
+        public static void EnhanceContrast(Bitmap source, int degree = 50)
+        {
+            PointBitmap bitmap = new PointBitmap(source);
+            bitmap.LockBits();
+            Color curColor;
+            int grayR, grayG, grayB;
+            double Deg = (100.0 + degree) / 100.0;
+            for (int i = 0; i < bitmap.Width; i++)
+            {
+                for (int j = 0; j < bitmap.Height; j++)
+                {
+                    curColor = bitmap.GetPixel(i, j);
+                    grayR = Convert.ToInt32((((curColor.R / 255.0 - 0.5) * Deg + 0.5)) * 255);
+                    grayG = Convert.ToInt32((((curColor.G / 255.0 - 0.5) * Deg + 0.5)) * 255);
+                    grayB = Convert.ToInt32((((curColor.B / 255.0 - 0.5) * Deg + 0.5)) * 255);
+                    bitmap.SetPixel(i, j, Color.FromArgb(setGray(grayR), setGray(grayG), setGray(grayB)));
+                }
+            }
+            bitmap.UnlockBits();
+        }
+
+
+        private static int setGray(int gray)
+        {
+            if (gray < 0)
+                return 0;
+            else if (gray > 255)
+                return 255;
+            else
+                return gray;
         }
 
         #region [颜色：16进制转成RGB]

@@ -116,7 +116,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Basic\Log.cs" />
-    <Compile Include="Basic\ResourceH.cs" />
     <Compile Include="Helper\CopyBase.cs" />
     <Compile Include="Helper\mysjCopy.cs" />
     <Compile Include="Helper\xjzCopy.cs" />
@@ -162,7 +161,6 @@
     <Compile Include="Basic\AforgeHelper.cs" />
     <Compile Include="Basic\Bg.cs" />
     <Compile Include="Basic\BitmapHelper.cs" />
-    <Compile Include="Basic\LockBitmap.cs" />
     <Compile Include="Basic\PointBitmap.cs" />
     <Compile Include="Models\TaskModel.cs" />
     <Compile Include="Models\Windows\FindDirection.cs" />
@@ -381,6 +379,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\副本退出.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\4.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\5.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\楚留香字库.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

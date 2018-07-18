@@ -15,21 +15,22 @@ namespace wpfclx
     {
         //private static int deviationX = 8;//窗口左偏移量
         //private static int deviationY = 32;//窗口上偏移量
-        //private static List<FontLibrary> fonts;
+        private static List<FontLibrary> fonts;
 
-        //static Bg()
-        //{
-        //    fonts = new List<FontLibrary>();
-        //    var strList = Resource1.楚留香字库.Split((char)10);
-        //    for (int i = 0; i < strList.Length; i++)
-        //    {
-        //        FontLibrary library = new FontLibrary();
-        //        library.ByteStr = strList[i].Split('$')[0];
-        //        library.TextName = strList[i].Split('$')[1];
-        //        library.Color = strList[i].Split('$')[2];
-        //        fonts.Add(library);
-        //    }
-        //}
+        static Bg()
+        {
+            fonts = new List<FontLibrary>();
+            var strList = Resource1.楚留香字库.TrimEnd((char)10).Split((char)10);
+            for (int i = 0; i < strList.Length; i++)
+            {
+                FontLibrary library = new FontLibrary();
+                library.Byte16 = strList[i].Split('$')[0];
+                library.TextName = strList[i].Split('$')[1];
+                library.activeCount = strList[i].Split('$')[2];
+                library.rowCount = int.Parse(strList[i].Split('$')[3]);
+                fonts.Add(library);
+            }
+        }
 
         /// <summary>
         /// 鼠标左键单击
@@ -281,10 +282,15 @@ namespace wpfclx
             Bitmap source = BitmapHelper.ConvertToFormat(capture, PixelFormat.Format24bppRgb, r);
             capture.Dispose();
             Bitmap tempnew = BitmapHelper.ConvertToFormat(temp, PixelFormat.Format24bppRgb);
-            source = AforgeHelper.GrayscaleThresholdBlobsFiltering(source, 90);
-            tempnew = AforgeHelper.GrayscaleThresholdBlobsFiltering(tempnew, 90);
+            //BitmapHelper.EnhanceContrast(source);
+            //BitmapHelper.EnhanceContrast(tempnew);
+            source = AforgeHelper.GrayscaleThresholdBlobsFiltering(source,90);
+            tempnew = AforgeHelper.GrayscaleThresholdBlobsFiltering(tempnew,90);
             if (debug)
+            {
                 source.Save($"C:\\clx\\source{new Random().Next(100, 200)}.bmp");
+                tempnew.Save($"C:\\clx\\tempnew{new Random().Next(100, 200)}.bmp");
+            }
             var rect = AforgeHelper.ProcessImage(source, tempnew, findType, similarity);
             source.Dispose();
             tempnew.Dispose();
@@ -292,29 +298,24 @@ namespace wpfclx
         }
 
         /// <summary>
-        /// 区域找字 
+        /// 区域找透明文字
         /// </summary>
         /// <param name="handle"></param>
-        /// <param name="str"></param>
-        /// <param name="color"></param>
+        /// <param name="temp"></param>
         /// <param name="r"></param>
-        /// <param name="similarity"></param>
+        /// <param name="debug"></param>
         /// <returns>返回第一个找到的坐标</returns>
-        internal static Point FindStr(IntPtr handle, string str, string color, XRECT r, FindDirection findType = FindDirection.LeftTopToRightDown, float similarity = 0.9f)
+        internal static Point FindStr(IntPtr handle, string str,string color, XRECT r, FindDirection findType = FindDirection.LeftTopToRightDown, float similarity = 0.9f, bool debug = false)
         {
             Bitmap capture = Capture(handle);
+            //fonts[str].Byte16;
             Bitmap source = BitmapHelper.ConvertToFormat(capture, PixelFormat.Format24bppRgb, r);
             capture.Dispose();
-            Bitmap temp = BitmapHelper.ByteStrToBitmap(str);
-            Bitmap tempnew = BitmapHelper.ConvertToFormat(temp, PixelFormat.Format24bppRgb);
-            BitmapHelper.ColorReplace(source, color);
-            BitmapHelper.ColorReplace(tempnew, color);
-            AforgeHelper.GrayscaleThresholdBlobsFiltering(source);
-            AforgeHelper.GrayscaleThresholdBlobsFiltering(tempnew);
-            var rect = AforgeHelper.ProcessImage(source, tempnew, findType, similarity);
-            source.Dispose();
-            tempnew.Dispose();
-            return rect != null ? new Point() { X = r.Left + rect[0].Rectangle.Left, Y = r.Top + rect[0].Rectangle.Top } : new Point();
+            //Bitmap tempnew = BitmapHelper.ConvertToFormat(temp, PixelFormat.Format24bppRgb);
+            //BitmapHelper.EnhanceContrast(source);
+            //BitmapHelper.EnhanceContrast(tempnew);
+
+            return new Point();
         }
 
         /// <summary>

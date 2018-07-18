@@ -29,17 +29,13 @@ namespace wpfclx
     /// </summary>
     public partial class MainWindow : Window
     {
-        //private IntPtr handle;
-        //private Thread activeThread;
         private TaskModel model;
         private List<Thread> threads;
         private List<IntPtr> hlist;
-        //private WinIo winio;
         private string PATH = AppDomain.CurrentDomain.BaseDirectory + "res\\";//程序运行目录
         public MainWindow()
         {
             InitializeComponent();
-            //winio = new WinIo();
             hlist = new List<IntPtr>();
             //Directory.CreateDirectory(PATH);
             ////释放所有资源
@@ -80,12 +76,6 @@ namespace wpfclx
 
         private void btnBind_Click(object sender, RoutedEventArgs e)
         {
-            //var gg = WinApi.FindWindow("Notepad", null);
-            //var gi=WinApi.FindWindowEx(IntPtr.Zero, gg, "Edit", null);
-            //Bg.SetWindowText(gi, "绑定成功");
-            //Bg.KeyDown(gi, KeyCode.VK_8);
-            //Bg.LeftMouseClick(gi, new System.Drawing.Point() { X = 1, Y = 1 });
-            //return;
             //handle = WinApi.FindWindow("Messiah_Game", null);
             for (int i = 0; i < 5; i++)
             {
@@ -110,7 +100,6 @@ namespace wpfclx
                     {
                         //当前是手游模式 开始切换端游模式 并设置画质节约cpu
                         Bg.SetWindowText(handle, "检测到目前是手机模式，开始切换端游模式...");
-                        //Bg.KeyClick(handle, KeyCode.VK_ESCAPE);
                         Bg.LeftMouseClick(handle, new System.Drawing.Point() { X = 1269, Y = 207 });
                         Thread.Sleep(500);
                         System.Drawing.Point r = Bg.FindPic(handle, Resource1.设置, new XRECT() { Left = 1236, Top = 559, Right = 1294, Bottom = 706 });
@@ -140,7 +129,6 @@ namespace wpfclx
                             Thread.Sleep(500);
                             //关闭设置面板
                             Bg.LeftMouseClick(handle, new System.Drawing.Point() { X = 1152, Y = 67 });
-                            //Bg.KeyClick(handle, KeyCode.VK_ESCAPE);
                             Thread.Sleep(500);
                         }
                     }

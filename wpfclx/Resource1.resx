@@ -376,4 +376,13 @@
   <data name="麻衣圣教新秀" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\麻衣圣教新秀.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="_4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\4.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\5.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="楚留香字库" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\楚留香字库.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;gb2312</value>
+  </data>
 </root>

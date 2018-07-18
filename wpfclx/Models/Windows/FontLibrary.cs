@@ -7,13 +7,18 @@
         /// </summary>
         public string TextName { get; set; }
         /// <summary>
-        /// 文字Bitmap Byte字符串
+        /// 字体点阵16进制数据
         /// </summary>
-        public string ByteStr { get; set; }
+        public string Byte16 { get; set; }
 
         /// <summary>
-        /// 16进制颜色值
+        /// 字体点阵有效像素点数量
         /// </summary>
-        public string Color { get; set; }
+        public string activeCount { get; set; }
+
+        /// <summary>
+        /// 字体点阵有效行数
+        /// </summary>
+        public int rowCount { get; set; }
     }
 }
