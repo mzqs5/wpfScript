@@ -21,7 +21,7 @@ namespace wpfclx.Helper
             while (true)
             {
                 var capture = Bg.Capture(handle);
-                var r = Bg.FindPicEx(handle, capture, Resource1.副本结算, new XRECT() { Left = 1280, Top = 12, Right = 1320, Bottom = 66 }, FindDirection.LeftTopToRightDown, 0.85f, true);
+                var r = Bg.FindPicEx(handle, capture, Resource1.副本结算, new XRECT() { Left = 1280, Top = 12, Right = 1320, Bottom = 66 });
                 if (!r.IsEmpty)
                 {
                     Bg.LeftMouseClick(handle, r);
@@ -29,7 +29,7 @@ namespace wpfclx.Helper
                     Bg.SetWindowText(handle, $"检测到第{i}次副本结算");
                 }
 
-                r = Bg.FindPicEx(handle, capture, Resource1.副本退出, new XRECT() { Left = 1150, Top = 190, Right = 1180, Bottom = 220 }, FindDirection.LeftTopToRightDown, 0.85f, true);
+                r = Bg.FindPicEx(handle, capture, Resource1.副本退出, new XRECT() { Left = 1150, Top = 190, Right = 1180, Bottom = 220 });
                 if (!r.IsEmpty)
                 {
                     if (i >= 3)
@@ -61,7 +61,7 @@ namespace wpfclx.Helper
         {
             Bg.MouseMove(handle, new Point() { X = 260, Y = 600 }, new Point() { X = 260, Y = 400 });
             Thread.Sleep(1000);
-            var r = Bg.FindPic(handle, Resource1.薛家庄新秀, new XRECT() { Left = 143, Top = 140, Right = 374, Bottom = 635 },FindDirection.LeftTopToRightDown,0.85f,true);
+            var r = Bg.FindPic(handle, Resource1.薛家庄新秀, new XRECT() { Left = 143, Top = 140, Right = 374, Bottom = 635 });
             if (!r.IsEmpty)
             {
                 Bg.LeftMouseClick(handle, r);

@@ -20,7 +20,7 @@ namespace wpfclx.Helper
             while (true)
             {
                 var capture = Bg.Capture(handle);
-                var r = Bg.FindPicEx(handle, capture, Resource1.副本退出, new XRECT() { Left = 1150, Top = 190, Right = 1180, Bottom = 220 }, FindDirection.LeftTopToRightDown, 0.85f, true);
+                var r = Bg.FindPicEx(handle, capture, Resource1.副本退出, new XRECT() { Left = 1150, Top = 190, Right = 1180, Bottom = 220 });
                 if (!r.IsEmpty)
                     break;
                 capture.Dispose();
@@ -48,7 +48,7 @@ namespace wpfclx.Helper
             var isok = false;
             for (int i = 0; i < 10; i++)
             {
-                var r = Bg.FindPic(handle, Resource1.副本中, new XRECT() { Left = 1280, Top = 180, Right = 1310, Bottom = 220 }, FindDirection.LeftTopToRightDown, 0.85f);
+                var r = Bg.FindPic(handle, Resource1.副本中, new XRECT() { Left = 1280, Top = 180, Right = 1310, Bottom = 220 });
                 if (!r.IsEmpty)
                 {
                     isok = true;
