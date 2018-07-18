@@ -413,6 +413,36 @@ namespace wpfclx {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap 悬赏_选中_奕中幻境 {
+            get {
+                object obj = ResourceManager.GetObject("悬赏_选中_奕中幻境", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap 悬赏_选中_麻衣圣教 {
+            get {
+                object obj = ResourceManager.GetObject("悬赏_选中_麻衣圣教", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap 悬赏_领取任务 {
+            get {
+                object obj = ResourceManager.GetObject("悬赏_领取任务", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap 手帕 {
             get {
                 object obj = ResourceManager.GetObject("手帕", resourceCulture);

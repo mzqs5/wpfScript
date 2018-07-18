@@ -99,20 +99,6 @@ namespace wpfclx.Task
             Bg.SetWindowText(handle, "检查是否在队伍中...");
             Bg.LeftMouseClick(handle, new Point() { X = 13, Y = 322 });
             Sleep(1000);
-            var r = Bg.FindPic(handle, Resource1.退出队伍, new XRECT() { Left = 1048, Top = 566, Right = 1203, Bottom = 631 });
-            if (!r.IsEmpty)
-            {
-                Bg.SetWindowText(handle, "退出队伍...");
-                Bg.LeftMouseClick(handle, r);
-                Sleep(500);
-            }
-            Bg.SetWindowText(handle, "关闭队伍面板...");
-            Bg.LeftMouseClick(handle, new Point() { X = 1154, Y = 66 });
-            Sleep(500);
-        }
-
-        public virtual void ConvenientTeam() {
-            Bg.SetWindowText(handle, "开始便捷组队...");
             Bg.LeftMouseClick(handle, new Point() { X = 13, Y = 322 });
             Sleep(1000);
             var r = Bg.FindPic(handle, Resource1.退出队伍, new XRECT() { Left = 1048, Top = 566, Right = 1203, Bottom = 631 });
@@ -120,10 +106,30 @@ namespace wpfclx.Task
             {
                 Bg.SetWindowText(handle, "退出队伍...");
                 Bg.LeftMouseClick(handle, r);
-                Sleep(500);
+                Sleep(1000);
             }
-            Bg.LeftMouseClick(handle,new Point() { X= 1117 ,Y= 604 });
-            Sleep(500);
+            Bg.SetWindowText(handle, "关闭队伍面板...");
+            Bg.LeftMouseClick(handle, new Point() { X = 1154, Y = 66 });
+            Sleep(1000);
+        }
+
+        public virtual void ConvenientTeam() {
+            Bg.SetWindowText(handle, "开始便捷组队...");
+            Bg.LeftMouseClick(handle, new Point() { X = 13, Y = 322 });
+            Sleep(1000);
+            Bg.LeftMouseClick(handle, new Point() { X = 13, Y = 322 });
+            Sleep(1000);
+            var r = Bg.FindPic(handle, Resource1.退出队伍, new XRECT() { Left = 1048, Top = 566, Right = 1203, Bottom = 631 });
+            if (!r.IsEmpty)
+            {
+                Bg.SetWindowText(handle, "退出队伍...");
+                Bg.LeftMouseClick(handle, r);
+                Sleep(1000);
+                Bg.LeftMouseClick(handle, new Point() { X = 881, Y = 522 });
+                Sleep(1000);
+            }
+            Bg.LeftMouseClick(handle, new Point() { X = 1117, Y = 604 });
+            Sleep(1000);
         }
 
         protected bool IsGetInto()

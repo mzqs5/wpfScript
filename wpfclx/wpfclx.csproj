@@ -389,5 +389,14 @@
   <ItemGroup>
     <None Include="Resources\楚留香字库.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\悬赏_选中_麻衣圣教.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\悬赏_选中_奕中幻境.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\悬赏_领取任务.bmp" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

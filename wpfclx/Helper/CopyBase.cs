@@ -38,7 +38,7 @@ namespace wpfclx.Helper
             Bg.SetWindowText(handle, "检测到已进入副本...");
             Thread.Sleep(10000);
             StartTestingCopy();
-            Bg.SetWindowText(handle, "副本已结束...");
+            Bg.SetWindowText(handle, "副本已结束，等待最后一次boss奖励自动结算...");
             GC.Collect();
             Thread.Sleep(300000);
         }

@@ -42,24 +42,30 @@ namespace wpfclx.Task
                     Bg.SetWindowText(handle, "匹配成功");
                     Thread.Sleep(20000);
 
-                    zd();
+                    while (true)
+                    {
+                        var r = Bg.FindPic(handle, Resource1.对话中, new XRECT() { Left = 40, Top = 25, Right = 115, Bottom = 100 });
+                        if (!r.IsEmpty)
+                            break;
+                        Thread.Sleep(5000);
+                    }
 
-                    Bg.SetWindowText(handle, "正在结算");
+                    Bg.SetWindowText(handle, "正在结算...");
                     Thread.Sleep(20000);
                     
-                    Bg.SetWindowText(handle, "开始检查论剑面板是否打开...");
+                    Bg.SetWindowText(handle, "开始检查战场面板是否打开...");
                     for (int j = 0; j < 5; j++)
                     {
                         var r = Bg.FindPic(handle, Resource1.关闭设置, new XRECT() { Left = 1127, Top = 48, Right = 1185, Bottom = 100 });
                         if (!r.IsEmpty)
                         {
-                            Bg.SetWindowText(handle, "关闭论剑面板...");
+                            Bg.SetWindowText(handle, "关闭战场面板...");
                             Bg.LeftMouseClick(handle, r);
                             break;
                         }
                         Thread.Sleep(2000);
                     }
-                    Bg.SetWindowText(handle, "开始下一次论剑");
+                    Bg.SetWindowText(handle, "开始下一次战场");
                 }
             }
         }
