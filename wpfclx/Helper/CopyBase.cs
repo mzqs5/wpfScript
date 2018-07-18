@@ -40,7 +40,7 @@ namespace wpfclx.Helper
             StartTestingCopy();
             Bg.SetWindowText(handle, "副本已结束...");
             GC.Collect();
-            Thread.Sleep(3000);
+            Thread.Sleep(300000);
         }
 
         protected void CopyTesting()
