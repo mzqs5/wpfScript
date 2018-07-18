@@ -192,7 +192,7 @@ namespace wpfclx
 
         internal static void ExitWindowsEx()
         {
-            WinApi.ExitWindowsEx(0x00000001, 0);
+            WinApi.ExitWindowsEx(0, 0);
         }
         /// <summary>
         /// 区域找图
