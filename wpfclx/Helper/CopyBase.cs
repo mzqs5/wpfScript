@@ -96,6 +96,8 @@ namespace wpfclx.Helper
             Bg.SetWindowText(handle, "开始便捷组队...");
             Bg.LeftMouseClick(handle, new Point() { X = 13, Y = 322 });
             Thread.Sleep(1000);
+            Bg.LeftMouseClick(handle, new Point() { X = 13, Y = 322 });
+            Thread.Sleep(1000);
             var r = Bg.FindPic(handle, Resource1.退出队伍, new XRECT() { Left = 1048, Top = 566, Right = 1203, Bottom = 631 });
             if (!r.IsEmpty)
             {
