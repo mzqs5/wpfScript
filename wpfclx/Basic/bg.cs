@@ -81,7 +81,7 @@ namespace wpfclx
         internal static void MouseMove(IntPtr handle, Point r, WPARAM wparam = WPARAM.MK_Normal)
         {
             WinApi.PostMessage(handle, (uint)MsgType.WM_MOUSEMOVE, (int)wparam, r.X + (r.Y << 16));
-            Thread.Sleep(new Random().Next(10, 20));
+            Thread.Sleep(new Random().Next(5, 10));
         }
 
         /// <summary>
