@@ -21,7 +21,7 @@ namespace wpfclx.Helper
             while (true)
             {
                 var capture = Bg.Capture(handle);
-                var r = Bg.FindPicEx(handle, capture, Resource1.副本退出, new XRECT() { Left = 1150, Top = 190, Right = 1180, Bottom = 220 });
+                var r = Bg.FindPicEx(handle, capture, Resource1.副本退出, new XRECT() { Left = 1150, Top = 190, Right = 1180, Bottom = 220 }, FindDirection.LeftTopToRightDown, 0.7f);
                 if (!r.IsEmpty)
                     break;
                 capture.Dispose();
