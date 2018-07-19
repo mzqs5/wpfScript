@@ -19,6 +19,7 @@ namespace wpfclx.Task
         {
         }
 
+        private int isok { get; set; }
         private string taskName { get; set; }
         public override void Start(TaskModel model)
         {
@@ -32,6 +33,12 @@ namespace wpfclx.Task
                 {
                     StartRob();
                 }
+                if (isok == 2)
+                {
+                    Bg.SetWindowText(handle,"悬赏任务次数已达上限");
+                    Sleep(3000);
+                    break;
+                }
                 StartMake();
             }
         }
@@ -42,10 +49,14 @@ namespace wpfclx.Task
         private void StartMake()
         {
             //关闭悬赏界面
-
+            Bg.LeftMouseClick(handle, new Point() { X = 1156, Y = 70 });
+            Sleep(1000);
+            Bg.LeftMouseClick(handle, new Point() { X = 1261, Y = 51 });
+            Sleep(1000);
             //开始做悬赏任务
             var copy = Activator.CreateInstance(Assembly.GetExecutingAssembly().GetTypes().Where(o => o.Name == taskName).FirstOrDefault(), handle) as CopyBase;
             copy.Start();
+            copy = null;
         }
 
         /// <summary>
@@ -61,7 +72,8 @@ namespace wpfclx.Task
                 var capture = Bg.Capture(handle);
                 List<xsTask> list = new List<xsTask>();
                 list.Add(new xsTask() { bitmap = Resource1.悬赏_选中_奕中幻境, taskName = "yzhjCopy" });
-
+                list.Add(new xsTask() { bitmap = Resource1.悬赏_选中_麻衣圣教, taskName = "mysjCopy" });
+                isok = 0;
                 foreach (var item in list)
                 {
                     var r = Bg.FindPicEx(handle, capture, item.bitmap, new XRECT() { Left = 140, Top = 250, Right = 330, Bottom = 420 });
@@ -78,7 +90,9 @@ namespace wpfclx.Task
                         if (r.IsEmpty)
                         {
                             taskName = item.taskName;
-                            Bg.SetWindowText(handle, "领取悬赏任务奕中幻境成功，开始前往悬赏");
+                            Bg.SetWindowText(handle, "领取悬赏任务成功，开始前往悬赏");
+                            isok = 1;
+                            break;
                         }
                         else
                         {
@@ -88,27 +102,12 @@ namespace wpfclx.Task
                     }
                 }
                 capture.Dispose();
+                if (isok == 1 || isok == 2)
+                    break;
+
                 Sleep(500);
             }
         }
-
-        /// <summary>
-        /// 领取悬赏任务
-        /// </summary>
-        private bool apply()
-        {
-            Bg.LeftMouseClick(handle, new Point() { X = 1030, Y = 600 });
-            Sleep(500);
-            Bg.LeftMouseClick(handle, new Point() { X = 880, Y = 520 });
-            Sleep(500);
-            //检测是否抢领成功
-            var r = Bg.FindPic(handle, Resource1.悬赏_选中_奕中幻境, new XRECT() { Left = 140, Top = 250, Right = 330, Bottom = 420 });
-            if (!r.IsEmpty)
-                return true;
-            else
-                return false;
-        }
-
         public class xsTask
         {
             public Bitmap bitmap { get; set; }

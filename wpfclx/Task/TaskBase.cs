@@ -32,7 +32,7 @@ namespace wpfclx.Task
 
         public virtual bool OpenMall(Bitmap temp)
         {
-            var r = Bg.FindPic(handle, temp, new XRECT() { Left = 0, Top = 0, Right = 560, Bottom = 80 });
+            var r = Bg.FindPic(handle, temp, new XRECT() { Left = 0, Top = 0, Right = 560, Bottom = 80 }, FindDirection.LeftTopToRightDown, 0.9f);
             if (r.IsEmpty)
             {
                 Bg.LeftMouseClick(handle, new Point() { X = 20, Y = 16 });

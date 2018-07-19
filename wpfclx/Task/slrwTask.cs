@@ -35,7 +35,14 @@ namespace wpfclx.Task
                 while (true)
                 {
                     var capture = Bg.Capture(handle);
-                    var r = Bg.FindPicEx(handle, capture, Resource1.答对, new XRECT() { Left = 1172, Top = 106, Right = 1272, Bottom = 159 });
+                    var r = Bg.FindPicEx(handle, capture, Resource1.关系, new XRECT() { Left = 633, Top = 139, Right = 740, Bottom = 193 });
+                    if (!r.IsEmpty)
+                    {
+                        Bg.SetWindowText(handle, "本次势力任务已结束");
+                        Sleep(3000);
+                        break;
+                    }
+                    r = Bg.FindPicEx(handle, capture, Resource1.答对, new XRECT() { Left = 1172, Top = 106, Right = 1272, Bottom = 159 });
                     if (!r.IsEmpty)
                     {
                         Bg.LeftMouseClick(handle, new Point() { X = 1039, Y = 206 });
@@ -43,23 +50,15 @@ namespace wpfclx.Task
                         r = Bg.FindPicEx(handle, capture, Resource1.关系, new XRECT() { Left = 633, Top = 139, Right = 740, Bottom = 193 });
                         if (!r.IsEmpty)
                         {
-                            Bg.SetWindowText(handle,"本次势力任务已结束");
+                            Bg.SetWindowText(handle, "本次势力任务已结束");
                             Sleep(3000);
                             break;
                         }
                         else
                             Bg.LeftMouseClick(handle, new Point() { X = 129, Y = 242 });
                     }
-
-                    r = Bg.FindPicEx(handle, capture, Resource1.关系, new XRECT() { Left = 633, Top = 139, Right = 740, Bottom = 193 });
-                    if (!r.IsEmpty)
-                    {
-                        Bg.SetWindowText(handle, "本次势力任务已结束");
-                        Sleep(3000);
-                        break;
-                    }
                     capture.Dispose();
-                    Sleep(1000);
+                    Sleep(500);
                 }
             }
         }

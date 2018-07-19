@@ -17,6 +17,7 @@ namespace wpfclx.Helper
         protected IntPtr handle { get; private set; }
         protected abstract void OrganizeTeam();
         protected virtual void StartTestingCopy() {
+            Thread.Sleep(30000);
             while (true)
             {
                 var capture = Bg.Capture(handle);
@@ -24,8 +25,9 @@ namespace wpfclx.Helper
                 if (!r.IsEmpty)
                     break;
                 capture.Dispose();
-                Thread.Sleep(5000);
+                Thread.Sleep(1000);
             }
+            Thread.Sleep(10000);
         }
 
 
@@ -36,11 +38,8 @@ namespace wpfclx.Helper
             IsGetInto();//组队监控
             CopyTesting();//检测是否进入副本
             Bg.SetWindowText(handle, "检测到已进入副本...");
-            Thread.Sleep(10000);
             StartTestingCopy();
-            Bg.SetWindowText(handle, "副本已结束，等待最后一次boss奖励自动结算...");
             GC.Collect();
-            Thread.Sleep(300000);
         }
 
         protected void CopyTesting()
@@ -70,9 +69,9 @@ namespace wpfclx.Helper
         {
             Bg.LeftMouseClick(handle, new Point() { X = 942, Y = 603 });
             Bg.SetWindowText(handle, "正在自动匹配...");
-            Thread.Sleep(1000);
             for (int i = 0; i < 10; i++)
             {
+                Thread.Sleep(1000);
                 var r = Bg.FindPic(handle, Resource1.跟随确认, new XRECT() { Left = 596, Top = 236, Right = 735, Bottom = 276 });
                 if (!r.IsEmpty)
                 {
@@ -81,7 +80,6 @@ namespace wpfclx.Helper
                     Thread.Sleep(10000);
                     return true;
                 }
-                Thread.Sleep(1000);
             }
             Bg.SetWindowText(handle, "取消匹配...");
             Bg.LeftMouseClick(handle, new Point() { X = 942, Y = 603 });

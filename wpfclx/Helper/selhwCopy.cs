@@ -22,6 +22,7 @@ namespace wpfclx.Helper
         }
         protected override void StartTestingCopy()
         {
+            Thread.Sleep(10000);
             var i = 0;
             while (true)
             {
@@ -50,8 +51,10 @@ namespace wpfclx.Helper
                     }
                 }
                 capture.Dispose();
-                Thread.Sleep(5000);
+                Thread.Sleep(1000);
             }
+            Bg.SetWindowText(handle, "副本已结束，等待最后一次boss奖励自动结算...");
+            Thread.Sleep(300000);
         }
     }
 }
