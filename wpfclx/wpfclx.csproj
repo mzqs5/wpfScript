@@ -407,5 +407,23 @@
   <ItemGroup>
     <None Include="Resources\前往悬赏.bmp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\悬赏_选中_薛家庄.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\悬赏_奕中幻境.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\悬赏_聚义平冤.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\悬赏_麻衣圣教.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\悬赏_薛家庄.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\悬赏_选中_聚义平冤.bmp" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

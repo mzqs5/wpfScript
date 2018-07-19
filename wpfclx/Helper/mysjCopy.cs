@@ -28,6 +28,10 @@ namespace wpfclx.Helper
                 {
                     Bg.LeftMouseClick(handle, r);
                     i++;
+                    if (i >= 3) {
+                        Bg.SetWindowText(handle, $"检测到副本结算已满足条件，副本完成。");
+                        break;
+                    }
                     Bg.SetWindowText(handle, $"检测到第{i}次副本结算");
                     Thread.Sleep(3000);
                     continue;
@@ -66,9 +70,10 @@ namespace wpfclx.Helper
                     }
                 }
                 capture.Dispose();
-                Thread.Sleep(1000);
+                Thread.Sleep(3000);
             }
             Bg.SetWindowText(handle, "副本已结束，等待最后一次boss奖励自动结算...");
+            MonitorUse();
             Thread.Sleep(300000);
         }
 

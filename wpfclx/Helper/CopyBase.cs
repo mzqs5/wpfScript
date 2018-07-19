@@ -28,7 +28,29 @@ namespace wpfclx.Helper
                 Thread.Sleep(1000);
             }
             Bg.SetWindowText(handle,"检测到副本退出");
+            MonitorUse();
             Thread.Sleep(10000);
+        }
+
+        /// <summary>
+        /// 监控使用物品 饮用 食用 学习
+        /// </summary>
+        protected virtual void MonitorUse()
+        {
+            var r = Bg.FindPic(handle, Resource1.物品, new XRECT() { Left = 900, Top = 350, Right = 1200, Bottom = 580 });
+            if (!r.IsEmpty)
+            {
+                r.X -= 20;
+                r.Y -= 20;
+                Bg.LeftMouseClick(handle, r);
+                Thread.Sleep(1000);
+                var rb = Bg.FindPic(handle, Resource1.确定, new XRECT() { Left = 800, Top = 480, Right = 980, Bottom = 600 });
+                if (!rb.IsEmpty)
+                {
+                    Bg.LeftMouseClick(handle, rb);
+                    Thread.Sleep(200);
+                }
+            }
         }
 
 

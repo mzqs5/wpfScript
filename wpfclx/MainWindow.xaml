@@ -12,23 +12,23 @@
         <Label Content="已选任务" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="140,0,0,0" RenderTransformOrigin="0.707,0.56"/>
         <ListBox Name="alltask" HorizontalAlignment="Left" Height="281" VerticalAlignment="Top" Width="100" Margin="10,27,0,0">
             <CheckBox Name="mryg" Content="每日一卦" Click="alltask_Checked"/>
+            <CheckBox x:Name="ky" Content="课业" Click="alltask_Checked"/>
+            <CheckBox x:Name="bprw" Content="帮派任务" Click="alltask_Checked"/>
+            <CheckBox x:Name="slrw" Content="势力任务" Click="alltask_Checked"/>
+            <CheckBox x:Name="jhpm" Content="江湖飘渺" Click="alltask_Checked"/>
+            <CheckBox x:Name="jhjs" Content="江湖纪事" Click="alltask_Checked"/>
+            <CheckBox x:Name="wltf" Content="万里听风" Click="alltask_Checked"/>
+            <CheckBox x:Name="jyhc" Content="佳肴荟萃" Click="alltask_Checked"/>
+            <CheckBox x:Name="yzhj" Content="弈中幻境" Click="alltask_Checked"/>
+            <CheckBox x:Name="jypy" Content="聚义平冤" Click="alltask_Checked"/>
+            <CheckBox x:Name="szhw" Content="山珍海味" Click="alltask_Checked"/>
+            <CheckBox x:Name="jhxs" Content="江湖行商" Click="alltask_Checked"/>
+            <CheckBox x:Name="xsrw" Content="悬赏任务" Click="alltask_Checked"/>
+            <CheckBox x:Name="bbxs" Content="白榜悬赏" Click="alltask_Checked"/>
+            <CheckBox x:Name="hdjh" Content="行当绝活" Click="alltask_Checked"/>
+            <CheckBox x:Name="mrfl" Content="每日福利" Click="alltask_Checked"/>
             <CheckBox Name="btqg" Content="摆摊抢购" Click="alltask_Checked"/>
             <CheckBox Name="jsqg" Content="集市抢购" Click="alltask_Checked"/>
-            <CheckBox Name="mrfl" Content="每日福利" Click="alltask_Checked"/>
-            <CheckBox Name="hdjh" Content="行当绝活" Click="alltask_Checked"/>
-            <CheckBox Name="ky" Content="课业" Click="alltask_Checked"/>
-            <CheckBox Name="bprw" Content="帮派任务" Click="alltask_Checked"/>
-            <CheckBox Name="slrw" Content="势力任务" Click="alltask_Checked"/>
-            <CheckBox Name="jhpm" Content="江湖飘渺" Click="alltask_Checked"/>
-            <CheckBox Name="jhjs" Content="江湖纪事" Click="alltask_Checked"/>
-            <CheckBox Name="wltf" Content="万里听风" Click="alltask_Checked"/>
-            <CheckBox Name="jhxs" Content="江湖行商" Click="alltask_Checked"/>
-            <CheckBox Name="jyhc" Content="佳肴荟萃" Click="alltask_Checked"/>
-            <CheckBox Name="yzhj" Content="弈中幻境" Click="alltask_Checked"/>
-            <CheckBox Name="szhw" Content="山珍海味" Click="alltask_Checked"/>
-            <CheckBox Name="jypy" Content="聚义平冤" Click="alltask_Checked"/>
-            <CheckBox Name="bbxs" Content="白榜悬赏" Click="alltask_Checked"/>
-            <CheckBox Name="xsrw" Content="悬赏任务" Click="alltask_Checked"/>
             <CheckBox Name="sxyz" Content="刷侠义值" Click="alltask_Checked"/>
             <CheckBox Name="hslj" Content="华山论剑" Click="alltask_Checked"/>
             <CheckBox Name="ljmt" Content="论剑秒退" Click="alltask_Checked"/>
@@ -46,9 +46,11 @@
         <Button Content="开始任务" HorizontalAlignment="Left" Height="23" VerticalAlignment="Top" Width="51" Margin="300,285,0,0" Name="btnStart" RenderTransformOrigin="-0.745,0.478" Click="btnStart_Click" />
         <Label Content="悬赏设置" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="259,0,0,0"/>
         <ListBox HorizontalAlignment="Left" Height="63" VerticalAlignment="Top" Width="95" Margin="240,25,0,0">
-            <CheckBox Name="xsselhw" Content="十二连环坞" IsChecked="True"/>
-            <CheckBox Name="xsxjz" Content="薛家庄" IsChecked="True"/>
-            <CheckBox Name="xsmysj" Content="麻衣圣教"/>
+            <CheckBox Name="xsjypy" Content="聚义平冤" IsChecked="True"/>
+            <CheckBox Name="xsyzhj" Content="奕中幻境" IsChecked="True"/>
+            <CheckBox x:Name="xsselhw" Content="十二连环坞" IsChecked="True"/>
+            <CheckBox x:Name="xsxjz" Content="薛家庄" IsChecked="True"/>
+            <CheckBox x:Name="xsmysj" Content="麻衣圣教"/>
         </ListBox>
         <Label Content="江湖纪事" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="360,0,0,0" RenderTransformOrigin="-0.138,0.44"/>
         <ListBox HorizontalAlignment="Left" Height="63" VerticalAlignment="Top" Width="95" Margin="340,25,0,0">

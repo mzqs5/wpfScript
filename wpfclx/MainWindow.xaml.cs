@@ -177,6 +177,8 @@ namespace wpfclx
                 model.cjCount = Convert.ToInt32(cjCount.Text);
                 model.ljCount = Convert.ToInt32(ljCount.Text);
                 model.zcCount = Convert.ToInt32(zcCount.Text);
+                model.xsjypy = xsjypy.IsChecked.HasValue ? xsjypy.IsChecked.Value : false;
+                model.xsyzhj = xsyzhj.IsChecked.HasValue ? xsyzhj.IsChecked.Value : false;
                 model.xsselhw = xsselhw.IsChecked.HasValue ? xsselhw.IsChecked.Value : false;
                 model.xsxjz = xsxjz.IsChecked.HasValue ? xsxjz.IsChecked.Value : false;
                 model.xsmysj = xsmysj.IsChecked.HasValue ? xsmysj.IsChecked.Value : false;
