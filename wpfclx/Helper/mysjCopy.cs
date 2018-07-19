@@ -14,6 +14,7 @@ namespace wpfclx.Helper
         {
 
         }
+        private int count { get; set; }
 
         protected override void StartTestingCopy()
         {
@@ -35,9 +36,17 @@ namespace wpfclx.Helper
                 r = Bg.FindPicEx(handle, capture, Resource1.就近复活, new XRECT() { Left = 988, Top = 563, Right = 1220, Bottom = 680 });
                 if (!r.IsEmpty)
                 {
+                    count++;
                     Bg.LeftMouseClick(handle, r);
+                    if (count > 3)
+                    {
+                        Bg.SetWindowText(handle, $"复活次数过多，重新组队");
+                        Thread.Sleep(1000);
+                        Start();
+                        return;
+                    }
                     Bg.SetWindowText(handle, $"检测到死亡，就近复活");
-                    Thread.Sleep(10000);
+                    Thread.Sleep(5000);
                     continue;
                 }
 
