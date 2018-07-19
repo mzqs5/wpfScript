@@ -29,6 +29,7 @@ namespace wpfclx.Task
                 Bg.LeftMouseClick(handle, new Point() { X = 235, Y = 260 });
                 Thread.Sleep(1000);
                 Bg.SetWindowText(handle, "成功打开抢购界面，开始监控...");
+                int quantity = 0;
                 while (true)
                 {
                     Bg.LeftMouseClick(handle, new Point() { X = 235, Y = 260 });
@@ -36,7 +37,6 @@ namespace wpfclx.Task
                     var r = Bg.FindPic(handle, Resource1.在售, new XRECT() { Left = 450, Top = 200, Right = 950, Bottom = 580 }, FindDirection.LeftTopToRightDown, 0.95f);
                     if (!r.IsEmpty)
                     {
-                        Bg.SetWindowText(handle, "检测到关注物品上架，开始抢购...");
                         Bg.LeftMouseClick(handle, r);
                         Thread.Sleep(100);
                         Bg.LeftMouseClick(handle, new Point() { X = 543, Y = 271 });
@@ -57,8 +57,10 @@ namespace wpfclx.Task
                             Bg.SetWindowText(handle, "余额不足，退出抢购...");
                             break;
                         }
+                        quantity++;
                     }
-                    Thread.Sleep(300);
+                    Thread.Sleep(200);
+                    Bg.SetWindowText(handle, $"已抢购{quantity}次...");
                 }
             }
         }
