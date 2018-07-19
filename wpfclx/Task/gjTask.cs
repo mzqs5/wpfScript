@@ -33,11 +33,5 @@ namespace wpfclx.Task
             Thread.Sleep(10000);
             //Bg.ExitWindowsEx();
         }
-        public class xsTask
-        {
-            public Bitmap bitmap { get; set; }
-
-            public string taskName { get; set; }
-        }
     }
 }
