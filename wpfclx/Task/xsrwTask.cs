@@ -21,14 +21,15 @@ namespace wpfclx.Task
         private List<xsTask> list;
         private int isok { get; set; }
         private string taskName { get; set; }
+        private int count { get; set; }
         public override void Start(TaskModel model)
         {
             list = new List<xsTask>();
 
             if (model.xsselhw)
-                list.Add(new xsTask() { bitmap = Resource1.悬赏_选中_十二连环坞, taskName = "mysjCopy" });
+                list.Add(new xsTask() { bitmap = Resource1.悬赏_选中_十二连环坞, taskName = "selhwCopy" });
             //if (model.xsxjz)
-            //    list.Add(new xsTask() { bitmap = Resource1.悬赏_选中_薛家庄, taskName = "xsxjz" });
+            //    list.Add(new xsTask() { bitmap = Resource1.悬赏_选中_薛家庄, taskName = "xjzCopy" });
             if (model.xsmysj)
                 list.Add(new xsTask() { bitmap = Resource1.悬赏_选中_麻衣圣教, taskName = "mysjCopy" });
             //list.Add(new xsTask() { bitmap = Resource1.悬赏_选中_奕中幻境, taskName = "yzhjCopy" });
@@ -39,24 +40,19 @@ namespace wpfclx.Task
                 Bg.LeftMouseClick(handle, new Point() { X = 930, Y = 55 });
                 Sleep(1000);
                 var capture = Bg.Capture(handle);
-                var r = Bg.FindPicEx(handle, capture, Resource1.悬赏_领取任务, new XRECT() { Left = 960, Top = 580, Right = 1048, Bottom = 620 }, 0.95f);
-                var r1 = Bg.FindPicEx(handle, capture, Resource1.悬赏_暂无悬赏任务, new XRECT() { Left = 940, Top = 360, Right = 1010, Bottom = 400 }, 0.95f);
-                if (!r.IsEmpty || !r1.IsEmpty)
+                var r = Bg.FindPicEx(handle, capture, Resource1.前往悬赏, new XRECT() { Left = 960, Top = 580, Right = 1048, Bottom = 620 }, 0.95f);
+                if (r.IsEmpty)
                 {
                     StartRob();
                 }
-                if (isok == 2)
+                if (count >= 10)
                 {
                     Bg.SetWindowText(handle, "悬赏任务次数已达上限");
                     Sleep(3000);
                     break;
                 }
-                //找到了前往悬赏
-                r = Bg.FindPic(handle, Resource1.悬赏_领取任务, new XRECT() { Left = 960, Top = 580, Right = 1048, Bottom = 620 }, 0.95f);
-                if (r.IsEmpty)
-                {
-                    StartMake();
-                }
+                StartMake();
+                count++;
             }
         }
         /// <summary>
@@ -86,7 +82,7 @@ namespace wpfclx.Task
             while (true)
             {
                 Bg.LeftMouseClick(handle, new Point() { X = 170, Y = 600 });
-                Sleep(400);
+                Sleep(300);
                 var capture = Bg.Capture(handle);
                 isok = 0;
                 foreach (var item in list)
@@ -95,14 +91,15 @@ namespace wpfclx.Task
                     if (!r.IsEmpty)
                     {
                         Bg.LeftMouseClick(handle, r);
-                        Sleep(500);
+                        Sleep(200);
                         Bg.LeftMouseClick(handle, new Point() { X = 1030, Y = 600 });
-                        Sleep(500);
+                        Sleep(200);
                         Bg.LeftMouseClick(handle, new Point() { X = 880, Y = 520 });
-                        Sleep(500);
+                        Sleep(300);
                         //检测是否抢领成功
-                        r = Bg.FindPic(handle, Resource1.悬赏_领取任务, new XRECT() { Left = 960, Top = 580, Right = 1048, Bottom = 620 }, 0.95f);
-                        if (r.IsEmpty)
+                        r = Bg.FindPic(handle, Resource1.前往悬赏, new XRECT() { Left = 960, Top = 580, Right = 1048, Bottom = 620 }, 0.95f);
+                        //r = Bg.FindPic(handle, Resource1.悬赏_领取任务, new XRECT() { Left = 960, Top = 580, Right = 1048, Bottom = 620 }, 0.95f);
+                        if (!r.IsEmpty)
                         {
                             taskName = item.taskName;
                             Bg.SetWindowText(handle, "领取悬赏任务成功，开始前往悬赏");
@@ -113,6 +110,7 @@ namespace wpfclx.Task
                         {
                             //两种情况 一种没抢到 继续抢 一种悬赏任务次数已上限 退出悬赏任务
 
+
                         }
                     }
                 }
@@ -120,7 +118,7 @@ namespace wpfclx.Task
                 if (isok == 1 || isok == 2)
                     break;
 
-                Sleep(300);
+                Sleep(200);
             }
         }
         public class xsTask

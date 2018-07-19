@@ -404,5 +404,8 @@
   <ItemGroup>
     <None Include="Resources\悬赏_选中_十二连环坞.bmp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\前往悬赏.bmp" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

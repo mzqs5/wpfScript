@@ -33,6 +33,17 @@ namespace wpfclx.Helper
                     Bg.LeftMouseClick(handle, r);
                     i++;
                     Bg.SetWindowText(handle, $"检测到第{i}次副本结算");
+                    Thread.Sleep(3000);
+                    continue;
+                }
+
+                r = Bg.FindPicEx(handle, capture, Resource1.就近复活, new XRECT() { Left = 988, Top = 563, Right = 1220, Bottom = 680 });
+                if (!r.IsEmpty)
+                {
+                    Bg.LeftMouseClick(handle, r);
+                    Bg.SetWindowText(handle, $"检测到死亡，就近复活");
+                    Thread.Sleep(10000);
+                    continue;
                 }
 
                 r = Bg.FindPicEx(handle, capture, Resource1.副本退出, new XRECT() { Left = 1150, Top = 190, Right = 1180, Bottom = 220 });
