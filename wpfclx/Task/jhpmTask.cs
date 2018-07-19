@@ -28,7 +28,7 @@ namespace wpfclx.Task
             Sleep(15000);
             while (true)
             {
-                var r = Bg.FindPic(handle, Resource1.前去打探, new XRECT() { Left = 1150, Top = 455, Right = 1221, Bottom = 490 }, FindDirection.LeftTopToRightDown, 0.8f);
+                var r = Bg.FindPic(handle, Resource1.前去打探, new XRECT() { Left = 1150, Top = 455, Right = 1221, Bottom = 490 }, 0.8f, FindDirection.LeftTopToRightDown);
                 if (!r.IsEmpty)
                 {
                     Bg.SetWindowText(handle, "前去打探...");
@@ -38,7 +38,7 @@ namespace wpfclx.Task
                     Sleep(1000);
                     Bg.MouseMove(handle, new Point() { X = 950, Y = 510 }, new Point() { X = 950, Y = 250 });
                     Sleep(3000);
-                    r = Bg.FindPic(handle, Resource1.前往, new XRECT() { Left = 1037, Top = 173, Right = 1158, Bottom = 617 }, FindDirection.RightDownToLeftTop);
+                    r = Bg.FindPic(handle, Resource1.前往, new XRECT() { Left = 1037, Top = 173, Right = 1158, Bottom = 617 }, findType: FindDirection.RightDownToLeftTop);
                     if (!r.IsEmpty)
                     {
                         Bg.LeftMouseClick(handle, r);
@@ -63,7 +63,7 @@ namespace wpfclx.Task
             }
             while (true)
             {
-                var r = Bg.FindPic(handle, Resource1.前往, new XRECT() { Left = 1037, Top = 173, Right = 1158, Bottom = 617 }, FindDirection.RightDownToLeftTop);
+                var r = Bg.FindPic(handle, Resource1.前往, new XRECT() { Left = 1037, Top = 173, Right = 1158, Bottom = 617 }, findType: FindDirection.RightDownToLeftTop);
                 if (!r.IsEmpty)
                 {
                     Bg.SetWindowText(handle, "第一次江湖飘渺已结束，等待退出副本...");

@@ -203,7 +203,7 @@ namespace wpfclx
         /// <param name="r"></param>
         /// <param name="debug"></param>
         /// <returns>返回第一个找到的坐标</returns>
-        internal static Point FindPic(IntPtr handle, Bitmap temp, XRECT r, FindDirection findType = FindDirection.LeftTopToRightDown, float similarity = 0.85f, bool debug = false)
+        internal static Point FindPic(IntPtr handle, Bitmap temp, XRECT r, float similarity = 0.85f, FindDirection findType = FindDirection.LeftTopToRightDown, bool debug = false)
         {
             Bitmap capture = Capture(handle);
             Bitmap source = BitmapHelper.ConvertToFormat(capture, PixelFormat.Format24bppRgb, r);
@@ -225,7 +225,7 @@ namespace wpfclx
         /// <param name="r"></param>
         /// <param name="debug"></param>
         /// <returns>返回第一个找到的坐标</returns>
-        internal static Point FindPicEx(IntPtr handle, Bitmap capture, Bitmap temp, XRECT r, FindDirection findType = FindDirection.LeftTopToRightDown, float similarity = 0.85f, bool debug = false)
+        internal static Point FindPicEx(IntPtr handle, Bitmap capture, Bitmap temp, XRECT r, float similarity = 0.85f, FindDirection findType = FindDirection.LeftTopToRightDown, bool debug = false)
         {
             Bitmap source = BitmapHelper.ConvertToFormat(capture, PixelFormat.Format24bppRgb, r);
             Bitmap tempnew = BitmapHelper.ConvertToFormat(temp, PixelFormat.Format24bppRgb);
@@ -246,7 +246,7 @@ namespace wpfclx
         /// <param name="r"></param>
         /// <param name="debug"></param>
         /// <returns>返回找到的坐标集合</returns>
-        internal static List<Point> FindPicEx(IntPtr handle, Bitmap temp, XRECT r, FindDirection findType = FindDirection.LeftTopToRightDown, float similarity = 0.9f)
+        internal static List<Point> FindPicEx(IntPtr handle, Bitmap temp, XRECT r, float similarity = 0.9f, FindDirection findType = FindDirection.LeftTopToRightDown)
         {
             Bitmap capture = Capture(handle);
             Bitmap source = BitmapHelper.ConvertToFormat(capture, PixelFormat.Format24bppRgb, r);
@@ -276,7 +276,7 @@ namespace wpfclx
         /// <param name="r"></param>
         /// <param name="debug"></param>
         /// <returns>返回第一个找到的坐标</returns>
-        internal static Point FindPicFast(IntPtr handle, Bitmap temp, XRECT r, FindDirection findType = FindDirection.LeftTopToRightDown, float similarity = 0.9f, bool debug = false)
+        internal static Point FindPicFast(IntPtr handle, Bitmap temp, XRECT r, float similarity = 0.9f, FindDirection findType = FindDirection.LeftTopToRightDown, bool debug = false)
         {
             Bitmap capture = Capture(handle);
             Bitmap source = BitmapHelper.ConvertToFormat(capture, PixelFormat.Format24bppRgb, r);
@@ -305,7 +305,7 @@ namespace wpfclx
         /// <param name="r"></param>
         /// <param name="debug"></param>
         /// <returns>返回第一个找到的坐标</returns>
-        internal static Point FindStr(IntPtr handle, string str,string color, XRECT r, FindDirection findType = FindDirection.LeftTopToRightDown, float similarity = 0.9f, bool debug = false)
+        internal static Point FindStr(IntPtr handle, string str, string color, XRECT r, float similarity = 0.9f, FindDirection findType = FindDirection.LeftTopToRightDown, bool debug = false)
         {
             Bitmap capture = Capture(handle);
             //fonts[str].Byte16;

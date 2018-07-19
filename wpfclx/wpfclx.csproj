@@ -398,5 +398,11 @@
   <ItemGroup>
     <None Include="Resources\悬赏_领取任务.bmp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\悬赏_暂无悬赏任务.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\悬赏_选中_十二连环坞.bmp" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

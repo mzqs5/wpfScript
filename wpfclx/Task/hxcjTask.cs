@@ -29,7 +29,7 @@ namespace wpfclx.Task
                 {
                     Bg.MouseMove(handle, new Point() { X = 600, Y = 480 }, new Point() { X = 800, Y = 480 });
                     Thread.Sleep(500);
-                    var r = Bg.FindPicFast(handle, Resource1.采集, new XRECT() { Left = 900, Top = 360, Right = 1000, Bottom = 400 }, FindDirection.LeftTopToRightDown, 0.9f);
+                    var r = Bg.FindPicFast(handle, Resource1.采集, new XRECT() { Left = 900, Top = 360, Right = 1000, Bottom = 400 }, 0.9f, FindDirection.LeftTopToRightDown);
                     if (!r.IsEmpty)
                     {
                         r.X -= 30;

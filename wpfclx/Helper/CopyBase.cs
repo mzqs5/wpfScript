@@ -21,12 +21,13 @@ namespace wpfclx.Helper
             while (true)
             {
                 var capture = Bg.Capture(handle);
-                var r = Bg.FindPicEx(handle, capture, Resource1.副本退出, new XRECT() { Left = 1150, Top = 190, Right = 1180, Bottom = 220 }, FindDirection.LeftTopToRightDown, 0.7f);
+                var r = Bg.FindPicEx(handle, capture, Resource1.副本退出, new XRECT() { Left = 1150, Top = 190, Right = 1180, Bottom = 220 }, 0.7f);
                 if (!r.IsEmpty)
                     break;
                 capture.Dispose();
                 Thread.Sleep(1000);
             }
+            Bg.SetWindowText(handle,"检测到副本退出");
             Thread.Sleep(10000);
         }
 
@@ -45,7 +46,7 @@ namespace wpfclx.Helper
         protected void CopyTesting()
         {
             var isok = false;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 20; i++)
             {
                 var r = Bg.FindPic(handle, Resource1.副本中, new XRECT() { Left = 1280, Top = 180, Right = 1310, Bottom = 220 });
                 if (!r.IsEmpty)
@@ -53,7 +54,7 @@ namespace wpfclx.Helper
                     isok = true;
                     break;
                 }
-                Thread.Sleep(5000);
+                Thread.Sleep(3000);
             }
             if (!isok)
             {
@@ -101,7 +102,7 @@ namespace wpfclx.Helper
             {
                 Bg.SetWindowText(handle, "退出队伍...");
                 Bg.LeftMouseClick(handle, r);
-                Thread.Sleep(1000);
+                Thread.Sleep(1500);
                 Bg.LeftMouseClick(handle, new Point() { X = 881, Y = 522 });
                 Thread.Sleep(1000);
             }

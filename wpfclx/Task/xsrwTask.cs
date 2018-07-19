@@ -18,28 +18,45 @@ namespace wpfclx.Task
         public xsrwTask(IntPtr handle) : base(handle)
         {
         }
-
+        private List<xsTask> list;
         private int isok { get; set; }
         private string taskName { get; set; }
         public override void Start(TaskModel model)
         {
+            list = new List<xsTask>();
+
+            if (model.xsselhw)
+                list.Add(new xsTask() { bitmap = Resource1.悬赏_选中_十二连环坞, taskName = "mysjCopy" });
+            //if (model.xsxjz)
+            //    list.Add(new xsTask() { bitmap = Resource1.悬赏_选中_薛家庄, taskName = "xsxjz" });
+            if (model.xsmysj)
+                list.Add(new xsTask() { bitmap = Resource1.悬赏_选中_麻衣圣教, taskName = "mysjCopy" });
+            //list.Add(new xsTask() { bitmap = Resource1.悬赏_选中_奕中幻境, taskName = "yzhjCopy" });
+
             while (true)
             {
                 OpenMall(Resource1.活动);
                 Bg.LeftMouseClick(handle, new Point() { X = 930, Y = 55 });
                 Sleep(1000);
-                var r = Bg.FindPic(handle, Resource1.悬赏_领取任务, new XRECT() { Left = 960, Top = 580, Right = 1048, Bottom = 620 });
-                if (r.IsEmpty)
+                var capture = Bg.Capture(handle);
+                var r = Bg.FindPicEx(handle, capture, Resource1.悬赏_领取任务, new XRECT() { Left = 960, Top = 580, Right = 1048, Bottom = 620 }, 0.95f);
+                var r1 = Bg.FindPicEx(handle, capture, Resource1.悬赏_暂无悬赏任务, new XRECT() { Left = 940, Top = 360, Right = 1010, Bottom = 400 }, 0.95f);
+                if (!r.IsEmpty || !r1.IsEmpty)
                 {
                     StartRob();
                 }
                 if (isok == 2)
                 {
-                    Bg.SetWindowText(handle,"悬赏任务次数已达上限");
+                    Bg.SetWindowText(handle, "悬赏任务次数已达上限");
                     Sleep(3000);
                     break;
                 }
-                StartMake();
+                //找到了前往悬赏
+                r = Bg.FindPic(handle, Resource1.悬赏_领取任务, new XRECT() { Left = 960, Top = 580, Right = 1048, Bottom = 620 }, 0.95f);
+                if (r.IsEmpty)
+                {
+                    StartMake();
+                }
             }
         }
         /// <summary>
@@ -65,18 +82,16 @@ namespace wpfclx.Task
         private void StartRob()
         {
             //开始抢悬赏任务
+            Bg.SetWindowText(handle,"开始抢领悬赏任务...");
             while (true)
             {
                 Bg.LeftMouseClick(handle, new Point() { X = 170, Y = 600 });
-                Sleep(500);
+                Sleep(400);
                 var capture = Bg.Capture(handle);
-                List<xsTask> list = new List<xsTask>();
-                list.Add(new xsTask() { bitmap = Resource1.悬赏_选中_奕中幻境, taskName = "yzhjCopy" });
-                list.Add(new xsTask() { bitmap = Resource1.悬赏_选中_麻衣圣教, taskName = "mysjCopy" });
                 isok = 0;
                 foreach (var item in list)
                 {
-                    var r = Bg.FindPicEx(handle, capture, item.bitmap, new XRECT() { Left = 140, Top = 250, Right = 330, Bottom = 420 });
+                    var r = Bg.FindPicEx(handle, capture, item.bitmap, new XRECT() { Left = 140, Top = 250, Right = 330, Bottom = 420 }, 0.95f);
                     if (!r.IsEmpty)
                     {
                         Bg.LeftMouseClick(handle, r);
@@ -86,7 +101,7 @@ namespace wpfclx.Task
                         Bg.LeftMouseClick(handle, new Point() { X = 880, Y = 520 });
                         Sleep(500);
                         //检测是否抢领成功
-                        r = Bg.FindPic(handle, Resource1.悬赏_领取任务, new XRECT() { Left = 960, Top = 580, Right = 1048, Bottom = 620 });
+                        r = Bg.FindPic(handle, Resource1.悬赏_领取任务, new XRECT() { Left = 960, Top = 580, Right = 1048, Bottom = 620 }, 0.95f);
                         if (r.IsEmpty)
                         {
                             taskName = item.taskName;
@@ -105,7 +120,7 @@ namespace wpfclx.Task
                 if (isok == 1 || isok == 2)
                     break;
 
-                Sleep(500);
+                Sleep(300);
             }
         }
         public class xsTask

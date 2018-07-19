@@ -26,11 +26,18 @@ namespace wpfclx.Task
             //BitmapHelper.ColorReplace(temp,BitmapHelper.colorHx16toRGB("F0F0F0"));
             //temp.Save($"C:\\clx\\source{new Random().Next(100, 200)}.bmp");
             var capture = Bg.Capture(handle);
-            var r = Bg.FindPicEx(handle, capture, Resource1.副本退出, new XRECT() { Left = 1150, Top = 190, Right = 1180, Bottom = 220 }, FindDirection.LeftTopToRightDown, 0.85f, true);
-            Bg.SetWindowText(handle,r.ToString());
+            var r = Bg.FindPicEx(handle, capture, Resource1.副本退出, new XRECT() { Left = 1150, Top = 190, Right = 1180, Bottom = 220 },0.8f);
+            Bg.SetWindowText(handle, r.ToString());
+
 
             Thread.Sleep(10000);
             //Bg.ExitWindowsEx();
+        }
+        public class xsTask
+        {
+            public Bitmap bitmap { get; set; }
+
+            public string taskName { get; set; }
         }
     }
 }
