@@ -30,6 +30,8 @@ namespace wpfclx.Helper
                 Thread.Sleep(5000);
             }
             Bg.SetWindowText(handle, "检测到江湖行商任务已完成");
+            //关闭任务面板
+            closeTask();
             MonitorUse();
             Thread.Sleep(5000);
         }

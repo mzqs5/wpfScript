@@ -28,6 +28,7 @@ namespace wpfclx.Task
             var p = Bg.FindPic(handle, Resource1.任务_万里听风, new XRECT() { Left = 410, Top = 130, Right = 500, Bottom = 170 });
             if (p.IsEmpty)
             {
+                closeTask();
                 Start(model);
                 return;
             }

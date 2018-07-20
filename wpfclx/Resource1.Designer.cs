@@ -153,6 +153,16 @@ namespace wpfclx {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap 任务_帮派 {
+            get {
+                object obj = ResourceManager.GetObject("任务_帮派", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap 任务_江湖 {
             get {
                 object obj = ResourceManager.GetObject("任务_江湖", resourceCulture);

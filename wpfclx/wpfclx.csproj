@@ -447,5 +447,8 @@
   <ItemGroup>
     <None Include="Resources\任务_中括号.bmp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\任务_帮派.bmp" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
