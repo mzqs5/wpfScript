@@ -59,7 +59,7 @@ namespace wpfclx.Task
                 {
                     openTask();
                     //检测势力任务是否完成
-                    var r = Bg.FindPic(handle, Resource1.任务_万里听风, new XRECT() { Left = 410, Top = 130, Right = 500, Bottom = 170 });
+                    var r = Bg.FindPic(handle, Resource1.任务_中括号, new XRECT() { Left = 410, Top = 130, Right = 430, Bottom = 170 });
                     if (r.IsEmpty)
                         break;
                     Bg.LeftMouseClick(handle,new Point() { X= 975 ,Y= 597 });
