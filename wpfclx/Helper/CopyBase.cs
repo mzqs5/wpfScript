@@ -28,8 +28,33 @@ namespace wpfclx.Helper
                 Thread.Sleep(1000);
             }
             Bg.SetWindowText(handle,"检测到副本退出");
-            MonitorUse();
             Thread.Sleep(10000);
+            MonitorUse();
+        }
+
+        /// <summary>
+        /// 打开任务 江湖面板
+        /// </summary>
+        protected void openTask()
+        {
+            Bg.SetWindowText(handle, "开始打开任务江湖面板...");
+            Bg.LeftMouseClick(handle, new Point() { X = 20, Y = 220 });
+            Thread.Sleep(1000);
+            Bg.LeftMouseClick(handle, new Point() { X = 20, Y = 220 });
+            Thread.Sleep(1000);
+            var r = Bg.FindPic(handle, Resource1.任务_江湖, new XRECT() { Left = 220, Top = 230, Right = 300, Bottom = 460 });
+            if (!r.IsEmpty)
+            {
+                Bg.LeftMouseClick(handle,r);
+                Thread.Sleep(1000);
+            }
+        }
+        /// <summary>
+        /// 关闭任务面板
+        /// </summary>
+        protected void closeTask() {
+            Bg.LeftMouseClick(handle, new Point() { X = 1155, Y = 67 });
+            Thread.Sleep(1000);
         }
 
         /// <summary>
@@ -54,18 +79,18 @@ namespace wpfclx.Helper
         }
 
 
-        public void Start()
+        public virtual void Start()
         {
             ConvenientTeam();//打开便捷组队面板
             OrganizeTeam();//打开对应的副本组队菜单
             IsGetInto();//组队监控
             CopyTesting();//检测是否进入副本
-            Bg.SetWindowText(handle, "检测到已进入副本...");
+            Bg.SetWindowText(handle, "检测到已开始任务...");
             StartTestingCopy();
             GC.Collect();
         }
 
-        protected void CopyTesting()
+        protected virtual void CopyTesting()
         {
             var isok = false;
             for (int i = 0; i < 20; i++)
@@ -80,15 +105,13 @@ namespace wpfclx.Helper
             }
             if (!isok)
             {
-                Bg.LeftMouseClick(handle, new Point() { X = 13, Y = 322 });
-                Thread.Sleep(1000);
                 Start();
                 return;
             }
         }
 
 
-        protected bool IsGetInto()
+        private bool IsGetInto()
         {
             Bg.LeftMouseClick(handle, new Point() { X = 942, Y = 603 });
             Bg.SetWindowText(handle, "正在自动匹配...");
@@ -115,9 +138,9 @@ namespace wpfclx.Helper
         private void ConvenientTeam()
         {
             Bg.SetWindowText(handle, "开始便捷组队...");
-            Bg.LeftMouseClick(handle, new Point() { X = 13, Y = 322 });
+            Bg.LeftMouseClick(handle, new Point() { X = 20, Y = 320 });
             Thread.Sleep(1000);
-            Bg.LeftMouseClick(handle, new Point() { X = 13, Y = 322 });
+            Bg.LeftMouseClick(handle, new Point() { X = 20, Y = 320 });
             Thread.Sleep(1000);
             var r = Bg.FindPic(handle, Resource1.退出队伍, new XRECT() { Left = 1048, Top = 566, Right = 1203, Bottom = 631 });
             if (!r.IsEmpty)

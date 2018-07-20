@@ -45,6 +45,10 @@ namespace wpfclx.Task
             Sleep(10000);
             while (true)
             {
+                Bg.LeftMouseClick(handle, new Point() { X = 148, Y = 192 });
+                Sleep(500);
+                Bg.LeftMouseClick(handle, new Point() { X = 142, Y = 235 });
+                Sleep(500);
                 var capture = Bg.Capture(handle);
                 var r = Bg.FindPicEx(handle, capture, Resource1.答对, new XRECT() { Left = 1172, Top = 106, Right = 1272, Bottom = 159 });
                 if (!r.IsEmpty)
@@ -61,8 +65,8 @@ namespace wpfclx.Task
                 {
                     Bg.LeftMouseClick(handle, r);
                     Sleep(500);
-                    Bg.LeftMouseClick(handle, new Point() { X = 875, Y = 526 });
-                    Sleep(1000);
+                    Bg.LeftMouseClick(handle, r);
+                    Sleep(500);
                     continue;
                 }
                 r = Bg.FindPicEx(handle, capture, Resource1.购买, new XRECT() { Left = 620, Top = 509, Right = 700, Bottom = 550 });
@@ -71,10 +75,6 @@ namespace wpfclx.Task
                     Bg.LeftMouseClick(handle, r);
                     Sleep(500);
                     Bg.LeftMouseClick(handle, new Point() { X = 875, Y = 526 });
-                    Sleep(1000);
-                    Bg.LeftMouseClick(handle, new Point() { X = 148, Y = 192 });
-                    Sleep(1000);
-                    Bg.LeftMouseClick(handle, new Point() { X = 142, Y = 235 });
                     Sleep(1000);
                     continue;
                 }
@@ -89,7 +89,7 @@ namespace wpfclx.Task
                 if (!r.IsEmpty)
                 {
                     Bg.LeftMouseClick(handle, r);
-                    Bg.SetWindowText(handle, "已提交");
+                    Bg.SetWindowText(handle, "课业已提交完成");
                     Sleep(1000);
                     Bg.LeftMouseClick(handle, new Point() { X = 883, Y = 527 });
                     Sleep(20000);

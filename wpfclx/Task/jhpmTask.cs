@@ -35,9 +35,9 @@ namespace wpfclx.Task
                     Bg.LeftMouseClick(handle, r);
                     Sleep(1000);
                     Bg.LeftMouseClick(handle, new Point() { X = 213, Y = 354 });
-                    Sleep(1000);
-                    Bg.MouseMove(handle, new Point() { X = 950, Y = 510 }, new Point() { X = 950, Y = 250 });
-                    Sleep(3000);
+                    Sleep(500);
+                    Bg.LeftMouseClick(handle, new Point() { X = 213, Y = 354 });
+                    Sleep(500);
                     r = Bg.FindPic(handle, Resource1.前往, new XRECT() { Left = 1037, Top = 173, Right = 1158, Bottom = 617 }, findType: FindDirection.RightDownToLeftTop);
                     if (!r.IsEmpty)
                     {

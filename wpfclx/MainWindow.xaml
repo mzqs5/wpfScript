@@ -45,12 +45,13 @@
         <Button Content="绑定窗口" Name="btnBind" Height="23" HorizontalAlignment="Left" VerticalAlignment="Top" Width="55" Margin="240,285,0,0" Click="btnBind_Click" RenderTransformOrigin="-0.84,2.348"/>
         <Button Content="开始任务" HorizontalAlignment="Left" Height="23" VerticalAlignment="Top" Width="51" Margin="300,285,0,0" Name="btnStart" RenderTransformOrigin="-0.745,0.478" Click="btnStart_Click" />
         <Label Content="悬赏设置" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="259,0,0,0"/>
-        <ListBox HorizontalAlignment="Left" Height="63" VerticalAlignment="Top" Width="95" Margin="240,25,0,0">
-            <CheckBox Name="xsjypy" Content="聚义平冤" IsChecked="True"/>
-            <CheckBox Name="xsyzhj" Content="奕中幻境" IsChecked="True"/>
+        <ListBox HorizontalAlignment="Left" Height="111" VerticalAlignment="Top" Width="95" Margin="240,25,0,0">
             <CheckBox x:Name="xsselhw" Content="十二连环坞" IsChecked="True"/>
             <CheckBox x:Name="xsxjz" Content="薛家庄" IsChecked="True"/>
             <CheckBox x:Name="xsmysj" Content="麻衣圣教"/>
+            <CheckBox x:Name="xsjypy" Content="聚义平冤" IsChecked="True"/>
+            <CheckBox x:Name="xsyzhj" Content="奕中幻境" IsChecked="True"/>
+            <CheckBox Name="xsjhxs" Content="江湖行商"/>
         </ListBox>
         <Label Content="江湖纪事" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="360,0,0,0" RenderTransformOrigin="-0.138,0.44"/>
         <ListBox HorizontalAlignment="Left" Height="63" VerticalAlignment="Top" Width="95" Margin="340,25,0,0">
@@ -58,7 +59,7 @@
             <CheckBox Name="jhxjz" Content="薛家庄" IsChecked="True"/>
             <CheckBox Name="jhmysj" Content="麻衣圣教"/>
         </ListBox>
-        <ListBox HorizontalAlignment="Left" Height="167" VerticalAlignment="Top" Width="95" Margin="240,113,0,0">
+        <ListBox HorizontalAlignment="Left" Height="119" VerticalAlignment="Top" Width="95" Margin="240,161,0,0">
             <CheckBox Name="xxpf" Content="学习配方" IsChecked="True"/>
             <CheckBox Name="bmzql" Content="包满自动清理" IsChecked="True"/>
             <CheckBox Name="blkmy" Content="保留可摹印" IsChecked="True"/>
@@ -71,7 +72,7 @@
         <TextBox Name="ljCount" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="10" VerticalAlignment="Top" Width="33" Margin="398,115,0,0"/>
         <TextBox Name="zcCount" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="10" VerticalAlignment="Top" Width="33" Margin="398,138,0,0"/>
         <Label Content="战场次数" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="340,138,0,0"/>
-        <Label Content="清包设置" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="263,88,0,0" RenderTransformOrigin="0.931,0.56"/>
+        <Label Content="清包设置" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="259,136,0,0" RenderTransformOrigin="0.931,0.56"/>
         <TextBox Name="cjCount" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="999" VerticalAlignment="Top" Width="33" Margin="398,161,0,0" RenderTransformOrigin="-2.5,-2.957"/>
         <TextBox Name="qgCount" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="33" Margin="398,184,0,0" RenderTransformOrigin="0.515,-0.739"/>
         <Label Content="采集次数" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="340,161,0,0"/>

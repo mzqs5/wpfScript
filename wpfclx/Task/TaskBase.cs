@@ -93,13 +93,15 @@ namespace wpfclx.Task
                 }
             }
         }
-
+        /// <summary>
+        /// 离开队伍
+        /// </summary>
         public virtual void QuitTeam()
         {
             Bg.SetWindowText(handle, "检查是否在队伍中...");
-            Bg.LeftMouseClick(handle, new Point() { X = 13, Y = 322 });
+            Bg.LeftMouseClick(handle, new Point() { X = 20, Y = 320 });
             Sleep(1000);
-            Bg.LeftMouseClick(handle, new Point() { X = 13, Y = 322 });
+            Bg.LeftMouseClick(handle, new Point() { X = 20, Y = 320 });
             Sleep(1000);
             var r = Bg.FindPic(handle, Resource1.退出队伍, new XRECT() { Left = 1048, Top = 566, Right = 1203, Bottom = 631 });
             if (!r.IsEmpty)
@@ -114,13 +116,15 @@ namespace wpfclx.Task
             Bg.LeftMouseClick(handle, new Point() { X = 1154, Y = 66 });
             Sleep(1000);
         }
-
+        /// <summary>
+        /// 打开便捷组队
+        /// </summary>
         public virtual void ConvenientTeam() {
             Bg.SetWindowText(handle, "开始便捷组队...");
-            Bg.LeftMouseClick(handle, new Point() { X = 13, Y = 322 });
-            Sleep(1000);
-            Bg.LeftMouseClick(handle, new Point() { X = 13, Y = 322 });
-            Sleep(1000);
+            Bg.LeftMouseClick(handle, new Point() { X = 20, Y = 320 });
+            Thread.Sleep(1000);
+            Bg.LeftMouseClick(handle, new Point() { X = 20, Y = 320 });
+            Thread.Sleep(1000);
             var r = Bg.FindPic(handle, Resource1.退出队伍, new XRECT() { Left = 1048, Top = 566, Right = 1203, Bottom = 631 });
             if (!r.IsEmpty)
             {
@@ -134,11 +138,15 @@ namespace wpfclx.Task
             Sleep(1000);
         }
 
+        /// <summary>
+        /// 自动匹配
+        /// </summary>
+        /// <returns></returns>
         protected bool IsGetInto()
         {
             Bg.LeftMouseClick(handle, new Point() { X = 942, Y = 603 });
             Bg.SetWindowText(handle, "正在自动匹配...");
-            Thread.Sleep(500);
+            Thread.Sleep(1000);
             for (int i = 0; i < 10; i++)
             {
                 var r = Bg.FindPic(handle, Resource1.跟随确认, new XRECT() { Left = 596, Top = 236, Right = 735, Bottom = 276 });
@@ -146,7 +154,7 @@ namespace wpfclx.Task
                 {
                     Bg.SetWindowText(handle, "匹配成功，前往跟随...");
                     Bg.LeftMouseClick(handle, new Point() { X = 875, Y = 526 });
-                    Thread.Sleep(500);
+                    Thread.Sleep(1000);
                     return true;
                 }
                 Thread.Sleep(1000);
@@ -158,6 +166,32 @@ namespace wpfclx.Task
             Thread.Sleep(500);
             
             return IsGetInto();
+        }
+
+        /// <summary>
+        /// 打开任务 江湖面板
+        /// </summary>
+        protected void openTask()
+        {
+            Bg.SetWindowText(handle, "开始打开任务江湖面板...");
+            Bg.LeftMouseClick(handle, new Point() { X = 20, Y = 220 });
+            Thread.Sleep(1000);
+            Bg.LeftMouseClick(handle, new Point() { X = 20, Y = 220 });
+            Thread.Sleep(1000);
+            var r = Bg.FindPic(handle, Resource1.任务_江湖, new XRECT() { Left = 220, Top = 230, Right = 300, Bottom = 460 });
+            if (!r.IsEmpty)
+            {
+                Bg.LeftMouseClick(handle, r);
+                Thread.Sleep(1000);
+            }
+        }
+        /// <summary>
+        /// 关闭任务面板
+        /// </summary>
+        protected void closeTask()
+        {
+            Bg.LeftMouseClick(handle, new Point() { X = 1155, Y = 67 });
+            Thread.Sleep(1000);
         }
 
     }

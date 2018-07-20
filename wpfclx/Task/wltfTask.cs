@@ -23,20 +23,26 @@ namespace wpfclx.Task
             Bg.LeftMouseClick(handle, new Point() { X = 257, Y = 259 });
             Sleep(500);
             IsGetInto();//自动匹配
-            Sleep(840000);
+            Sleep(10000);
+            openTask();
+            var p = Bg.FindPic(handle, Resource1.任务_万里听风, new XRECT() { Left = 410, Top = 130, Right = 500, Bottom = 170 });
+            if (p.IsEmpty)
+            {
+                Start(model);
+                return;
+            }
+            Bg.SetWindowText(handle, "万里听风正在进行中...");
             while (true)
             {
-                var r = Bg.FindPic(handle, Resource1.物品, new XRECT() { Left = 1000, Top = 380, Right = 1200, Bottom = 500 });
-                if (!r.IsEmpty)
+                var r = Bg.FindPic(handle, Resource1.任务_万里听风, new XRECT() { Left = 410, Top = 130, Right = 500, Bottom = 170 });
+                if (r.IsEmpty)
                 {
-                    r.X -= 20;
-                    r.Y -= 20;
-                    Bg.LeftMouseClick(handle, r);
+                    Bg.SetWindowText(handle, "万里听风10环已完成，正在前往抓捕贼王...");
                     break;
                 }
                 Sleep(5000);
             }
-            Bg.SetWindowText(handle, "万里听风10环已完成，正在前往抓捕贼王...");
+            closeTask();
             Sleep(120000);
             Bg.SetWindowText(handle, "万里听风已完成");
         }

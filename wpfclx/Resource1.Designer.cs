@@ -133,6 +133,36 @@ namespace wpfclx {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap 任务_万里听风 {
+            get {
+                object obj = ResourceManager.GetObject("任务_万里听风", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap 任务_江湖 {
+            get {
+                object obj = ResourceManager.GetObject("任务_江湖", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap 任务_江湖行商 {
+            get {
+                object obj = ResourceManager.GetObject("任务_江湖行商", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap 余额不足 {
             get {
                 object obj = ResourceManager.GetObject("余额不足", resourceCulture);
@@ -443,6 +473,16 @@ namespace wpfclx {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap 悬赏_江湖行商 {
+            get {
+                object obj = ResourceManager.GetObject("悬赏_江湖行商", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap 悬赏_聚义平冤 {
             get {
                 object obj = ResourceManager.GetObject("悬赏_聚义平冤", resourceCulture);
@@ -476,6 +516,16 @@ namespace wpfclx {
         internal static System.Drawing.Bitmap 悬赏_选中_奕中幻境 {
             get {
                 object obj = ResourceManager.GetObject("悬赏_选中_奕中幻境", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap 悬赏_选中_江湖行商 {
+            get {
+                object obj = ResourceManager.GetObject("悬赏_选中_江湖行商", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

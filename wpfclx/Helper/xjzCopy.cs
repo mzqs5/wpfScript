@@ -76,7 +76,7 @@ namespace wpfclx.Helper
             Bg.SetWindowText(handle, "副本已结束，等待最后一次boss奖励自动结算...");
             MonitorUse();
 
-            Thread.Sleep(300000);
+            Thread.Sleep(60000);
         }
 
         protected override void OrganizeTeam()

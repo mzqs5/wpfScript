@@ -122,6 +122,7 @@
     <Compile Include="Helper\selhwCopy.cs" />
     <Compile Include="Helper\jypyCopy.cs" />
     <Compile Include="Helper\szhwCopy.cs" />
+    <Compile Include="Helper\jhxsCopy.cs" />
     <Compile Include="Helper\yzhjCopy.cs" />
     <Compile Include="Resource1.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -424,6 +425,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\悬赏_选中_聚义平冤.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\任务_万里追风.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\任务_江湖行商.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\悬赏_江湖行商.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\悬赏_选中_江湖行商.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\任务_江湖.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\任务_万里听风.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

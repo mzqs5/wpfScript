@@ -25,6 +25,11 @@ namespace wpfclx.Task
         public override void Start(TaskModel model)
         {
             list = new List<xsTask>();
+            if (model.xsjhxs)
+            {
+                list.Add(new xsTask() { bitmap = Resource1.悬赏_江湖行商, taskName = "jhxsCopy" });
+                list.Add(new xsTask() { bitmap = Resource1.悬赏_选中_江湖行商, taskName = "jhxsCopy" });
+            }
             if (model.xsjypy)
             {
                 list.Add(new xsTask() { bitmap = Resource1.悬赏_聚义平冤, taskName = "jypyCopy" });
@@ -103,7 +108,7 @@ namespace wpfclx.Task
                 isok = 0;
                 foreach (var item in list)
                 {
-                    var r = Bg.FindPicEx(handle, capture, item.bitmap, new XRECT() { Left = 150, Top = 250, Right = 420, Bottom = 440 }, 0.95f);
+                    var r = Bg.FindPicEx(handle, capture, item.bitmap, new XRECT() { Left = 150, Top = 250, Right = 350, Bottom = 440 }, 0.95f);
                     if (!r.IsEmpty)
                     {
                         Bg.LeftMouseClick(handle, r);

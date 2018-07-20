@@ -45,6 +45,10 @@ namespace wpfclx.Task
 
             while (true)
             {
+                Bg.LeftMouseClick(handle, new Point() { X = 148, Y = 192 });
+                Sleep(500);
+                Bg.LeftMouseClick(handle, new Point() { X = 142, Y = 235 });
+                Sleep(500);
                 var capture = Bg.Capture(handle);
                 var r = Bg.FindPicEx(handle, capture, Resource1.答对, new XRECT() { Left = 1172, Top = 106, Right = 1272, Bottom = 159 });
                 if (!r.IsEmpty)
@@ -72,10 +76,10 @@ namespace wpfclx.Task
                     Sleep(500);
                     Bg.LeftMouseClick(handle, new Point() { X = 875, Y = 526 });
                     Sleep(1000);
-                    Bg.LeftMouseClick(handle, new Point() { X = 148, Y = 192 });
-                    Sleep(1000);
-                    Bg.LeftMouseClick(handle, new Point() { X = 142, Y = 235 });
-                    Sleep(1000);
+                    //Bg.LeftMouseClick(handle, new Point() { X = 148, Y = 192 });
+                    //Sleep(1000);
+                    //Bg.LeftMouseClick(handle, new Point() { X = 142, Y = 235 });
+                    //Sleep(1000);
                     continue;
                 }
                 r = Bg.FindPicEx(handle, capture, Resource1.一键提交, new XRECT() { Left = 1050, Top = 412, Right = 1179, Bottom = 449 });

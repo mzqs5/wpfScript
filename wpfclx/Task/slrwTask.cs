@@ -32,17 +32,14 @@ namespace wpfclx.Task
                 Bg.SetWindowText(handle, "自动寻路中...");
                 Sleep(10000);
                 Bg.SetWindowText(handle, "势力任务正在进行中...");
-                while (true)
+                for (int j = 0; j < 20; j++)
                 {
+                    Bg.LeftMouseClick(handle, new Point() { X = 148, Y = 192 });
+                    Sleep(500);
+                    Bg.LeftMouseClick(handle, new Point() { X = 142, Y = 235 });
+                    Sleep(500);
                     var capture = Bg.Capture(handle);
-                    var r = Bg.FindPicEx(handle, capture, Resource1.关系, new XRECT() { Left = 633, Top = 139, Right = 740, Bottom = 193 });
-                    if (!r.IsEmpty)
-                    {
-                        Bg.SetWindowText(handle, "本次势力任务已结束");
-                        Sleep(3000);
-                        break;
-                    }
-                    r = Bg.FindPicEx(handle, capture, Resource1.答对, new XRECT() { Left = 1172, Top = 106, Right = 1272, Bottom = 159 });
+                    var r = Bg.FindPicEx(handle, capture, Resource1.对话中, new XRECT() { Left = 1266, Top = 603, Right = 1310, Bottom = 645 });
                     if (!r.IsEmpty)
                     {
                         Bg.LeftMouseClick(handle, new Point() { X = 1039, Y = 206 });
@@ -54,11 +51,20 @@ namespace wpfclx.Task
                             Sleep(3000);
                             break;
                         }
-                        else
-                            Bg.LeftMouseClick(handle, new Point() { X = 129, Y = 242 });
                     }
                     capture.Dispose();
-                    Sleep(500);
+                    Sleep(5000);
+                }
+                while (true)
+                {
+                    openTask();
+                    //检测势力任务是否完成
+                    var r = Bg.FindPic(handle, Resource1.任务_万里听风, new XRECT() { Left = 410, Top = 130, Right = 500, Bottom = 170 });
+                    if (r.IsEmpty)
+                        break;
+                    Bg.LeftMouseClick(handle,new Point() { X= 975 ,Y= 597 });
+                    closeTask();
+                    Sleep(10000);
                 }
             }
         }

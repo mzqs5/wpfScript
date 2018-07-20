@@ -40,5 +40,7 @@ namespace wpfclx.Models
         public bool xsjypy { get; set; }
 
         public bool xsyzhj { get; set; }
+
+        public bool xsjhxs { get; set; }
     }
 }
