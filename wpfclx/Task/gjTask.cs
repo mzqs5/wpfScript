@@ -30,6 +30,11 @@ namespace wpfclx.Task
             //Bg.SetWindowText(handle, r.ToString());
 
             List<xsTask>  list = new List<xsTask>();
+            if (model.xsjhxs)
+            {
+                list.Add(new xsTask() { bitmap = Resource1.悬赏_江湖行商, taskName = "jhxsCopy" });
+                list.Add(new xsTask() { bitmap = Resource1.悬赏_选中_江湖行商, taskName = "jhxsCopy" });
+            }
             if (model.xsjypy)
             {
                 list.Add(new xsTask() { bitmap = Resource1.悬赏_聚义平冤, taskName = "jypyCopy" });
@@ -59,7 +64,7 @@ namespace wpfclx.Task
             var capture = Bg.Capture(handle);
             foreach (var item in list)
             {
-                var r = Bg.FindPicEx(handle, capture, item.bitmap, new XRECT() { Left = 150, Top = 250, Right = 360, Bottom = 440 }, 0.95f);
+                var r = Bg.FindPicEx(handle, capture, item.bitmap, new XRECT() { Left = 180, Top = 250, Right = 340, Bottom = 400 }, 0.95f,FindDirection.LeftTopToRightDown,true);
                 if (!r.IsEmpty)
                 {
                     Bg.LeftMouseClick(handle, r);
@@ -74,7 +79,7 @@ namespace wpfclx.Task
                     //r = Bg.FindPic(handle, Resource1.悬赏_领取任务, new XRECT() { Left = 960, Top = 580, Right = 1048, Bottom = 620 }, 0.95f);
                     if (!r.IsEmpty)
                     {
-                        Bg.SetWindowText(handle, item.taskName+"1");
+                        //Bg.SetWindowText(handle, item.taskName+"1");
                         break;
                     }
                     else

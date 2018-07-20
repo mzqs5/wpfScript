@@ -108,7 +108,7 @@ namespace wpfclx.Task
                 isok = 0;
                 foreach (var item in list)
                 {
-                    var r = Bg.FindPicEx(handle, capture, item.bitmap, new XRECT() { Left = 150, Top = 250, Right = 350, Bottom = 440 }, 0.95f);
+                    var r = Bg.FindPicEx(handle, capture, item.bitmap, new XRECT() { Left = 180, Top = 250, Right = 340, Bottom = 400 }, 0.95f);
                     if (!r.IsEmpty)
                     {
                         Bg.LeftMouseClick(handle, r);
