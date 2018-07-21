@@ -174,11 +174,15 @@ namespace wpfclx.Task
         protected void openTask()
         {
             Bg.SetWindowText(handle, "开始打开任务江湖面板...");
+            var r = Bg.FindPic(handle, Resource1.任务, new XRECT() { Left = 0, Top = 200, Right = 30, Bottom = 250 }, 0.95f);
+            if (r.IsEmpty)
+            {
+                Bg.LeftMouseClick(handle, new Point() { X = 20, Y = 220 });
+                Thread.Sleep(1000);
+            }
             Bg.LeftMouseClick(handle, new Point() { X = 20, Y = 220 });
             Thread.Sleep(1000);
-            Bg.LeftMouseClick(handle, new Point() { X = 20, Y = 220 });
-            Thread.Sleep(1000);
-            var r = Bg.FindPic(handle, Resource1.任务_江湖, new XRECT() { Left = 220, Top = 230, Right = 300, Bottom = 460 },0.95f);
+            r = Bg.FindPic(handle, Resource1.任务_江湖, new XRECT() { Left = 220, Top = 230, Right = 300, Bottom = 460 },0.95f);
             if (!r.IsEmpty)
             {
                 Bg.LeftMouseClick(handle, r);

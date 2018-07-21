@@ -450,5 +450,11 @@
   <ItemGroup>
     <None Include="Resources\任务_帮派.bmp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\队伍.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\任务.bmp" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

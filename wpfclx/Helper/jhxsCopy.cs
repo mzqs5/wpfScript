@@ -54,7 +54,7 @@ namespace wpfclx.Helper
                 Thread.Sleep(2000);
             }
             openTask();
-            var p = Bg.FindPic(handle, Resource1.任务_江湖行商, new XRECT() { Left = 150, Top = 320, Right = 350, Bottom = 380 });
+            var p = Bg.FindPic(handle, Resource1.任务_江湖行商, new XRECT() { Left = 180, Top = 330, Right = 330, Bottom = 380 });
             if (p.IsEmpty)
             {
                 //关闭任务面板

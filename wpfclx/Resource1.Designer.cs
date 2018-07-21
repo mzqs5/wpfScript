@@ -133,6 +133,16 @@ namespace wpfclx {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap 任务 {
+            get {
+                object obj = ResourceManager.GetObject("任务", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap 任务_万里听风 {
             get {
                 object obj = ResourceManager.GetObject("任务_万里听风", resourceCulture);
@@ -1134,6 +1144,16 @@ namespace wpfclx {
         internal static System.Drawing.Bitmap 锤锻书 {
             get {
                 object obj = ResourceManager.GetObject("锤锻书", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap 队伍 {
+            get {
+                object obj = ResourceManager.GetObject("队伍", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
