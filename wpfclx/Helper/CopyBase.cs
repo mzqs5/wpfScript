@@ -122,7 +122,7 @@ namespace wpfclx.Helper
             for (int i = 0; i < 10; i++)
             {
                 Thread.Sleep(1000);
-                var r = Bg.FindPic(handle, Resource1.跟随确认, new XRECT() { Left = 596, Top = 236, Right = 735, Bottom = 276 });
+                var r = Bg.FindPic(handle, Resource1.跟随确认, new XRECT() { Left = 596, Top = 236, Right = 735, Bottom = 276 },0.9f);
                 if (!r.IsEmpty)
                 {
                     Bg.SetWindowText(handle, "匹配成功，前往跟随...");
