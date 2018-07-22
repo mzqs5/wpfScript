@@ -56,7 +56,7 @@ namespace wpfclx.Task
                 list.Add(new xsTask() { bitmap = Resource1.悬赏_选中_麻衣圣教, taskName = "mysjCopy" });
             }
 
-            while (true)
+            while (count < 10)
             {
                 OpenMall(Resource1.活动);
                 Bg.LeftMouseClick(handle, new Point() { X = 930, Y = 55 });
@@ -67,14 +67,10 @@ namespace wpfclx.Task
                 {
                     StartRob();
                 }
-                if (count >= 10)
-                {
-                    Bg.SetWindowText(handle, "悬赏任务次数已达上限");
-                    Sleep(3000);
-                    break;
-                }
                 StartMake();
             }
+            Bg.SetWindowText(handle, "悬赏任务次数已达上限");
+            Sleep(3000);
         }
         /// <summary>
         /// 开始做悬赏任务
