@@ -36,7 +36,7 @@ namespace wpfclx.Task
                     var capture = Bg.Capture(handle);
 
                     //检测势力任务是否完成
-                    var r = Bg.FindPicEx(handle, capture, Resource1.任务_帮派, new XRECT() { Left = 410, Top = 130, Right = 500, Bottom = 170 }, 0.95f);
+                    var r = Bg.FindPicEx(handle, capture, Resource1.任务_帮派, new XRECT() { Left = 410, Top = 130, Right = 500, Bottom = 170 }, 0.9f);
                     if (r.IsEmpty)
                         break;
                     Bg.LeftMouseClick(handle,new Point() { X= 975 ,Y= 597 });
