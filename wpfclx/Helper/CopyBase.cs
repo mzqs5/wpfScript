@@ -27,9 +27,9 @@ namespace wpfclx.Helper
                 capture.Dispose();
                 Thread.Sleep(1000);
             }
-            Bg.SetWindowText(handle,"检测到副本退出");
-            Thread.Sleep(20000);
             MonitorUse();
+            Bg.SetWindowText(handle,"检测到副本退出");
+            Thread.Sleep(10000);
         }
 
         /// <summary>

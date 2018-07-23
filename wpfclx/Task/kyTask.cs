@@ -45,7 +45,7 @@ namespace wpfclx.Task
             Sleep(10000);
             while (true)
             {
-                var r = Bg.FindPic(handle, Resource1.任务, new XRECT() { Left = 0, Top = 180, Right = 25, Bottom = 250 }, 0.95f);
+                var r = Bg.FindPic(handle, Resource1.任务, new XRECT() { Left = 0, Top = 180, Right = 30, Bottom = 250 }, 0.95f);
                 if (r.IsEmpty)
                 {
                     Bg.LeftMouseClick(handle, new Point() { X = 20, Y = 220 });
