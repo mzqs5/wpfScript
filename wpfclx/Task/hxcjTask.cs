@@ -48,7 +48,7 @@ namespace wpfclx.Task
                 //换线
                 Bg.LeftMouseClick(handle, new Point() { X = 1310, Y = 39 });
                 Thread.Sleep(500);
-                var b = Bg.FindPicEx(handle, Resource1.线, new XRECT() { Left = 1000, Top = 60, Right = 1086, Bottom = 680 });
+                var b = Bg.FindPicEx(handle, Resource1.线, new XRECT() { Left = 1000, Top = 60, Right = 1086, Bottom = 680 }, 0.9f);
                 if (b.Count > 0)
                 {
                     Bg.SetWindowText(handle, "开始换线...");

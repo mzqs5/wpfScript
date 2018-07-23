@@ -78,14 +78,14 @@ namespace wpfclx.Task
         /// </summary>
         public virtual void MonitorUse()
         {
-            var r = Bg.FindPic(handle, Resource1.物品, new XRECT() { Left = 900, Top = 350, Right = 1200, Bottom = 580 });
+            var r = Bg.FindPic(handle, Resource1.物品, new XRECT() { Left = 900, Top = 350, Right = 1200, Bottom = 580 }, 0.9f);
             if (!r.IsEmpty)
             {
                 r.X -= 20;
                 r.Y -= 20;
                 Bg.LeftMouseClick(handle, r);
                 Sleep(1000);
-                var rb = Bg.FindPic(handle, Resource1.确定, new XRECT() { Left = 800, Top = 480, Right = 980, Bottom = 600 });
+                var rb = Bg.FindPic(handle, Resource1.确定, new XRECT() { Left = 800, Top = 480, Right = 980, Bottom = 600 }, 0.9f);
                 if (!rb.IsEmpty)
                 {
                     Bg.LeftMouseClick(handle, rb);
