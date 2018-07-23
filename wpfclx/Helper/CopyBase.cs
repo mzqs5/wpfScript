@@ -28,7 +28,7 @@ namespace wpfclx.Helper
                 Thread.Sleep(1000);
             }
             Bg.SetWindowText(handle,"检测到副本退出");
-            Thread.Sleep(10000);
+            Thread.Sleep(20000);
             MonitorUse();
         }
 
@@ -153,7 +153,7 @@ namespace wpfclx.Helper
                 Bg.LeftMouseClick(handle, r);
                 Thread.Sleep(1500);
                 Bg.LeftMouseClick(handle, new Point() { X = 881, Y = 522 });
-                Thread.Sleep(1000);
+                Thread.Sleep(10000);
             }
             Bg.LeftMouseClick(handle, new Point() { X = 1117, Y = 604 });
             Thread.Sleep(1000);

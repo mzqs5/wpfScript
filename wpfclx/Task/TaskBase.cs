@@ -132,7 +132,7 @@ namespace wpfclx.Task
                 Bg.LeftMouseClick(handle, r);
                 Sleep(1500);
                 Bg.LeftMouseClick(handle, new Point() { X = 881, Y = 522 });
-                Sleep(1000);
+                Sleep(10000);
             }
             Bg.LeftMouseClick(handle, new Point() { X = 1117, Y = 604 });
             Sleep(1000);
