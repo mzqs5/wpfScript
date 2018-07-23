@@ -89,7 +89,7 @@ namespace wpfclx.Helper
         {
             Bg.MouseMove(handle, new Point() { X = 260, Y = 600 }, new Point() { X = 260, Y = 400 });
             Thread.Sleep(1000);
-            var r = Bg.FindPic(handle, Resource1.麻衣圣教新秀, new XRECT() { Left = 143, Top = 140, Right = 374, Bottom = 635 });
+            var r = Bg.FindPic(handle, Resource1.麻衣圣教新秀, new XRECT() { Left = 143, Top = 140, Right = 374, Bottom = 635 },0.9f);
             if (!r.IsEmpty)
             {
                 Bg.LeftMouseClick(handle, r);
