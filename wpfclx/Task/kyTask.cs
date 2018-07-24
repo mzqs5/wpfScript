@@ -45,18 +45,9 @@ namespace wpfclx.Task
             Sleep(10000);
             while (true)
             {
-                var r = Bg.FindPic(handle, Resource1.任务, new XRECT() { Left = 0, Top = 180, Right = 30, Bottom = 250 }, 0.95f);
-                if (r.IsEmpty)
-                {
-                    Bg.LeftMouseClick(handle, new Point() { X = 20, Y = 220 });
-                    Sleep(1000);
-                }
-                Bg.LeftMouseClick(handle, new Point() { X = 148, Y = 192 });
-                Sleep(500);
-                Bg.LeftMouseClick(handle, new Point() { X = 142, Y = 235 });
-                Sleep(500);
+                
                 var capture = Bg.Capture(handle);
-                r = Bg.FindPicEx(handle, capture, Resource1.答对, new XRECT() { Left = 1172, Top = 106, Right = 1272, Bottom = 159 });
+                var r = Bg.FindPicEx(handle, capture, Resource1.答对, new XRECT() { Left = 1172, Top = 106, Right = 1272, Bottom = 159 });
                 if (!r.IsEmpty)
                 {
                     for (int i = 0; i < 5; i++)
@@ -82,6 +73,16 @@ namespace wpfclx.Task
                     Sleep(500);
                     Bg.LeftMouseClick(handle, new Point() { X = 875, Y = 526 });
                     Sleep(1000);
+                    r = Bg.FindPic(handle, Resource1.任务, new XRECT() { Left = 0, Top = 180, Right = 30, Bottom = 250 }, 0.95f);
+                    if (r.IsEmpty)
+                    {
+                        Bg.LeftMouseClick(handle, new Point() { X = 20, Y = 220 });
+                        Sleep(1000);
+                    }
+                    Bg.LeftMouseClick(handle, new Point() { X = 148, Y = 192 });
+                    Sleep(500);
+                    Bg.LeftMouseClick(handle, new Point() { X = 142, Y = 235 });
+                    Sleep(500);
                     continue;
                 }
                 r = Bg.FindPic(handle, Resource1.单人任务进行中, new XRECT() { Left = 961, Top = 357, Right = 1043, Bottom = 570 });

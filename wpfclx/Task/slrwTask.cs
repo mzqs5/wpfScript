@@ -29,37 +29,48 @@ namespace wpfclx.Task
                 Sleep(1000);
                 Bg.LeftMouseClick(handle, new Point() { X = 114, Y = 608 });
                 Sleep(1000);
+                Bg.SetWindowText(handle, "自动寻路中...");
+                Sleep(10000);
                 Bg.SetWindowText(handle, "势力任务正在进行中...");
-                openTask();
                 while (true)
                 {
                     var capture = Bg.Capture(handle);
-
-                    //检测势力任务是否完成
-                    var r = Bg.FindPicEx(handle, capture, Resource1.任务_帮派, new XRECT() { Left = 410, Top = 130, Right = 500, Bottom = 170 }, 0.9f);
-                    if (r.IsEmpty)
+                    var r = Bg.FindPicEx(handle, capture, Resource1.关系, new XRECT() { Left = 633, Top = 139, Right = 740, Bottom = 193 });
+                    if (!r.IsEmpty)
+                    {
+                        Bg.SetWindowText(handle, "本次势力任务已结束");
+                        Sleep(3000);
                         break;
-                    Bg.LeftMouseClick(handle,new Point() { X= 975 ,Y= 597 });
-                    r = Bg.FindPicEx(handle, capture, Resource1.对话中, new XRECT() { Left = 1266, Top = 603, Right = 1310, Bottom = 645 });
+                    }
+                    r = Bg.FindPicEx(handle, capture, Resource1.答对, new XRECT() { Left = 1172, Top = 106, Right = 1272, Bottom = 159 });
                     if (!r.IsEmpty)
                     {
                         Bg.LeftMouseClick(handle, new Point() { X = 1039, Y = 206 });
                         Sleep(1000);
-                        r = Bg.FindPic(handle, Resource1.关系, new XRECT() { Left = 633, Top = 139, Right = 740, Bottom = 193 });
+                        r = Bg.FindPicEx(handle, capture, Resource1.关系, new XRECT() { Left = 633, Top = 139, Right = 740, Bottom = 193 });
                         if (!r.IsEmpty)
                         {
                             Bg.SetWindowText(handle, "本次势力任务已结束");
                             Sleep(3000);
                             break;
                         }
-                        else {
-
+                        else
+                        {
+                            r = Bg.FindPic(handle, Resource1.任务, new XRECT() { Left = 0, Top = 180, Right = 30, Bottom = 250 }, 0.95f);
+                            if (r.IsEmpty)
+                            {
+                                Bg.LeftMouseClick(handle, new Point() { X = 20, Y = 220 });
+                                Sleep(1000);
+                            }
+                            Bg.LeftMouseClick(handle, new Point() { X = 148, Y = 192 });
+                            Sleep(500);
+                            Bg.LeftMouseClick(handle, new Point() { X = 142, Y = 235 });
+                            Sleep(500);
                         }
                     }
                     capture.Dispose();
-                    Sleep(10000);
+                    Sleep(500);
                 }
-                closeTask();
             }
         }
     }
