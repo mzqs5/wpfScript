@@ -67,14 +67,18 @@ namespace wpfclx.Task
                 var capture = Bg.Capture(handle);
                 foreach (var item in list)
                 {
-                    var r = Bg.FindPicEx(handle, capture, item.bitmap, new XRECT() { Left = 180, Top = 250, Right = 340, Bottom = 400 }, 0.95f);
+                    var r = Bg.FindPicEx(handle, capture, item.bitmap, new XRECT() { Left = 180, Top = 250 + count * 35, Right = 340, Bottom = 400 }, 0.95f);
                     if (!r.IsEmpty)
                     {
                         Bg.LeftMouseClick(handle, r);
                         Sleep(100);
                         r = Bg.FindPic(handle, Resource1.前往悬赏, new XRECT() { Left = 960, Top = 580, Right = 1048, Bottom = 620 }, 0.95f);
                         if (!r.IsEmpty)
+                        {
+                            Bg.SetWindowText(handle, $"检测到已领取{count+1}次悬赏");
+                            count++;
                             continue;
+                        }
                         Bg.LeftMouseClick(handle, new Point() { X = 1030, Y = 600 });
                         Sleep(100);
                         Bg.LeftMouseClick(handle, new Point() { X = 880, Y = 520 });
@@ -84,7 +88,7 @@ namespace wpfclx.Task
                         if (!r.IsEmpty)
                         {
                             taskName = item.taskName;
-                            Bg.SetWindowText(handle, "领取悬赏任务成功，开始前往悬赏");
+                            Bg.SetWindowText(handle, "领取悬赏任务成功");
                             count++;
                             break;
                         }
