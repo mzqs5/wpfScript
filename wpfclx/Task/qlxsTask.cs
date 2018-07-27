@@ -11,11 +11,11 @@ using wpfclx.Models;
 namespace wpfclx.Task
 {
     /// <summary>
-    /// 悬赏任务
+    /// 抢领悬赏
     /// </summary>
-    public class xsrwTask : TaskBase
+    public class qlxsTask : TaskBase
     {
-        public xsrwTask(IntPtr handle) : base(handle)
+        public qlxsTask(IntPtr handle) : base(handle)
         {
         }
         private List<xsTask> list;
@@ -55,53 +55,16 @@ namespace wpfclx.Task
                 list.Add(new xsTask() { bitmap = Resource1.悬赏_麻衣圣教, taskName = "mysjCopy" });
                 list.Add(new xsTask() { bitmap = Resource1.悬赏_选中_麻衣圣教, taskName = "mysjCopy" });
             }
-
-            while (count < 10)
-            {
-                OpenMall(Resource1.活动);
-                Bg.LeftMouseClick(handle, new Point() { X = 930, Y = 55 });
-                Sleep(1000);
-                var capture = Bg.Capture(handle);
-                var r = Bg.FindPicEx(handle, capture, Resource1.前往悬赏, new XRECT() { Left = 960, Top = 580, Right = 1048, Bottom = 620 }, 0.95f);
-                if (r.IsEmpty)
-                {
-                    StartRob();
-                }
-                StartMake();
-            }
-            Bg.SetWindowText(handle, "悬赏任务次数已达上限");
-            Sleep(3000);
-        }
-        /// <summary>
-        /// 开始做悬赏任务
-        /// </summary>
-
-        private void StartMake()
-        {
-            //关闭悬赏界面
-            Bg.LeftMouseClick(handle, new Point() { X = 1156, Y = 70 });
+            OpenMall(Resource1.活动);
+            Bg.LeftMouseClick(handle, new Point() { X = 930, Y = 55 });
             Sleep(1000);
-            Bg.LeftMouseClick(handle, new Point() { X = 1261, Y = 51 });
-            Sleep(1000);
-            //开始做悬赏任务
-            var copy = Activator.CreateInstance(Assembly.GetExecutingAssembly().GetTypes().Where(o => o.Name == taskName).FirstOrDefault(), handle) as CopyBase;
-            copy.Start();
-            copy = null;
-        }
-
-        /// <summary>
-        /// 开始抢悬赏
-        /// </summary>
-        private void StartRob()
-        {
             //开始抢悬赏任务
-            Bg.SetWindowText(handle,"开始抢领悬赏任务...");
-            while (true)
+            Bg.SetWindowText(handle, "开始抢领悬赏任务...");
+            while (count < 3)
             {
                 Bg.LeftMouseClick(handle, new Point() { X = 170, Y = 600 });
                 Sleep(50);
                 var capture = Bg.Capture(handle);
-                isok = 0;
                 foreach (var item in list)
                 {
                     var r = Bg.FindPicEx(handle, capture, item.bitmap, new XRECT() { Left = 180, Top = 250, Right = 340, Bottom = 400 }, 0.95f);
@@ -115,34 +78,27 @@ namespace wpfclx.Task
                         Sleep(200);
                         //检测是否抢领成功
                         r = Bg.FindPic(handle, Resource1.前往悬赏, new XRECT() { Left = 960, Top = 580, Right = 1048, Bottom = 620 }, 0.95f);
-                        //r = Bg.FindPic(handle, Resource1.悬赏_领取任务, new XRECT() { Left = 960, Top = 580, Right = 1048, Bottom = 620 }, 0.95f);
                         if (!r.IsEmpty)
                         {
                             taskName = item.taskName;
                             Bg.SetWindowText(handle, "领取悬赏任务成功，开始前往悬赏");
-                            isok = 1;
                             count++;
                             break;
                         }
                         else
                         {
-                            //两种情况 一种没抢到 继续抢 一种悬赏任务次数已上限 退出悬赏任务
-                            if (count == 10)
-                            {
-                                count++;
-                                break;
-                            }
 
                         }
                     }
                 }
                 capture.Dispose();
-                if (isok == 1 || isok == 2)
-                    break;
-
                 Sleep(50);
             }
+
+            Bg.SetWindowText(handle, "已抢领3次悬赏");
+            Sleep(3000);
         }
+
         public class xsTask
         {
             public Bitmap bitmap { get; set; }

@@ -136,6 +136,7 @@
     <Compile Include="Task\cjgzTask.cs" />
     <Compile Include="Task\hxcjTask.cs" />
     <Compile Include="Task\gjdyTask.cs" />
+    <Compile Include="Task\qlxsTask.cs" />
     <Compile Include="Task\zdwbTask.cs" />
     <Compile Include="Task\sdjgTask.cs" />
     <Compile Include="Task\zcgjTask.cs" />

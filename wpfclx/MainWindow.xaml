@@ -34,6 +34,7 @@
             <CheckBox Name="ljmt" Content="论剑秒退" Click="alltask_Checked"/>
             <CheckBox Name="zcgj" Content="战场挂机" Click="alltask_Checked"/>
             <CheckBox Name="sdjg" Content="刷登剑阁" Click="alltask_Checked"/>
+            <CheckBox Name="qlxs" Content="抢领悬赏" Click="alltask_Checked"/>
             <CheckBox Name="zdwb" Content="自动挖宝" Click="alltask_Checked"/>
             <CheckBox Name="gjdy" Content="挂机钓鱼" Click="alltask_Checked"/>
             <CheckBox Name="hxcj" Content="换线采集" Click="alltask_Checked"/>
