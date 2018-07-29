@@ -29,8 +29,7 @@ namespace wpfclx.Task
             //var r = Bg.FindPicEx(handle, capture, Resource1.副本退出, new XRECT() { Left = 1150, Top = 190, Right = 1180, Bottom = 220 },0.8f);
             //Bg.SetWindowText(handle, r.ToString());
 
-            var t = Bg.FindPic(handle, Resource1.任务, new XRECT() { Left = 0, Top = 200, Right = 30, Bottom = 250 }, 0.95f,FindDirection.LeftTopToRightDown,true);
-                Bg.SetWindowText(handle,t.ToString());
+            Bg.FindPic(handle, Resource1.悬赏_选中_十二连环坞, new XRECT() { Left = 180, Top = 250 + 80, Right = 340, Bottom = 400 }, 0.95f,FindDirection.LeftTopToRightDown,true);
             Thread.Sleep(10000);
             return;
             List<xsTask>  list = new List<xsTask>();
