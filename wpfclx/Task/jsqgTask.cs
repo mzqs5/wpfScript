@@ -54,7 +54,7 @@ namespace wpfclx.Task
                     //    break;
                     //}
                     //}
-                    Thread.Sleep(50);
+                    Thread.Sleep(200);
                 }
             }
         }
