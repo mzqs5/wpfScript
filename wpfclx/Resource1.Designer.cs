@@ -483,6 +483,16 @@ namespace wpfclx {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap 悬赏_十二连环坞 {
+            get {
+                object obj = ResourceManager.GetObject("悬赏_十二连环坞", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap 悬赏_奕中幻境 {
             get {
                 object obj = ResourceManager.GetObject("悬赏_奕中幻境", resourceCulture);

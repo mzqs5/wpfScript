@@ -42,7 +42,7 @@ namespace wpfclx.Task
             }
             if (model.xsselhw)
             {
-                //list.Add(new xsTask() { bitmap = Resource1.悬赏_十二连环坞, taskName = "selhwCopy" });
+                list.Add(new xsTask() { bitmap = Resource1.悬赏_十二连环坞, taskName = "selhwCopy" });
                 list.Add(new xsTask() { bitmap = Resource1.悬赏_选中_十二连环坞, taskName = "selhwCopy" });
             }
             if (model.xsxjz)

@@ -448,4 +448,7 @@
   <data name="队伍" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\队伍.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="悬赏_十二连环坞" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\悬赏_十二连环坞.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>
