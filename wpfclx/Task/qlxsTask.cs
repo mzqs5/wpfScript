@@ -63,7 +63,7 @@ namespace wpfclx.Task
             while (count < 3)
             {
                 Bg.LeftMouseClick(handle, new Point() { X = 170, Y = 600 });
-                Sleep(50);
+                Sleep(100);
                 var capture = Bg.Capture(handle);
                 foreach (var item in list)
                 {
@@ -80,9 +80,9 @@ namespace wpfclx.Task
                             continue;
                         }
                         Bg.LeftMouseClick(handle, new Point() { X = 1030, Y = 600 });
-                        Sleep(100);
+                        Sleep(50);
                         Bg.LeftMouseClick(handle, new Point() { X = 880, Y = 520 });
-                        Sleep(200);
+                        Sleep(100);
                         //检测是否抢领成功
                         r = Bg.FindPic(handle, Resource1.前往悬赏, new XRECT() { Left = 960, Top = 580, Right = 1048, Bottom = 620 }, 0.95f);
                         if (!r.IsEmpty)
@@ -99,7 +99,6 @@ namespace wpfclx.Task
                     }
                 }
                 capture.Dispose();
-                Sleep(50);
             }
 
             Bg.SetWindowText(handle, "已抢领3次悬赏");
