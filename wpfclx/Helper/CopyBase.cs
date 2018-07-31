@@ -66,18 +66,18 @@ namespace wpfclx.Helper
         /// </summary>
         protected virtual void MonitorUse()
         {
-            var r = Bg.FindPic(handle, Resource1.物品, new XRECT() { Left = 900, Top = 350, Right = 1200, Bottom = 580 }, 0.9f);
+            var r = Bg.FindPic(handle, Resource1.物品, new XRECT() { Left = 1050, Top = 240, Right = 1100, Bottom = 280 }, 0.9f);
             if (!r.IsEmpty)
             {
-                r.X -= 20;
-                r.Y -= 20;
+                r.X -= 50;
+                r.Y += 150;
                 Bg.LeftMouseClick(handle, r);
-                Thread.Sleep(1000);
+                Sleep(1000);
                 var rb = Bg.FindPic(handle, Resource1.确定, new XRECT() { Left = 800, Top = 480, Right = 980, Bottom = 600 }, 0.9f);
                 if (!rb.IsEmpty)
                 {
                     Bg.LeftMouseClick(handle, rb);
-                    Thread.Sleep(200);
+                    Sleep(200);
                 }
             }
         }
