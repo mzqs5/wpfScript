@@ -72,12 +72,12 @@ namespace wpfclx.Helper
                 r.X -= 50;
                 r.Y += 150;
                 Bg.LeftMouseClick(handle, r);
-                Sleep(1000);
+                Thread.Sleep(1000);
                 var rb = Bg.FindPic(handle, Resource1.确定, new XRECT() { Left = 800, Top = 480, Right = 980, Bottom = 600 }, 0.9f);
                 if (!rb.IsEmpty)
                 {
                     Bg.LeftMouseClick(handle, rb);
-                    Sleep(200);
+                    Thread.Sleep(200);
                 }
             }
         }
