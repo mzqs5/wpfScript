@@ -32,7 +32,7 @@ namespace wpfclx.Task
                 while (true)
                 {
                     Bg.LeftMouseClick(handle, new Point() { X = 235, Y = 260 });
-                    Thread.Sleep(80);
+                    Thread.Sleep(150);
                     //var r = Bg.FindPic(handle, Resource1.没有在售的珍品, new XRECT() { Left = 651, Top = 316, Right = 756, Bottom = 439 });
                     //if (r.IsEmpty)
                     //{
@@ -54,7 +54,7 @@ namespace wpfclx.Task
                     //    break;
                     //}
                     //}
-                    Thread.Sleep(80);
+                    Thread.Sleep(50);
                 }
             }
         }
