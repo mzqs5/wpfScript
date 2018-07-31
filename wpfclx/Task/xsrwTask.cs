@@ -99,7 +99,7 @@ namespace wpfclx.Task
             while (true)
             {
                 Bg.LeftMouseClick(handle, new Point() { X = 170, Y = 600 });
-                Sleep(50);
+                Sleep(100);
                 var capture = Bg.Capture(handle);
                 isok = 0;
                 foreach (var item in list)
@@ -108,11 +108,11 @@ namespace wpfclx.Task
                     if (!r.IsEmpty)
                     {
                         Bg.LeftMouseClick(handle, r);
-                        Sleep(100);
+                        Sleep(50);
                         Bg.LeftMouseClick(handle, new Point() { X = 1030, Y = 600 });
-                        Sleep(100);
+                        Sleep(50);
                         Bg.LeftMouseClick(handle, new Point() { X = 880, Y = 520 });
-                        Sleep(200);
+                        Sleep(100);
                         //检测是否抢领成功
                         r = Bg.FindPic(handle, Resource1.前往悬赏, new XRECT() { Left = 960, Top = 580, Right = 1048, Bottom = 620 }, 0.95f);
                         //r = Bg.FindPic(handle, Resource1.悬赏_领取任务, new XRECT() { Left = 960, Top = 580, Right = 1048, Bottom = 620 }, 0.95f);
@@ -139,8 +139,6 @@ namespace wpfclx.Task
                 capture.Dispose();
                 if (isok == 1 || isok == 2)
                     break;
-
-                Sleep(50);
             }
         }
         public class xsTask
