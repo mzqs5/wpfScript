@@ -103,7 +103,7 @@ namespace wpfclx
         internal static void LeftMouseUp(IntPtr handle, Point r, WPARAM wparam = WPARAM.MK_Normal)
         {
             WinApi.PostMessage(handle, (uint)MsgType.WM_LBUTTONUP, (int)wparam, r.X + (r.Y << 16));
-            Thread.Sleep(new Random().Next(5, 10));
+            //Thread.Sleep(new Random().Next(5, 10));
         }
 
         /// <summary>
