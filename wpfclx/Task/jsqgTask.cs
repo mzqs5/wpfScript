@@ -33,9 +33,6 @@ namespace wpfclx.Task
                 {
                     Bg.LeftMouseClick(handle, new Point() { X = 235, Y = 260 });
                     Thread.Sleep(150);
-                    //var r = Bg.FindPic(handle, Resource1.没有在售的珍品, new XRECT() { Left = 651, Top = 316, Right = 756, Bottom = 439 });
-                    //if (r.IsEmpty)
-                    //{
                     Bg.SetWindowText(handle, "检测到关注物品上架，开始抢购...");
                     Bg.LeftMouseClick(handle, new Point() { X = 543, Y = 271 });
                     for (int i = 0; i < model.qgCount; i++)
@@ -44,16 +41,6 @@ namespace wpfclx.Task
                     }
                     Bg.LeftMouseClick(handle, new Point() { X = 659, Y = 526 });
                     Bg.LeftMouseClick(handle, new Point() { X = 885, Y = 528 });
-                    //Thread.Sleep(50);
-                    //var r = Bg.FindPic(handle, Resource1.余额不足, new XRECT() { Left = 400, Top = 500, Right = 500, Bottom = 560 });
-                    //if (!r.IsEmpty)
-                    //{
-                    //    Bg.LeftMouseClick(handle, r);
-                    //    Bg.SetWindowText(handle, "余额不足，退出抢购...");
-                    //    Thread.Sleep(1000);
-                    //    break;
-                    //}
-                    //}
                     Thread.Sleep(50);
                 }
             }
