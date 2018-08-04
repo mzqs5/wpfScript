@@ -25,21 +25,7 @@ namespace wpfclx.Task
         public override void Start(TaskModel model)
         {
             list = new List<xsTask>();
-            if (model.xsjhxs)
-            {
-                list.Add(new xsTask() { bitmap = Resource1.悬赏_江湖行商, taskName = "jhxsCopy" });
-                list.Add(new xsTask() { bitmap = Resource1.悬赏_选中_江湖行商, taskName = "jhxsCopy" });
-            }
-            if (model.xsjypy)
-            {
-                list.Add(new xsTask() { bitmap = Resource1.悬赏_聚义平冤, taskName = "jypyCopy" });
-                list.Add(new xsTask() { bitmap = Resource1.悬赏_选中_聚义平冤, taskName = "jypyCopy" });
-            }
-            if (model.xsyzhj)
-            {
-                list.Add(new xsTask() { bitmap = Resource1.悬赏_奕中幻境, taskName = "yzhjCopy" });
-                list.Add(new xsTask() { bitmap = Resource1.悬赏_选中_奕中幻境, taskName = "yzhjCopy" });
-            }
+            
             if (model.xsselhw)
             {
                 list.Add(new xsTask() { bitmap = Resource1.悬赏_十二连环坞, taskName = "selhwCopy" });
@@ -54,6 +40,21 @@ namespace wpfclx.Task
             {
                 list.Add(new xsTask() { bitmap = Resource1.悬赏_麻衣圣教, taskName = "mysjCopy" });
                 list.Add(new xsTask() { bitmap = Resource1.悬赏_选中_麻衣圣教, taskName = "mysjCopy" });
+            }
+            if (model.xsjhxs)
+            {
+                list.Add(new xsTask() { bitmap = Resource1.悬赏_江湖行商, taskName = "jhxsCopy" });
+                list.Add(new xsTask() { bitmap = Resource1.悬赏_选中_江湖行商, taskName = "jhxsCopy" });
+            }
+            if (model.xsjypy)
+            {
+                list.Add(new xsTask() { bitmap = Resource1.悬赏_聚义平冤, taskName = "jypyCopy" });
+                list.Add(new xsTask() { bitmap = Resource1.悬赏_选中_聚义平冤, taskName = "jypyCopy" });
+            }
+            if (model.xsyzhj)
+            {
+                list.Add(new xsTask() { bitmap = Resource1.悬赏_奕中幻境, taskName = "yzhjCopy" });
+                list.Add(new xsTask() { bitmap = Resource1.悬赏_选中_奕中幻境, taskName = "yzhjCopy" });
             }
 
             while (count < 10)
@@ -99,7 +100,7 @@ namespace wpfclx.Task
             while (true)
             {
                 Bg.LeftMouseClick(handle, new Point() { X = 170, Y = 600 });
-                Sleep(100);
+                Sleep(150);
                 var capture = Bg.Capture(handle);
                 isok = 0;
                 foreach (var item in list)
