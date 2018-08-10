@@ -143,29 +143,9 @@ namespace wpfclx {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap 任务_万里听风 {
-            get {
-                object obj = ResourceManager.GetObject("任务_万里听风", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
         internal static System.Drawing.Bitmap 任务_中括号 {
             get {
                 object obj = ResourceManager.GetObject("任务_中括号", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap 任务_帮派 {
-            get {
-                object obj = ResourceManager.GetObject("任务_帮派", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -493,39 +473,9 @@ namespace wpfclx {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap 悬赏_奕中幻境 {
-            get {
-                object obj = ResourceManager.GetObject("悬赏_奕中幻境", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
         internal static System.Drawing.Bitmap 悬赏_暂无悬赏任务 {
             get {
                 object obj = ResourceManager.GetObject("悬赏_暂无悬赏任务", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap 悬赏_江湖行商 {
-            get {
-                object obj = ResourceManager.GetObject("悬赏_江湖行商", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap 悬赏_聚义平冤 {
-            get {
-                object obj = ResourceManager.GetObject("悬赏_聚义平冤", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -546,36 +496,6 @@ namespace wpfclx {
         internal static System.Drawing.Bitmap 悬赏_选中_十二连环坞 {
             get {
                 object obj = ResourceManager.GetObject("悬赏_选中_十二连环坞", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap 悬赏_选中_奕中幻境 {
-            get {
-                object obj = ResourceManager.GetObject("悬赏_选中_奕中幻境", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap 悬赏_选中_江湖行商 {
-            get {
-                object obj = ResourceManager.GetObject("悬赏_选中_江湖行商", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap 悬赏_选中_聚义平冤 {
-            get {
-                object obj = ResourceManager.GetObject("悬赏_选中_聚义平冤", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

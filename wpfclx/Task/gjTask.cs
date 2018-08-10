@@ -20,31 +20,32 @@ namespace wpfclx.Task
 
         public override void Start(TaskModel model)
         {
-            //Bitmap capture = Bg.Capture(handle);
-            //Bitmap temp=BitmapHelper.ConvertToFormat(capture, System.Drawing.Imaging.PixelFormat.Format24bppRgb);
-            //capture.Dispose();
-            //BitmapHelper.ColorReplace(temp,BitmapHelper.colorHx16toRGB("F0F0F0"));
-            //temp.Save($"C:\\clx\\source{new Random().Next(100, 200)}.bmp");
-            //var capture = Bg.Capture(handle);
-            //var r = Bg.FindPicEx(handle, capture, Resource1.副本退出, new XRECT() { Left = 1150, Top = 190, Right = 1180, Bottom = 220 },0.8f);
-            //Bg.SetWindowText(handle, r.ToString());
+            List<xsTask>  list = new List<xsTask>();
 
-            //var r = Bg.FindPic(handle, Resource1.物品, new XRECT() { Left = 1050, Top = 240, Right = 1100, Bottom = 280 }, 0.9f,FindDirection.LeftTopToRightDown,true);
-            //if (!r.IsEmpty)
-            //{
-            //    r.X -= 50;
-            //    r.Y += 150;
-            //    Bg.LeftMouseClick(handle, r);
-            //    Sleep(1000);
-            //    var rb = Bg.FindPic(handle, Resource1.确定, new XRECT() { Left = 800, Top = 480, Right = 980, Bottom = 600 }, 0.9f);
-            //    if (!rb.IsEmpty)
-            //    {
-            //        Bg.LeftMouseClick(handle, rb);
-            //        Sleep(200);
-            //    }
-            //}
+            if (model.xsselhw)
+            {
+                list.Add(new xsTask() { bitmap = AforgeHelper.GrayscaleThresholdBlobsFiltering(BitmapHelper.ConvertToFormat(Resource1.悬赏_十二连环坞, System.Drawing.Imaging.PixelFormat.Format24bppRgb), 100), taskName = "selhwCopy" });
+            }
+            if (model.xsxjz)
+            {
+                list.Add(new xsTask() { bitmap = AforgeHelper.GrayscaleThresholdBlobsFiltering(BitmapHelper.ConvertToFormat(Resource1.悬赏_薛家庄, System.Drawing.Imaging.PixelFormat.Format24bppRgb), 100), taskName = "xjzCopy" });
+            }
+            if (model.xsmysj)
+            {
+                list.Add(new xsTask() { bitmap = AforgeHelper.GrayscaleThresholdBlobsFiltering(BitmapHelper.ConvertToFormat(Resource1.悬赏_麻衣圣教, System.Drawing.Imaging.PixelFormat.Format24bppRgb), 100), taskName = "mysjCopy" });
+            }
 
-            Thread.Sleep(10000);
+            AforgeHelper.GrayscaleThresholdBlobsFiltering(BitmapHelper.ConvertToFormat(Resource1.悬赏_麻衣圣教, System.Drawing.Imaging.PixelFormat.Format24bppRgb), 100).Save($"C:\\clx\\test{ new Random().Next(100, 200)}.bmp");
+            var capture = Bg.Capture(handle);
+            foreach (var item in list)
+            {
+                var r = Bg.FindPicFastEx(handle, capture, item.bitmap, new XRECT() { Left = 200, Top = 295, Right = 340, Bottom = 340 }, 0.85f,FindDirection.LeftTopToRightDown,true);
+                if (!r.IsEmpty) {
+                    Bg.SetWindowText(handle,r.ToString());
+                }
+
+            }
+                Thread.Sleep(10000);
             //Bg.ExitWindowsEx();
         }
 

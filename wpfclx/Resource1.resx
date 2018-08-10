@@ -385,9 +385,6 @@
   <data name="楚留香字库" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\楚留香字库.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;gb2312</value>
   </data>
-  <data name="悬赏_选中_奕中幻境" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\悬赏_选中_奕中幻境.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="悬赏_选中_麻衣圣教" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\悬赏_选中_麻衣圣教.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -403,17 +400,8 @@
   <data name="前往悬赏" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\前往悬赏.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="悬赏_奕中幻境" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\悬赏_奕中幻境.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="悬赏_聚义平冤" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\悬赏_聚义平冤.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="悬赏_薛家庄" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\悬赏_薛家庄.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="悬赏_选中_聚义平冤" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\悬赏_选中_聚义平冤.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="悬赏_选中_薛家庄" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\悬赏_选中_薛家庄.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -424,23 +412,11 @@
   <data name="任务_江湖行商" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\任务_江湖行商.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="悬赏_江湖行商" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\悬赏_江湖行商.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="悬赏_选中_江湖行商" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\悬赏_选中_江湖行商.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="任务_江湖" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\任务_江湖.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="任务_万里听风" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\任务_万里听风.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="任务_中括号" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\任务_中括号.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="任务_帮派" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\任务_帮派.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="任务" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\任务.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

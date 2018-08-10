@@ -46,13 +46,11 @@
         <Button Content="绑定窗口" Name="btnBind" Height="23" HorizontalAlignment="Left" VerticalAlignment="Top" Width="55" Margin="240,285,0,0" Click="btnBind_Click" RenderTransformOrigin="-0.84,2.348"/>
         <Button Content="开始任务" HorizontalAlignment="Left" Height="23" VerticalAlignment="Top" Width="51" Margin="300,285,0,0" Name="btnStart" RenderTransformOrigin="-0.745,0.478" Click="btnStart_Click" />
         <Label Content="悬赏设置" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="259,0,0,0"/>
-        <ListBox HorizontalAlignment="Left" Height="111" VerticalAlignment="Top" Width="95" Margin="240,25,0,0">
+        <ListBox HorizontalAlignment="Left" Height="106" VerticalAlignment="Top" Width="95" Margin="240,25,0,0">
             <CheckBox x:Name="xsselhw" Content="十二连环坞" IsChecked="True"/>
             <CheckBox x:Name="xsxjz" Content="薛家庄" IsChecked="True"/>
             <CheckBox x:Name="xsmysj" Content="麻衣圣教"/>
-            <CheckBox x:Name="xsjypy" Content="聚义平冤" IsChecked="True"/>
-            <CheckBox x:Name="xsyzhj" Content="奕中幻境" IsChecked="True"/>
-            <CheckBox Name="xsjhxs" Content="江湖行商"/>
+            <CheckBox x:Name="xsmysz" Content="明月山庄"/>
         </ListBox>
         <Label Content="江湖纪事" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="360,0,0,0" RenderTransformOrigin="-0.138,0.44"/>
         <ListBox HorizontalAlignment="Left" Height="63" VerticalAlignment="Top" Width="95" Margin="340,25,0,0">

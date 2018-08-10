@@ -42,21 +42,6 @@ namespace wpfclx.Task
                 list.Add(new xsTask() { bitmap = Resource1.悬赏_选中_麻衣圣教, taskName = "mysjCopy" });
             }
 
-            if (model.xsjhxs)
-            {
-                list.Add(new xsTask() { bitmap = Resource1.悬赏_江湖行商, taskName = "jhxsCopy" });
-                list.Add(new xsTask() { bitmap = Resource1.悬赏_选中_江湖行商, taskName = "jhxsCopy" });
-            }
-            if (model.xsjypy)
-            {
-                list.Add(new xsTask() { bitmap = Resource1.悬赏_聚义平冤, taskName = "jypyCopy" });
-                list.Add(new xsTask() { bitmap = Resource1.悬赏_选中_聚义平冤, taskName = "jypyCopy" });
-            }
-            if (model.xsyzhj)
-            {
-                list.Add(new xsTask() { bitmap = Resource1.悬赏_奕中幻境, taskName = "yzhjCopy" });
-                list.Add(new xsTask() { bitmap = Resource1.悬赏_选中_奕中幻境, taskName = "yzhjCopy" });
-            }
             OpenMall(Resource1.活动);
             Bg.LeftMouseClick(handle, new Point() { X = 930, Y = 55 });
             Sleep(1000);
@@ -65,15 +50,15 @@ namespace wpfclx.Task
             while (count < 3)
             {
                 Bg.LeftMouseClick(handle, new Point() { X = 170, Y = 600 });
-                Sleep(150);
+                Sleep(100);
                 var capture = Bg.Capture(handle);
                 foreach (var item in list)
                 {
-                    var r = Bg.FindPicEx(handle, capture, item.bitmap, new XRECT() { Left = 180, Top = 250 + count * 40, Right = 340, Bottom = 400 }, 0.95f);
+                    var r = Bg.FindPicEx(handle, capture, item.bitmap, new XRECT() { Left = 200, Top = 250 + count * 45, Right = 340, Bottom = 390 - (2 - count) * 45 }, 0.95f);
                     if (!r.IsEmpty)
                     {
                         Bg.LeftMouseClick(handle, r);
-                        Sleep(100);
+                        Sleep(80);
                         r = Bg.FindPic(handle, Resource1.前往悬赏, new XRECT() { Left = 960, Top = 580, Right = 1048, Bottom = 620 }, 0.95f);
                         if (!r.IsEmpty)
                         {
@@ -82,7 +67,7 @@ namespace wpfclx.Task
                             break;
                         }
                         Bg.LeftMouseClick(handle, new Point() { X = 1030, Y = 600 });
-                        Sleep(50);
+                        Sleep(30);
                         Bg.LeftMouseClick(handle, new Point() { X = 880, Y = 520 });
                         Sleep(100);
                         //检测是否抢领成功

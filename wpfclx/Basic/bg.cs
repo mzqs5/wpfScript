@@ -237,6 +237,27 @@ namespace wpfclx
             return rect != null ? new Point() { X = r.Left + rect[0].Rectangle.Left, Y = r.Top + rect[0].Rectangle.Top } : new Point();
         }
 
+        /// <summary>
+        /// 区域找多图
+        /// </summary>
+        /// <param name="handle"></param>
+        /// <param name="temp"></param>
+        /// <param name="r"></param>
+        /// <param name="debug"></param>
+        /// <returns>返回第一个找到的坐标</returns>
+        internal static Point FindPicFastEx(IntPtr handle, Bitmap capture, Bitmap temp, XRECT r, float similarity = 0.85f, FindDirection findType = FindDirection.LeftTopToRightDown, bool debug = false)
+        {
+            Bitmap source = BitmapHelper.ConvertToFormat(capture, PixelFormat.Format24bppRgb, r);
+            Bitmap tempnew = BitmapHelper.ConvertToFormat(temp, PixelFormat.Format24bppRgb);
+            source = AforgeHelper.GrayscaleThresholdBlobsFiltering(source, 100);
+            if (debug)
+                source.Save($"C:\\clx\\source{new Random().Next(100, 200)}.bmp");
+            var rect = AforgeHelper.ProcessImage(source, tempnew, findType, similarity);
+            source.Dispose();
+            tempnew.Dispose();
+            return rect != null ? new Point() { X = r.Left + rect[0].Rectangle.Left, Y = r.Top + rect[0].Rectangle.Top } : new Point();
+        }
+
 
         /// <summary>
         /// 区域找图
