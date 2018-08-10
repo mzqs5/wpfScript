@@ -39,7 +39,6 @@
             <CheckBox Name="gjdy" Content="挂机钓鱼" Click="alltask_Checked"/>
             <CheckBox Name="hxcj" Content="换线采集" Click="alltask_Checked"/>
             <CheckBox Name="cjgz" Content="采集罐子" Click="alltask_Checked"/>
-            <CheckBox Name="mpm" Content="秒拍卖" Click="alltask_Checked"/>
             <CheckBox Name="gj" Content="关机" Click="alltask_Checked"/>
         </ListBox>
         <ListBox Name="selecttask" HorizontalAlignment="Left"  Height="281" VerticalAlignment="Top" Width="100" Margin="121,27,0,0"/>
