@@ -54,7 +54,7 @@ namespace wpfclx.Task
                 var capture = Bg.Capture(handle);
                 foreach (var item in list)
                 {
-                    var r = Bg.FindPicEx(handle, capture, item.bitmap, new XRECT() { Left = 200, Top = 250 + count * 45, Right = 340, Bottom = 390 - (2 - count) * 45 }, 0.95f);
+                    var r = Bg.FindPicEx(handle, capture, item.bitmap, new XRECT() { Left = 200, Top = 250 + count * 40, Right = 340, Bottom = 390 - (2 - count) * 40 }, 0.95f);
                     if (!r.IsEmpty)
                     {
                         Bg.LeftMouseClick(handle, r);
