@@ -473,6 +473,26 @@ namespace wpfclx {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap 悬赏_圣教 {
+            get {
+                object obj = ResourceManager.GetObject("悬赏_圣教", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap 悬赏_明月山庄 {
+            get {
+                object obj = ResourceManager.GetObject("悬赏_明月山庄", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap 悬赏_暂无悬赏任务 {
             get {
                 object obj = ResourceManager.GetObject("悬赏_暂无悬赏任务", resourceCulture);
@@ -496,6 +516,26 @@ namespace wpfclx {
         internal static System.Drawing.Bitmap 悬赏_选中_十二连环坞 {
             get {
                 object obj = ResourceManager.GetObject("悬赏_选中_十二连环坞", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap 悬赏_选中_圣教 {
+            get {
+                object obj = ResourceManager.GetObject("悬赏_选中_圣教", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap 悬赏_选中_明月山庄 {
+            get {
+                object obj = ResourceManager.GetObject("悬赏_选中_明月山庄", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

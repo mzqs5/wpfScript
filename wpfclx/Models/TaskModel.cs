@@ -23,6 +23,8 @@ namespace wpfclx.Models
 
         public bool xsmysj { get; set; }
 
+        public bool xsmysz { get; set; }
+
         public bool jhselhw { get; set; }
 
         public bool jhxjz { get; set; }
@@ -37,10 +39,5 @@ namespace wpfclx.Models
 
         public bool fjzs { get; set; }
 
-        public bool xsjypy { get; set; }
-
-        public bool xsyzhj { get; set; }
-
-        public bool xsjhxs { get; set; }
     }
 }

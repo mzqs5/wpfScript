@@ -461,5 +461,17 @@
   <ItemGroup>
     <None Include="Resources\悬赏_十二连环坞.bmp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\悬赏_圣教.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\悬赏_选中_明月山庄.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\悬赏_选中_圣教.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\悬赏_明月山庄.bmp" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

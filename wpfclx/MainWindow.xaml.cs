@@ -181,6 +181,7 @@ namespace wpfclx
                 model.xsselhw = xsselhw.IsChecked.HasValue ? xsselhw.IsChecked.Value : false;
                 model.xsxjz = xsxjz.IsChecked.HasValue ? xsxjz.IsChecked.Value : false;
                 model.xsmysj = xsmysj.IsChecked.HasValue ? xsmysj.IsChecked.Value : false;
+                model.xsmysz = xsmysz.IsChecked.HasValue ? xsmysz.IsChecked.Value : false;
                 model.jhselhw = jhselhw.IsChecked.HasValue ? jhselhw.IsChecked.Value : false;
                 model.jhxjz = jhxjz.IsChecked.HasValue ? jhxjz.IsChecked.Value : false;
                 model.jhmysj = jhmysj.IsChecked.HasValue ? jhmysj.IsChecked.Value : false;

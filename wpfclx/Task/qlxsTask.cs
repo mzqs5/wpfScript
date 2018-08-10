@@ -38,8 +38,13 @@ namespace wpfclx.Task
             }
             if (model.xsmysj)
             {
-                list.Add(new xsTask() { bitmap = Resource1.悬赏_麻衣圣教, taskName = "mysjCopy" });
-                list.Add(new xsTask() { bitmap = Resource1.悬赏_选中_麻衣圣教, taskName = "mysjCopy" });
+                list.Add(new xsTask() { bitmap = Resource1.悬赏_圣教, taskName = "mysjCopy" });
+                list.Add(new xsTask() { bitmap = Resource1.悬赏_选中_圣教, taskName = "mysjCopy" });
+            }
+            if (model.xsmysz)
+            {
+                list.Add(new xsTask() { bitmap = Resource1.悬赏_明月山庄, taskName = "myszCopy" });
+                list.Add(new xsTask() { bitmap = Resource1.悬赏_选中_明月山庄, taskName = "myszCopy" });
             }
 
             OpenMall(Resource1.活动);
