@@ -40,7 +40,7 @@ namespace wpfclx
         private static int deviationY = 32;//窗口上偏移量
         public static Bitmap ConvertToFormat(Bitmap image, PixelFormat format, XRECT r)
         {
-            var b = new Bitmap(r.Right - r.Left - deviationX, r.Bottom - r.Top - deviationY, format);
+            var b = new Bitmap(r.Right - r.Left, r.Bottom - r.Top, format);
             b.SetResolution(image.HorizontalResolution, image.VerticalResolution);
             using (Graphics g = Graphics.FromImage(b))
             {
@@ -53,7 +53,7 @@ namespace wpfclx
                 // 指定高质量、低速度呈现。 
                 g.SmoothingMode = SmoothingMode.HighQuality;
                 // 在指定位置并且按指定大小绘制指定的 Image 的指定部分。 
-                g.DrawImage(image, new Rectangle(0, 0, r.Right - r.Left - deviationX, r.Bottom - r.Top - deviationY), new Rectangle(r.Left , r.Top , r.Right - r.Left - deviationX, r.Bottom - r.Top - deviationY), GraphicsUnit.Pixel);
+                g.DrawImage(image, new Rectangle(0, 0, r.Right - r.Left, r.Bottom - r.Top), new Rectangle(r.Left + deviationX, r.Top + deviationY, r.Right - r.Left, r.Bottom - r.Top), GraphicsUnit.Pixel);
 
             }
             return b;
