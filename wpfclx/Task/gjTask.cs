@@ -20,7 +20,7 @@ namespace wpfclx.Task
 
         public override void Start(TaskModel model)
         {
-            var r = Bg.FindPic(handle, Resource1.前往悬赏, new XRECT() { Left = 960, Top = 580, Right = 1048, Bottom = 620 }, 0.95f,FindDirection.LeftTopToRightDown,true);
+            var r = Bg.FindPic(handle, Resource1.活动, new XRECT() { Left = 0, Top = 0, Right = 560, Bottom = 80 }, 0.95f, FindDirection.LeftTopToRightDown,true);
             if (!r.IsEmpty)
             {
                 Bg.SetWindowText(handle, r.ToString());
