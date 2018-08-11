@@ -13,8 +13,6 @@ namespace wpfclx
     /// </summary>
     internal class Bg
     {
-        //private static int deviationX = 8;//窗口左偏移量
-        //private static int deviationY = 32;//窗口上偏移量
         private static List<FontLibrary> fonts;
 
         static Bg()
@@ -347,21 +345,35 @@ namespace wpfclx
         /// <returns></returns>
         internal static Bitmap Capture(IntPtr hWnd)
         {
-            IntPtr hscrdc = WinApi.GetDC(hWnd);
+            //双缓冲
+            //IntPtr hscrdc = WinApi.GetDC(hWnd);
+            //WinApi.RECT eCT = new WinApi.RECT();
+            //WinApi.GetClientRect(hWnd, ref eCT);
+            //IntPtr hmemdc = WinApi.CreateCompatibleDC(hscrdc);
+            //IntPtr hbitmap = WinApi.CreateCompatibleBitmap(hscrdc, eCT.Right - eCT.Left, eCT.Bottom - eCT.Top);
+            //IntPtr hOldBitmap = WinApi.SelectObject(hmemdc, hbitmap);
+            //WinApi.BitBlt(hmemdc, 0, 0, eCT.Right - eCT.Left, eCT.Bottom - eCT.Top, hscrdc, 0, 0, 13369376);
+            //IntPtr hNewBitmap = WinApi.SelectObject(hmemdc, hOldBitmap);
+            //Bitmap bmp = Bitmap.FromHbitmap(hNewBitmap);
+            //WinApi.ReleaseDC(hWnd, hscrdc);//删除用过的DC
+            //WinApi.DeleteDC(hmemdc);//删除创建的DC
+            //WinApi.DeleteObject(hbitmap);//删除创建的对象
+            //WinApi.DeleteObject(hOldBitmap);//删除用过的gdi对象
+            //WinApi.DeleteObject(hNewBitmap);//删除用过的gdi对象
+
+            //单缓冲
+            IntPtr hscrdc = WinApi.GetWindowDC(hWnd);
             WinApi.RECT eCT = new WinApi.RECT();
-            WinApi.GetClientRect(hWnd, ref eCT);
-            IntPtr hmemdc = WinApi.CreateCompatibleDC(hscrdc);
+            WinApi.GetWindowRect(hWnd, ref eCT);
             IntPtr hbitmap = WinApi.CreateCompatibleBitmap(hscrdc, eCT.Right - eCT.Left, eCT.Bottom - eCT.Top);
-            IntPtr hOldBitmap = WinApi.SelectObject(hmemdc, hbitmap);
-            WinApi.BitBlt(hmemdc, 0, 0, eCT.Right - eCT.Left, eCT.Bottom - eCT.Top, hscrdc, 0, 0, 13369376);
-            //WinApi.PrintWindow(hWnd, hmemdc, 0);
-            IntPtr hNewBitmap = WinApi.SelectObject(hmemdc, hOldBitmap);
-            Bitmap bmp = Bitmap.FromHbitmap(hNewBitmap);
+            IntPtr hmemdc = WinApi.CreateCompatibleDC(hscrdc);
+            IntPtr ints = WinApi.SelectObject(hmemdc, hbitmap);
+            WinApi.PrintWindow(hWnd, hmemdc, 0);
+            Bitmap bmp = Bitmap.FromHbitmap(hbitmap);
             WinApi.ReleaseDC(hWnd, hscrdc);//删除用过的DC
             WinApi.DeleteDC(hmemdc);//删除创建的DC
-            WinApi.DeleteObject(hbitmap);//删除创建的对象
-            WinApi.DeleteObject(hOldBitmap);//删除用过的gdi对象
-            WinApi.DeleteObject(hNewBitmap);//删除用过的gdi对象
+            WinApi.DeleteObject(hbitmap);//删除创建的位图对象
+            WinApi.DeleteObject(ints);//删除用过的gdi对象
             return bmp;
         }
 

@@ -36,9 +36,14 @@ namespace wpfclx
                 return image;
             }
         }
-
+        private static int deviationX = 8;//窗口左偏移量
+        private static int deviationY = 32;//窗口上偏移量
         public static Bitmap ConvertToFormat(Bitmap image, PixelFormat format, XRECT r)
         {
+            r.Left += deviationX;
+            r.Right += deviationX;
+            r.Top += deviationY;
+            r.Bottom += deviationY;
             var b = new Bitmap(r.Right - r.Left, r.Bottom - r.Top, format);
             b.SetResolution(image.HorizontalResolution, image.VerticalResolution);
             using (Graphics g = Graphics.FromImage(b))
