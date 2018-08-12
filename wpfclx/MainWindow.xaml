@@ -50,6 +50,7 @@
             <CheckBox x:Name="xsxjz" Content="薛家庄" IsChecked="True"/>
             <CheckBox x:Name="xsmysj" Content="麻衣圣教"/>
             <CheckBox x:Name="xsmysz" Content="明月山庄"/>
+            <CheckBox x:Name="xsCount" Content="只接60箱子"/>
         </ListBox>
         <Label Content="江湖纪事" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="360,0,0,0" RenderTransformOrigin="-0.138,0.44"/>
         <ListBox HorizontalAlignment="Left" Height="63" VerticalAlignment="Top" Width="95" Margin="340,25,0,0">

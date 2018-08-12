@@ -64,13 +64,24 @@ namespace wpfclx.Task
                     {
                         Bg.LeftMouseClick(handle, r);
                         Sleep(80);
-                        r = Bg.FindPic(handle, Resource1.前往悬赏, new XRECT() { Left = 960, Top = 580, Right = 1048, Bottom = 620 }, 0.95f);
+                        var capture2 = Bg.Capture(handle);
+                        if (model.xsCount)
+                        {
+                            r = Bg.FindPicEx(handle, capture2, Resource1.c60, new XRECT() { Left = 1057, Top = 415, Right = 1098, Bottom = 438 }, 0.95f);
+                            if (r.IsEmpty)
+                            {
+                                Bg.SetWindowText(handle, $"检测到箱子数量不符合");
+                                break;
+                            }
+                        }
+                        r = Bg.FindPicEx(handle, capture2, Resource1.前往悬赏, new XRECT() { Left = 960, Top = 580, Right = 1048, Bottom = 620 }, 0.95f);
                         if (!r.IsEmpty)
                         {
                             Bg.SetWindowText(handle, $"检测到已领取{count+1}次悬赏");
                             count++;
                             break;
                         }
+                        capture2.Dispose();
                         Bg.LeftMouseClick(handle, new Point() { X = 1030, Y = 600 });
                         Sleep(30);
                         Bg.LeftMouseClick(handle, new Point() { X = 880, Y = 520 });

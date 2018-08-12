@@ -8,7 +8,7 @@ namespace wpfclx.Models
 {
     public class TaskModel
     {
-
+        public bool xsCount { get; set; }
         public int cjCount { get; set; }
 
         public int qgCount { get; set; }

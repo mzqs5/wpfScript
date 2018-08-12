@@ -473,5 +473,8 @@
   <ItemGroup>
     <None Include="Resources\悬赏_明月山庄.bmp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\c60.bmp" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
