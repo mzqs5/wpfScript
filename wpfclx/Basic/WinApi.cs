@@ -58,6 +58,35 @@ namespace wpfclx
         //public static extern int MapVirtualKey(uint Ucode, uint uMapType);
 
         #endregion
+        //hWndInsertAfter 参数可选值:
+        internal const int HWND_TOP = 0;//在前面
+
+        internal const int HWND_BOTTOM = 1;//在后面
+
+        internal const int HWND_TOPMOST = -1;//在前面, 位于任何顶部窗口的前面
+
+        internal const int HWND_NOTOPMOST = -2;//在前面, 位于其他顶部窗口的后面
+
+        //uFlags 参数可选值:
+        internal const uint SWP_NOSIZE = 1; //忽略 cx、cy, 保持大小
+        internal const uint SWP_NOMOVE = 2; //忽略 X、Y, 不改变位置
+
+        internal const uint SWP_NOZORDER = 4; //忽略 hWndInsertAfter, 保持 Z 顺序}
+        internal const uint SWP_NOREDRAW = 8; //{不重绘}
+        internal const uint SWP_NOACTIVATE = 10; //{不激活}
+        internal const uint SWP_FRAMECHANGED = 20; //{强制发送 WM_NCCALCSIZE 消息, 一般只是在改变大小时才发送此消息}
+        internal const uint SWP_SHOWWINDOW = 40; //{显示窗口}
+        internal const uint SWP_HIDEWINDOW = 80; //{隐藏窗口}
+        internal const uint SWP_NOCOPYBITS = 100; //{丢弃客户区}
+        internal const uint SWP_NOOWNERZORDER = 200; //{忽略 hWndInsertAfter, 不改变 Z 序列的所有者}
+        internal const uint SWP_NOSENDCHANGING = 400; //{不发出 WM_WINDOWPOSCHANGING 消息}
+        internal const uint SWP_DRAWFRAME = SWP_FRAMECHANGED; //{画边框}
+        internal const uint SWP_NOREPOSITION = SWP_NOOWNERZORDER;//{}
+        internal const uint SWP_DEFERERASE = 2000; //{防止产生 WM_SYNCPAINT 消息}
+        internal const uint SWP_ASYNCWINDOWPOS = 4000; //{若调用进程不拥有窗口, 系统会向拥有窗口的线程发出需求}
+
+        [DllImport("user32.dll", CharSet = CharSet.Auto)]
+        internal static extern int SetWindowPos(IntPtr hWnd, int hWndInsertAfter, int x, int y, int Width, int Height, uint flags);
 
         #region 获取窗体位置
         [DllImport("user32.dll")]

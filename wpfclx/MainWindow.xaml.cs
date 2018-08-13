@@ -96,6 +96,19 @@ namespace wpfclx
                 ThreadPool.QueueUserWorkItem(new WaitCallback(obj =>
                 {
                     IntPtr handle = (IntPtr)obj;
+                    Bg.SetWindowText(handle, "检测窗口大小...");
+                    IntPtr hscrdc = WinApi.GetWindowDC(handle);
+                    WinApi.RECT eCT = new WinApi.RECT();
+                    WinApi.GetWindowRect(handle, ref eCT);
+                    WinApi.ReleaseDC(handle, hscrdc);//删除用过的DC
+                    int width = eCT.Right - eCT.Left;
+                    int height = eCT.Bottom - eCT.Top;
+                    Bg.SetWindowText(handle, width.ToString() + "," + height.ToString());
+                    if (width != 1340 || height != 779) {
+                        Bg.SetWindowText(handle, "修改窗口大小...");
+                        WinApi.SetWindowPos(handle, WinApi.HWND_BOTTOM, 0, 0, 1340, 779, WinApi.SWP_NOMOVE);
+                        Thread.Sleep(1000);
+                    }
                     System.Drawing.Point p = Bg.FindPic(handle, Resource1.电池, new XRECT() { Left = 130, Top = 700, Right = 180, Bottom = 740 });
                     if (!p.IsEmpty)
                     {

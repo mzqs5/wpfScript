@@ -32,7 +32,7 @@ namespace wpfclx.Task
                 while (true)
                 {
                     Bg.LeftMouseClick(handle, new Point() { X = 235, Y = 260 });
-                    Thread.Sleep(150);
+                    Thread.Sleep(100);
                     Bg.SetWindowText(handle, "检测到关注物品上架，开始抢购...");
                     Bg.LeftMouseClick(handle, new Point() { X = 543, Y = 271 });
                     for (int i = 1; i < model.qgCount; i++)

@@ -20,12 +20,20 @@ namespace wpfclx.Task
 
         public override void Start(TaskModel model)
         {
-            var r = Bg.FindPic(handle, Resource1.c60, new XRECT() { Left = 1057, Top = 415, Right = 1098, Bottom = 438 },0.95f, FindDirection.LeftTopToRightDown,true);
-            if (!r.IsEmpty)
-            {
-                Bg.SetWindowText(handle, r.ToString());
+            IntPtr hscrdc = WinApi.GetWindowDC(handle);
+            WinApi.RECT eCT = new WinApi.RECT();
+            WinApi.GetWindowRect(handle, ref eCT);
+            WinApi.ReleaseDC(handle, hscrdc);//删除用过的DC
+            int width = eCT.Right - eCT.Left;                      
+            int height = eCT.Bottom - eCT.Top;
+            Bg.SetWindowText(handle, width.ToString() + "," + height.ToString());
 
-            }
+            //var r = Bg.FindPic(handle, Resource1.c60, new XRECT() { Left = 1057, Top = 415, Right = 1098, Bottom = 438 },0.95f, FindDirection.LeftTopToRightDown,true);
+            //if (!r.IsEmpty)
+            //{
+            //    Bg.SetWindowText(handle, r.ToString());
+
+            //}
 
             //List<xsTask>  list = new List<xsTask>();
 
@@ -51,7 +59,7 @@ namespace wpfclx.Task
             //    }
 
             //}
-                Thread.Sleep(10000);
+            Thread.Sleep(10000);
             //Bg.ExitWindowsEx();
         }
 
