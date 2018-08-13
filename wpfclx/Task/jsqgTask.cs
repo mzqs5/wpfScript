@@ -35,7 +35,7 @@ namespace wpfclx.Task
                     Thread.Sleep(150);
                     Bg.SetWindowText(handle, "检测到关注物品上架，开始抢购...");
                     Bg.LeftMouseClick(handle, new Point() { X = 543, Y = 271 });
-                    for (int i = 0; i < model.qgCount; i++)
+                    for (int i = 1; i < model.qgCount; i++)
                     {
                         Bg.LeftMouseClick(handle, new Point() { X = 794, Y = 385 });
                     }
