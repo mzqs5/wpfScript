@@ -41,7 +41,7 @@ namespace wpfclx.Task
                     }
                     Bg.LeftMouseClick(handle, new Point() { X = 659, Y = 526 });
                     Bg.LeftMouseClick(handle, new Point() { X = 885, Y = 528 });
-                    Thread.Sleep(50);
+                    Thread.Sleep(120);
                 }
             }
         }
